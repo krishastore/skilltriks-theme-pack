@@ -1,0 +1,81 @@
+$theme-map: (
+  --bdlms-primary-color: #893bf8,
+  --bdlms-secondary-color: #00cfbe,
+  --bdlms-bg-color: #f6f6f7,
+  --bdlms-bg-light-color: #fbfbfb,
+  --bdlms-border-color: #ededed,
+  --bdlms-white-color: #ffffff,
+  --bdlms-heading-color: #101011,
+  --bdlms-paragraph-color: #5d5d73,
+  --bdlms-paragraph-light-color: #85859d,
+  --bdlms-link-color: #7d3cd9,
+  --bdlms-icon-color: #a9a9a9,
+  --bdlms-success-color: #25af3d,
+  --bdlms-error-color: #c53434,
+);
+
+// Colors
+$primary: #893bf8;
+$secondary: #00cfbe;
+$bg_color: #f6f6f7;
+$bg_color_light: #fbfbfb;
+$border_color: #ededed;
+$white: #ffffff;
+$heading_color: #101011;
+$paragraph: #5d5d73;
+$paragraph_light: #85859d;
+$link_color: #7d3cd9;
+$icon_color: #a9a9a9;
+$success: #25af3d;
+$error: #c53434;
+
+$prefix: "bdlms";
+
+// Shadows
+$shadow: 0px 10px 25px 10px #893bf80d;
+$shadow_2: 0px 5px 10px 0px #893bf80d;
+$shadow_3: 0px 5px 20px 0px rgba(94, 122, 193, 0.14);
+$shadow_4: 0px 0px 25px 10px rgba(137, 59, 248, 0.05);
+
+// Fonts
+$primary_font: "Lato", sans-serif;
+
+// Media
+$sm: 767;
+$md: 1024;
+$lg: 1281;
+$xl: 1360;
+$xxl: 1600;
+
+// Font weight
+$font_weight_light: 300;
+$font_weight_normal: 400;
+$font_weight_medium: 500;
+$font_weight_semibold: 600;
+$font_weight_bold: 700;
+
+$font_size_xxs: 12px;
+$font_size_xs: 13px;
+$font_size_sm: 14px;
+$font_size_base: 16px;
+$font_size_lg: 15px;
+$font_size_xl: 18px;
+$font_size_2xl: 22px;
+$font_size_3xl: 28px;
+$font_size_4xl: 32px;
+$font_size_5xl: 42px;
+
+$spacing_0: 0px;
+$spacing_4: 4px;
+$spacing_8: 8px;
+$spacing_10: 10px;
+$spacing_12: 12px;
+$spacing_16: 16px;
+$spacing_20: 20px;
+$spacing_24: 24px;
+$spacing_28: 28px;
+$spacing_32: 32px;
+$spacing_36: 36px;
+$spacing_40: 40px;
+$spacing_44: 44px;
+$spacing_48: 48px;

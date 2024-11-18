@@ -1,0 +1,136 @@
+.bdlms-inner-banner {
+  padding: 30px 0;
+  background: var(--bdlms-bg-color);
+  position: relative;
+
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include breakpoint(max, $sm) {
+      content: none;
+    }
+  }
+
+  &::after {
+    background-image: url("../images/swirl-right.png");
+    background-position: right;
+    right: 0;
+  }
+
+  &::before {
+    background-image: url("../images/swirl-left.png");
+    background-position: left;
+    left: 0;
+  }
+
+  .bdlms-banner-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    row-gap: 20px;
+    z-index: 1;
+    margin: 0 -15px;
+
+    .bdlms-banner-info,
+    .bdlms-banner-media {
+      width: 50%;
+      padding: 0 15px;
+
+      @include breakpoint(max, $sm) {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .bdlms-banner-media {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.bdlms-course-detail-banner {
+  padding-top: 60px;
+  background-color: var(--bdlms-bg-color);
+  position: relative;
+
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include breakpoint(max, $sm) {
+      content: none;
+    }
+  }
+
+  &::after {
+    background-image: url("../images/swirl-big-right.png");
+    background-position: right;
+    right: 0;
+  }
+
+  &::before {
+    background-image: url("../images/swirl-big-left.png");
+    background-position: left;
+    left: 0;
+  }
+
+  .bdlms-container {
+    z-index: 1;
+    position: relative;
+  }
+
+  .bdlms-banner-info {
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .bdlms-tag-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .bdlms-course-item__meta {
+      ul {
+        display: flex;
+        gap: 20px;
+        row-gap: 10px;
+        flex-wrap: wrap;
+
+        li {
+          font-size: $font_size_base;
+          line-height: 1.5;
+          color: var(--bdlms-paragraph-light-color);
+          display: flex;
+          align-items: center;
+          gap: 3px;
+        }
+      }
+    }
+  }
+
+  .bdlms-banner-media {
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.base-timer {
+  position: relative;
+  width: 74px;
+  height: 74px;
+
+  &__svg {
+    transform: scaleX(-1);
+  }
+
+  &__circle {
+    fill: none;
+    stroke: none;
+  }
+
+  &__path-elapsed {
+    stroke-width: 6px;
+    stroke: var(--bdlms-border-color);
+  }
+
+  &__path-remaining {
+    stroke-width: 6px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+    stroke: currentColor;
+    color: var(--bdlms-primary-color);
+  }
+
+  &__label {
+    position: absolute;
+    width: 74px;
+    height: 74px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font_size_xs;
+    font-weight: $font_weight_normal;
+    color: var(--bdlms-paragraph-color);
+    line-height: 1.2;
+  }
+}
