@@ -66,3 +66,33 @@ function bdlms_addons_styles() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'bdlms_addons_styles' );
+
+/**
+ * Customise css.
+ */
+function customise_css() {
+	$option               = get_option( 'bdlms_settings', array() );
+	$layout               = isset( $option['theme'] ) ? $option['theme'] : 'layout-default';
+	$customise_css        = $option[ $layout ];
+	$customise_color      = isset( $customise_css['colors'] ) ? $customise_css['colors'] : array();
+	$customise_typography = isset( $customise_css['typography'] ) ? $customise_css['typography'] : array();
+	?>
+		<style>
+			:root {
+				<?php
+				foreach ( $customise_color as $color => $value ) {
+					echo '--bdlms-' . str_replace( '_', '-', $color ) . ': ' . $value . ';';
+				}
+				foreach ( $customise_typography as $typography => $value ) {
+					if ( is_array( $value ) ) {
+						foreach ( $value as $key => $v ) {
+							echo '--bdlms-' . str_replace( '_', '-', $typography ) . '-' . str_replace( '_', '-', $key ) . ': ' . $v . ';';
+						}
+					}
+				}
+				?>
+			}
+		</style>
+	<?php
+}
+add_action( 'wp_head', 'customise_css' );

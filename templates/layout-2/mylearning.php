@@ -334,13 +334,14 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 											$meta_key       = sprintf( \BlueDolphin\Lms\BDLMS_COURSE_STATUS, get_the_ID() );
 											$user_id        = get_current_user_id();
 											$current_status = get_user_meta( $user_id, $meta_key, true );
+											$current_status = ! empty( $current_status ) ? end( $current_status ) : array();
 											$current_status = ! empty( $current_status ) ? explode( '_', $current_status ) : array();
 											if ( ! empty( $current_status ) ) {
 												$course_progress = \BlueDolphin\Lms\calculate_course_progress( get_the_ID(), $curriculums, $current_status ) . '%';
 												$section_id      = (int) reset( $current_status );
 												$item_id         = (int) end( $current_status );
 												$button_text     = esc_html__( 'Continue Learning', 'bluedolphin-lms' );
-												$extra_class     = ' bdlms-btn-light';
+												$extra_class     = ' secondary';
 												$last_curriculum = end( $curriculums );
 												$last_curriculum = explode( '_', $last_curriculum );
 												$last_curriculum = array_map( 'absint', $last_curriculum );
@@ -353,7 +354,6 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 														$section_id       = reset( $first_curriculum );
 														$item_id          = end( $first_curriculum );
 														$button_text      = esc_html__( 'Restart Course', 'bluedolphin-lms' );
-														$extra_class      = ' bdlms-btn-dark';
 													}
 												}
 											}
@@ -466,7 +466,7 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 																		<div class="bdlms-progress__bar-inner" style="width: <?php echo esc_attr( $course_progress ); ?>"></div>
 																	</div>
 																</div>
-																<a href="<?php echo esc_url( $course_link ); ?>" class="bdlms-btn bdlms-btn-block secondary"><?php echo esc_html( $button_text ); ?></a>
+																<a href="<?php echo esc_url( $course_link ); ?>" class="bdlms-btn bdlms-btn-block <?php echo esc_attr( $extra_class ); ?>"><?php echo esc_html( $button_text ); ?></a>
 															<?php } ?>
 														</div>
 													</div>

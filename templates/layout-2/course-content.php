@@ -89,15 +89,21 @@ load_template(
 									if ( $section_id === $item_key && $current_item_id === $item_id ) {
 										$inactive = true;
 									}
+
+									$meta_key = sprintf( \BlueDolphin\Lms\BDLMS_COURSE_STATUS, $args['course_id'] );
+									$needle   = $section_id . '_' . $item_id;
+									$haystack = get_user_meta( get_current_user_id(), $meta_key, true );
+									$haystack = is_array( $haystack ) ? $haystack : array();
 									?>
 								<li class="<?php echo $current_item_id === $item_id ? esc_attr( 'active' ) : ''; ?>">
-									<label>
+									<div class="completed course-progress">
 										<?php if ( $section_id === $item_key && ( $current_item_id === $item_id ) ) : ?>
-											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" class="bdlms-check curriculum-progress-box" value="<?php echo esc_attr( $item_id ); ?>" disabled>
+											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" class="bdlms-check curriculum-progress-box" value="<?php echo esc_attr( $item_id ); ?>" checked='checked' disabled>
 										<?php else : ?>
-											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" value="<?php echo esc_attr( $item_id ); ?>" class="bdlms-check curriculum-progress-box"<?php echo $inactive ? ' readonly' : ''; ?><?php checked( true, ! $inactive ); ?> disabled>
+											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" value="<?php echo esc_attr( $item_id ); ?>" class="bdlms-check curriculum-progress-box"<?php echo $inactive ? ' readonly' : ''; ?><?php checked( true, in_array( $needle, $haystack, true ) ); ?> disabled>
 										<?php endif; ?>
-										<span class="bdlms-lesson-class">
+
+										<a href="<?php echo in_array( $needle, $haystack, true ) ? esc_url( get_permalink() . $section_id . '/' . rtrim( $curriculum_type, '_id' ) . '/' . $item_id ) : 'javascript:;'; ?>" class="bdlms-lesson-class">
 											<span class="class-name"><span><?php printf( '%d.%d.', (int) $item_key, (int) $key ); ?></span> <?php echo esc_html( get_the_title( $item_id ) ); ?></span>
 											<span class="class-type">
 												<svg class="icon" width="16" height="16">
@@ -113,8 +119,8 @@ load_template(
 												}
 												?>
 											</span>
-										</span>
-									</label>
+										</a>
+									</div>
 								</li>
 								<?php endforeach; ?>
 							</ul>

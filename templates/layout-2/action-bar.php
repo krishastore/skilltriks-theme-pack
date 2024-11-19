@@ -45,15 +45,7 @@ $result_page_url = sprintf( '%s/%s/%d/', untrailingslashit( home_url() ), $cours
 			<li><?php echo esc_html( get_the_title( $args['current_item'] ) ); ?></li>
 		</ul>
 	</div>
-	<div class="bdlms-lesson-view__pagination">
-		<?php if ( $prev_key >= 0 && isset( $curriculums_keys[ $prev_key ] ) ) : ?>
-			<a href="<?php echo esc_url( \BlueDolphin\Lms\get_curriculum_link( $curriculums_keys[ $prev_key ], $prev_key ) ); ?>" class="bdlms-btn bdlms-btn-icon bdlms-btn-flate bdlms-prev-btn">
-				<svg class="icon" width="16" height="16">
-					<use xlink:href="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/sprite-front.svg#arrow-left"></use>
-				</svg>
-				<?php esc_html_e( 'Previous', 'bluedolphin-lms' ); ?>
-			</a>
-		<?php endif; ?>
+	<div class="bdlms-lesson-view__pagination" style="display:none;">
 		<?php if ( $next_key >= 1 && isset( $curriculums_keys[ $next_key ] ) ) : ?>
 			<a href="<?php echo esc_url( \BlueDolphin\Lms\get_curriculum_link( $curriculums_keys[ $next_key ], $next_key ) ); ?>" class="bdlms-btn bdlms-btn-icon bdlms-btn-flate bdlms-next-btn">
 				<?php esc_html_e( 'Next', 'bluedolphin-lms' ); ?>
@@ -70,11 +62,4 @@ $result_page_url = sprintf( '%s/%s/%d/', untrailingslashit( home_url() ), $cours
 			</a>
 		<?php endif; ?>
 	</div>
-	<?php if ( ! empty( $args['current_item'] ) ) : ?>
-		<!-- <div class="bdlms-lesson-toggle">
-			<svg class="icon" width="20" height="20">
-				<use xlink:href="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/sprite-front.svg#menu-burger"></use>
-			</svg>
-		</div> -->
-	<?php endif; ?>
 </div>
