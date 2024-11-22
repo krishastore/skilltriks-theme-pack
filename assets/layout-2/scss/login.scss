@@ -1,0 +1,40 @@
+.bdlms-login-wrap {
+  padding: $spacing_20;
+  min-height: 90vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--bdlms-bg-light-color);
+
+  @include breakpoint(max, $sm) {
+    padding: $spacing_16;
+  }
+}
+
+.bdlms-login {
+  padding: $spacing_32 $spacing_48 $spacing_48 $spacing_48;
+  border-radius: 5px;
+  background: var(--bdlms-white-color);
+  box-shadow: $shadow;
+  width: 100%;
+  max-width: 790px;
+
+  &__header {
+    text-align: center;
+  }
+
+  &__title {
+    padding-bottom: $spacing_12;
+
+    @include breakpoint(max, $sm) {
+      font-size: $font_size_3xl;
+    }
+  }
+
+  &__text {
+    padding-bottom: $spacing_24;
+  }
+
+  @include breakpoint(max, $sm) {
+    padding: $spacing_20;
+  }
+}

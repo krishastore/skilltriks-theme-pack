@@ -1,0 +1,100 @@
+.bdlms-btn {
+  padding: 11px 30px;
+  border-radius: $spacing_4;
+  line-height: 1;
+  font-size: $font_size_base;
+  font-weight: $font_weight_bold;
+  background: var(--bdlms-primary-color);
+  border: 1px solid var(--bdlms-primary-color);
+  color: var(--bdlms-white-color) !important;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  @include transition(all 0.3s ease-in-out);
+
+  &:hover,
+  &:focus {
+    background: #7a22f7;
+  }
+
+  &.bdlms-btn-block {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: $font_size_base;
+    font-weight: $font_weight_bold;
+    color: var(--bdlms-white-color);
+    height: 49px;
+  }
+
+  &.secondary {
+    background-color: var(--bdlms-secondary-color);
+    border-color: var(--bdlms-secondary-color);
+  }
+
+  &.outline {
+    background-color: transparent;
+    border: 1px solid var(--bdlms-primary-color);
+    color: var(--bdlms-primary-color) !important;
+  }
+
+  &.small {
+    padding: 5px 20px;
+    height: 37px;
+  }
+
+  &.outline-small {
+    padding: 5px 20px;
+    height: 37px;
+    background-color: transparent;
+    border: 1px solid var(--bdlms-primary-color);
+    color: var(--bdlms-primary-color) !important;
+  }
+
+  &-light {
+    background: rgba(var(--bdlms-primary-color), 0.5);
+    border-color: rgba(var(--bdlms-primary-color), 0.5);
+
+    &:hover,
+    &:focus {
+      background: rgba(var(--bdlms-primary-color), 0.6);
+      border-color: rgba(var(--bdlms-primary-color), 0.6);
+    }
+  }
+
+  &-dark {
+    background: var(--bdlms-heading-color);
+    border-color: var(--bdlms-heading-color);
+
+    &:hover,
+    &:focus {
+      background: rgba(var(--bdlms-heading-color), 0.9);
+    }
+  }
+
+  &-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+  }
+
+  &-flate {
+    padding: 8px 12px;
+    background: transparent !important;
+    border: 0;
+    color: var(--theme-link-color) !important;
+    font-size: $font_size_sm;
+    font-weight: $font_weight_normal;
+  }
+}
