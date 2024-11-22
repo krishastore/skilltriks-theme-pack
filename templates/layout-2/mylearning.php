@@ -211,11 +211,8 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 							<ul>
 								<li>
 									<div class="bdlms-check-wrap">
-										<input type="checkbox" class="bdlms-check" id="category-all">
-										<label for="category-all" class="bdlms-check-label">
-											<?php esc_html_e( 'All', 'bluedolphin-lms' ); ?>
-											<span><?php echo absint( $course_status['total_course'] ); ?></span>
-										</label>
+										<input type="checkbox" class="bdlms-check" id="bdlms_category_all">
+										<label for="bdlms_category_all" class="bdlms-check-label"><?php esc_html_e( 'All', 'bluedolphin-lms' ); ?><span><?php echo esc_html( (string) $total_course ); ?></span></label>
 									</div>
 								</li>
 								<?php foreach ( $terms_list as $term_id => $term_details ) : ?>

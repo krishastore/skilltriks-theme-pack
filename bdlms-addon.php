@@ -58,7 +58,6 @@ function bdlms_addons_styles() {
 	$layout = bdlms_addons_template();
 	if ( 'layout-default' === $layout ) {
 		wp_register_style( 'bdlms-frontend', BDLMS_ASSETS . '/css/frontend.css', array(), BDLMS_ADDONS_VERSION );
-		wp_register_script( 'bdlms-frontend', BDLMS_ASSETS . '/js/build/frontend.js', array( 'jquery' ), BDLMS_ADDONS_VERSION, true );
 	} else {
 		wp_register_style( 'bdlms-frontend', BDLMS_ADDONS_ASSETS . '/' . $layout . '/css/bdlms-style.css', array(), BDLMS_ADDONS_VERSION );
 		wp_register_script( 'bdlms-addons-frontend', BDLMS_ADDONS_ASSETS . '/' . $layout . '/js/bdlms-setting.js', array( 'jquery' ), BDLMS_ADDONS_VERSION, true );
