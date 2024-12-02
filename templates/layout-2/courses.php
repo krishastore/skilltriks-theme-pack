@@ -82,7 +82,7 @@ $layout      = bdlms_addons_template();
 					</h1>
 				</div>
 				<div class="bdlms-banner-media">
-					<img src="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/banner-image.png" alt="">
+					<img fetchpriority="high" decoding="async" src="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/banner-image.webp" alt="" width="585" height="355">
 				</div>
 			</div>
 		</div>
@@ -105,12 +105,12 @@ $layout      = bdlms_addons_template();
 				?>
 			</div>
 			<div class="bdlms-list-grid-toggle">
-				<button class="bdlms-grid-view active">
+				<button class="bdlms-grid-view active" aria-label="Grid view">
 					<svg width="30" height="30">
 						<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#grid"></use>
 					</svg>
 				</button>
-				<button class="bdlms-list-view">
+				<button class="bdlms-list-view" aria-label="List view">
 					<svg width="30" height="30">
 						<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#list"></use>
 					</svg>
@@ -118,7 +118,7 @@ $layout      = bdlms_addons_template();
 			</div>
 			<div class="bdlms-sort-by">
 				<form onsubmit="return false;">
-					<select>
+					<select aria-label="Sort by">
 						<option value=""><?php esc_html_e( 'Sort By', 'bluedolphin-lms' ); ?></option>
 						<option value="asc"<?php selected( $_orderby, 'asc' ); ?>><?php esc_html_e( 'Alphabetically (A To Z)', 'bluedolphin-lms' ); ?></option>
 						<option value="desc"<?php selected( $_orderby, 'desc' ); ?>><?php esc_html_e( 'Alphabetically (Z To A)', 'bluedolphin-lms' ); ?></option>
@@ -126,7 +126,7 @@ $layout      = bdlms_addons_template();
 					</select>
 				</form>
 			</div>
-			<button class="bdlms-filter-toggle">
+			<button class="bdlms-filter-toggle" aria-label="Filter course">
 				<svg width="24" height="24">
 					<use xlink:href="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/sprite-front.svg#filters"></use>
 				</svg>
@@ -138,7 +138,7 @@ $layout      = bdlms_addons_template();
 		<div class="bdlms-container">
 			<?php if ( $courses->have_posts() && ( isset( $args['filter'] ) && 'yes' === $args['filter'] ) ) : ?>
 				<div class="bdlms-course-filter">
-					<button class="bdlms-filter-toggle">
+					<button class="bdlms-filter-toggle" aria-label="Close sidebar">
 						<svg width="24" height="24">
 							<use xlink:href="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
 						</svg>
@@ -150,13 +150,13 @@ $layout      = bdlms_addons_template();
 						</div>
 						<div class="bdlms-course-search">
 							<form onsubmit="return false;">
-								<div class="bdlms-search">
+								<div class="bdlms-search input-group">
 									<input type="text" class="bdlms-form-control" placeholder="<?php esc_attr_e( 'Search Course', 'bluedolphin-lms' ); ?>" value="<?php echo esc_attr( $search_keyword ); ?>">
-									<span class="bdlms-search-icon">
+									<button type="submit" aria-label="Search Course">
 										<svg width="30" height="30">
 											<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#search-icon"></use>
 										</svg>
-									</span>
+									</button>
 								</div>
 							</form>
 						</div>
@@ -307,7 +307,7 @@ $layout      = bdlms_addons_template();
 													<span class="bdlms-tag primary-light"><?php echo esc_html( $terms_name ); ?></span>
 												</div>
 											<?php endif; ?>
-											<a href="<?php echo esc_url( $course_view_link ); ?>">
+											<a href="<?php echo esc_url( $course_view_link ); ?>" aria-label="<?php the_title(); ?>">
 												<?php if ( has_post_thumbnail() ) : ?>
 													<?php the_post_thumbnail(); ?>
 												<?php else : ?>
@@ -365,9 +365,9 @@ $layout      = bdlms_addons_template();
 													</li>
 												</ul>
 											</div>
-											<h3 class="bdlms-course-item__title bdlms-h5">
+											<h2 class="bdlms-course-item__title bdlms-h5">
 												<a href="<?php echo esc_url( $course_view_link ); ?>"><?php the_title(); ?></a>
-											</h3>
+											</h2>
 											<?php
 											$author_url    = add_query_arg( array( 'filter_author' => get_the_author_meta( 'ID' ) ) );
 											$author        = get_the_author_meta( 'display_name' );
@@ -399,8 +399,8 @@ $layout      = bdlms_addons_template();
 						<div class="bdlms-pagination">
 						<?php
 						$big            = 999999999;
-						$next           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( BDLMS_ADDONS_ASSETS . '/' . bdlms_addons_template() . '/images/sprite-front.svg#page-next' ) . '"></use></svg>';
-						$prev           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( BDLMS_ADDONS_ASSETS . '/' . bdlms_addons_template() . '/images/sprite-front.svg#page-prev' ) . '"></use></svg>';
+						$next           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-next' ) . '"></use></svg>';
+						$prev           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-prev' ) . '"></use></svg>';
 						$paginate_links = paginate_links(
 							array(
 								'base'      => str_replace( (string) $big, '%#%', get_pagenum_link( $big ) ),

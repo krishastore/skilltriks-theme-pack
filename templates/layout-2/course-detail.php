@@ -40,6 +40,8 @@ $layout             = bdlms_addons_template();
 	$total_duration_str = \BlueDolphin\Lms\seconds_to_decimal_hours( $total_duration );
 	$enrol_courses      = get_user_meta( $current_user_id, \BlueDolphin\Lms\BDLMS_ENROL_COURSES, true );
 	$is_enrol           = ! empty( $enrol_courses ) && in_array( get_the_ID(), $enrol_courses, true );
+	$course_certificate = get_post_meta( $course_id, \BlueDolphin\Lms\META_KEY_COURSE_SIGNATURE, true );
+	$has_certificate    = isset( $course_certificate['certificate'] ) ? $course_certificate['certificate'] : 0;
 	?>
 	<div class="bdlms-course-detail-banner">
 		<div class="bdlms-container">
@@ -500,7 +502,7 @@ $layout             = bdlms_addons_template();
 							<?php endif; ?>
 							<a href="<?php echo ! $is_enrol && is_user_logged_in() ? 'javascript:;' : esc_url( $course_link ); ?>" id="<?php echo ! $is_enrol && is_user_logged_in() ? 'enrol-now' : ''; ?>" class="bdlms-btn bdlms-btn-block<?php echo esc_attr( $extra_class ); ?>" data-course="<?php echo esc_attr( $course_id ); ?>"><?php echo esc_html( $button_text ); ?><i class="bdlms-loader"></i></a>
 						</div>
-						<?php if ( '100%' === $course_progress ) : ?>
+						<?php if ( $has_certificate && '100%' === $course_progress ) : ?>
 							<div class="bdlms-btn-wrap">
 								<a href="javascript:;" id="download-certificate" class="bdlms-btn bdlms-btn-block secondary" data-course="<?php echo esc_attr( $course_id ); ?>"><?php esc_html_e( 'Download Certificate', 'bluedolphin-lms' ); ?></a>
 							</div>

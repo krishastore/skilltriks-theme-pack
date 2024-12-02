@@ -68,6 +68,7 @@ if ( ! empty( $levels ) ) {
 	);
 }
 $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_ENROL_COURSES, true );
+$layout        = bdlms_addons_template();
 ?>
 
 <div class="bdlms-wrap alignfull">
@@ -80,7 +81,7 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 					</h1>
 				</div>
 				<div class="bdlms-banner-media">
-					<img src="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . bdlms_addons_template() ); ?>/images/banner-image2.png" alt="">
+					<img src="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/banner-image2.png" alt="">
 				</div>
 			</div>
 		</div>
@@ -109,7 +110,7 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 			<?php endif; ?>
 			<div class="bdlms-sort-by">
 				<form onsubmit="return false;">
-					<select>
+					<select aria-label="Sort by">
 						<option value=""><?php esc_html_e( 'Sort By', 'bluedolphin-lms' ); ?></option>
 						<option value="asc"<?php selected( $_orderby, 'asc' ); ?>><?php esc_html_e( 'Alphabetically (A To Z)', 'bluedolphin-lms' ); ?></option>
 						<option value="desc"<?php selected( $_orderby, 'desc' ); ?>><?php esc_html_e( 'Alphabetically (Z To A)', 'bluedolphin-lms' ); ?></option>
@@ -117,9 +118,9 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 					</select>
 				</form>
 			</div>
-			<button class="bdlms-filter-toggle">
+			<button class="bdlms-filter-toggle" aria-label="Filter course">
 				<svg width="24" height="24">
-					<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . bdlms_addons_template() ); ?>/images/sprite-front.svg#filters"></use>
+					<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#filters"></use>
 				</svg>
 			</button>
 		</div>
@@ -128,9 +129,9 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 	<div class="bdlms-course-list-wrap">
 		<div class="bdlms-container">
 			<div class="bdlms-course-filter">
-				<button class="bdlms-filter-toggle">
+				<button class="bdlms-filter-toggle" aria-label="Close sidebar">
 					<svg width="24" height="24">
-						<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . bdlms_addons_template() ); ?>/images/sprite-front.svg#cross"></use>
+						<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 					</svg>
 				</button>
 				<?php do_action( 'bdlms_before_search_bar' ); ?>
@@ -142,12 +143,10 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 						<form onsubmit="return false;">
 							<div class="bdlms-search input-group">
 								<input type="text" class="bdlms-form-control" placeholder="<?php esc_attr_e( 'Search Course', 'bluedolphin-lms' ); ?>" value="<?php echo esc_attr( $search_keyword ); ?>">
-								<button type="submit" class="bdlms-search-submit">
-									<span class="bdlms-search-icon">
-										<svg width="30" height="30">
-											<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . bdlms_addons_template() ); ?>/images/sprite-front.svg#search-icon"></use>
-										</svg>
-									</span>
+								<button type="submit" aria-label="Search course">
+									<svg width="30" height="30">
+										<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#search-icon"></use>
+									</svg>
 								</button>
 							</div>
 						</form>
@@ -332,9 +331,9 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 											$user_id        = get_current_user_id();
 											$current_status = get_user_meta( $user_id, $meta_key, true );
 											if ( ! empty( $current_status ) ) {
+												$course_progress = \BlueDolphin\Lms\calculate_course_progress( get_the_ID(), $curriculums, $current_status ) . '%';
 												$current_status  = ! is_string( $current_status ) ? end( $current_status ) : $current_status;
 												$current_status  = explode( '_', $current_status );
-												$course_progress = \BlueDolphin\Lms\calculate_course_progress( get_the_ID(), $curriculums, $current_status ) . '%';
 												$section_id      = (int) reset( $current_status );
 												$item_id         = (int) end( $current_status );
 												$button_text     = esc_html__( 'Continue Learning', 'bluedolphin-lms' );
@@ -345,12 +344,15 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 												if ( reset( $last_curriculum ) === $section_id && end( $last_curriculum ) === $item_id ) {
 													$restart_course = \BlueDolphin\Lms\restart_course( get_the_ID() );
 													if ( $restart_course ) {
-														$first_curriculum = reset( $curriculums );
-														$first_curriculum = explode( '_', $first_curriculum );
-														$first_curriculum = array_map( 'absint', $first_curriculum );
-														$section_id       = reset( $first_curriculum );
-														$item_id          = end( $first_curriculum );
-														$button_text      = esc_html__( 'Restart Course', 'bluedolphin-lms' );
+														$first_curriculum   = reset( $curriculums );
+														$first_curriculum   = explode( '_', $first_curriculum );
+														$first_curriculum   = array_map( 'absint', $first_curriculum );
+														$section_id         = reset( $first_curriculum );
+														$item_id            = end( $first_curriculum );
+														$button_text        = esc_html__( 'Restart Course', 'bluedolphin-lms' );
+														$course_certificate = get_post_meta( $course_id, \BlueDolphin\Lms\META_KEY_COURSE_SIGNATURE, true );
+														$has_certificate    = isset( $course_certificate['certificate'] ) ? $course_certificate['certificate'] : 0;
+														$extra_class        = '';
 													}
 												}
 											}
@@ -370,7 +372,7 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 															<span class="bdlms-tag primary-light"><?php echo esc_html( $terms_name ); ?></span>
 														</div>
 													<?php endif; ?>
-													<a href="<?php echo esc_url( $course_view_link ); ?>">
+													<a href="<?php echo esc_url( $course_view_link ); ?>" aria-label="<?php the_title(); ?>">
 														<?php if ( has_post_thumbnail() ) : ?>
 															<?php the_post_thumbnail(); ?>
 														<?php else : ?>
@@ -428,7 +430,7 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 															</li>
 														</ul>
 													</div>
-													<h3 class="bdlms-course-item__title bdlms-h5"><a href="<?php echo esc_url( $course_link ); ?>"><?php the_title(); ?></a></h3>
+													<h2 class="bdlms-course-item__title bdlms-h5"><a href="<?php echo esc_url( $course_link ); ?>"><?php the_title(); ?></a></h2>
 													<div class="bdlms-course-item__action">
 														<div class="bdlms-course-item__by">
 															<?php echo get_avatar( get_the_author_meta( 'ID' ), 30 ); ?>
@@ -455,7 +457,7 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 															?>
 														</div>
 														<div class="bdlms-btn-wrap">
-															<?php if ( '100%' === $course_progress ) { ?>
+															<?php if ( $has_certificate && '100%' === $course_progress ) { ?>
 																<a href="javascript:;" id="download-certificate" data-course="<?php echo esc_attr( (string) $course_id ); ?>" class="bdlms-btn bdlms-btn-block secondary download-certificate"><?php esc_html_e( 'Download certificate', 'bluedolphin-lms' ); ?></a>
 															<?php } else { ?>
 																<div class="bdlms-progress">
@@ -487,8 +489,8 @@ $enrol_courses = get_user_meta( get_current_user_id(), \BlueDolphin\Lms\BDLMS_EN
 						<div class="bdlms-pagination">
 							<?php
 							$big            = 999999999;
-							$next           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( BDLMS_ADDONS_ASSETS . '/' . bdlms_addons_template() . '/images/sprite-front.svg#page-next' ) . '"></use></svg>';
-							$prev           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( BDLMS_ADDONS_ASSETS . '/' . bdlms_addons_template() . '/images/sprite-front.svg#page-prev' ) . '"></use></svg>';
+							$next           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-next' ) . '"></use></svg>';
+							$prev           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-prev' ) . '"></use></svg>';
 							$paginate_links = paginate_links(
 								array(
 									'base'      => str_replace( (string) $big, '%#%', get_pagenum_link( $big ) ),

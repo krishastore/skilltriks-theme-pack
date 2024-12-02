@@ -42,7 +42,7 @@ load_template(
 	<div class="bdlms-lesson-accordion">
 		<div class="bdlms-accordion">
 			<?php
-			$inactive = false;
+			$completed = true;
 			foreach ( $curriculums_list as $item_key => $curriculums ) :
 				$items          = ! empty( $curriculums['items'] ) ? $curriculums['items'] : array();
 				$total_duration = \BlueDolphin\Lms\count_duration( $items );
@@ -72,6 +72,7 @@ load_template(
 									$media_type      = 'quiz-2';
 									$item_id         = isset( $item['item_id'] ) ? $item['item_id'] : 0;
 									$curriculum_type = 'quiz_id';
+									$inactive        = false;
 									if ( \BlueDolphin\Lms\BDLMS_LESSON_CPT === get_post_type( $item_id ) ) {
 										$media           = get_post_meta( $item_id, \BlueDolphin\Lms\META_KEY_LESSON_MEDIA, true );
 										$media_type      = ! empty( $media['media_type'] ) ? $media['media_type'] : '';
@@ -87,25 +88,26 @@ load_template(
 										$inactive = true;
 									}
 									if ( $section_id === $item_key && $current_item_id === $item_id ) {
-										$inactive = true;
+										$inactive  = true;
+										$completed = false;
 									}
 
 									$meta_key = sprintf( \BlueDolphin\Lms\BDLMS_COURSE_STATUS, $args['course_id'] );
-									$needle   = $section_id . '_' . $item_id;
+									$needle   = $item_key . '_' . $item_id;
 									$haystack = get_user_meta( get_current_user_id(), $meta_key, true );
 									$haystack = is_array( $haystack ) ? $haystack : array();
 									?>
-								<li class="<?php echo $current_item_id === $item_id ? esc_attr( 'active' ) : ''; ?>">
-									<div class="completed course-progress">
-										<?php if ( $section_id === $item_key && ( $current_item_id === $item_id ) ) : ?>
-											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" class="bdlms-check curriculum-progress-box" value="<?php echo esc_attr( $item_id ); ?>" checked='checked' disabled>
+								<li class="<?php echo $inactive ? esc_attr( 'active' ) : ''; ?>">
+									<div class="<?php echo esc_attr( $inactive ? esc_attr( 'in-progress ' ) : '' ) . esc_attr( $completed ? 'completed ' : '' ); ?>course-progress">
+										<?php if ( $inactive ) : ?>
+											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" class="bdlms-check curriculum-progress-box" value="<?php echo esc_attr( $item_id ); ?>" aria-label="Course progress" checked='checked' disabled>
 										<?php else : ?>
-											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" value="<?php echo esc_attr( $item_id ); ?>" class="bdlms-check curriculum-progress-box"<?php echo $inactive ? ' readonly' : ''; ?><?php checked( true, in_array( $needle, $haystack, true ) ); ?> disabled>
+											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" value="<?php echo esc_attr( $item_id ); ?>" class="bdlms-check curriculum-progress-box"<?php echo $inactive ? ' readonly' : ''; ?><?php checked( true, in_array( $needle, $haystack, true ) ); ?> disabled aria-label="Course progress">
 										<?php endif; ?>
 
 										<a href="<?php echo in_array( $needle, $haystack, true ) ? esc_url( get_permalink() . $section_id . '/' . rtrim( $curriculum_type, '_id' ) . '/' . $item_id ) : 'javascript:;'; ?>" class="bdlms-lesson-class">
 											<span class="class-name"><span><?php printf( '%d.%d.', (int) $item_key, (int) $key ); ?></span> <?php echo esc_html( get_the_title( $item_id ) ); ?></span>
-											<span class="class-type">
+											<span class="class-time">
 												<svg class="icon" width="16" height="16">
 													<use xlink:href="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/sprite-front.svg#<?php echo esc_html( $media_type ); ?>">
 													</use>

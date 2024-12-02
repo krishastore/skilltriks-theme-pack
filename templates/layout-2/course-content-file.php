@@ -20,6 +20,6 @@ if ( ! empty( $args['curriculum']['media']['file_id'] ) ) {
 ?>
 <div class="bdlms-lesson-view__body">
 	<div class="bdlms-lesson-video-box bdlms-pdf-view">
-		<iframe src="<?php echo esc_url( $file_url ); ?>" frameborder="0"></iframe>
+		<iframe src="<?php echo esc_url( $file_url ); ?>" frameborder="0" title="Lesson file"></iframe>
 	</div>
 </div>

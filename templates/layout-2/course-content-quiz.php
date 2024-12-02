@@ -19,6 +19,7 @@ $duration_str   = \BlueDolphin\Lms\seconds_to_hours_str( $total_duration );
 $duration_str   = ! empty( $duration_str ) ? trim( $duration_str ) : '';
 shuffle( $questions );
 $total_questions = count( $questions );
+$layout          = bdlms_addons_template();
 ?>
 
 <div class="bdlms-lesson-view__body">
@@ -149,12 +150,20 @@ $total_questions = count( $questions );
 				<div id="step-<?php echo esc_attr( (string) ( $question_index + 1 ) ); ?>" class="tab-pane" role="tabpanel" aria-labelledby="step-<?php echo esc_attr( (string) ( $question_index + 1 ) ); ?>">
 					<div class="bdlms-quiz-complete">
 						<div class="quiz-passed-text" style="display: none;">
-							<img src="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/success-check.svg" alt="passed check">
+							<div class="quiz-complete-icon">
+								<svg width="150" height="150" class="quiz-complete">
+									<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#quiz-complete"></use>
+								</svg>
+							</div>
 							<h3><?php esc_html_e( 'You have passed the quiz!', 'bluedolphin-lms' ); ?></h3>
 							<p><?php esc_html_e( 'Great Job reaching your goal!', 'bluedolphin-lms' ); ?></p>
 						</div>
 						<div class="quiz-failed-text" style="display: none;">
-							<img src="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/fail-icon.svg" alt="failed check">
+							<div class="quiz-fail-icon">
+								<svg width="150" height="150" class="quiz-complete">
+									<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#quiz-fail"></use>
+								</svg>
+							</div>
 							<h3><?php esc_html_e( 'Unfortunately, you didn\'t pass the quiz.', 'bluedolphin-lms' ); ?></h3>
 							<p><?php esc_html_e( 'Better luck next time.', 'bluedolphin-lms' ); ?></p>
 						</div>
