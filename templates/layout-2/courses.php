@@ -105,12 +105,12 @@ $layout      = bdlms_addons_template();
 				?>
 			</div>
 			<div class="bdlms-list-grid-toggle">
-				<button class="bdlms-grid-view active" aria-label="Grid view">
+				<button class="bdlms-grid-view active" aria-label="<?php esc_attr_e( 'Grid view', 'bluedolphin-lms' ); ?>">
 					<svg width="30" height="30">
 						<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#grid"></use>
 					</svg>
 				</button>
-				<button class="bdlms-list-view" aria-label="List view">
+				<button class="bdlms-list-view" aria-label="<?php esc_attr_e( 'List view', 'bluedolphin-lms' ); ?>">
 					<svg width="30" height="30">
 						<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#list"></use>
 					</svg>
@@ -118,7 +118,7 @@ $layout      = bdlms_addons_template();
 			</div>
 			<div class="bdlms-sort-by">
 				<form onsubmit="return false;">
-					<select aria-label="Sort by">
+					<select aria-label="<?php esc_attr_e( 'Sort by', 'bluedolphin-lms' ); ?>">
 						<option value=""><?php esc_html_e( 'Sort By', 'bluedolphin-lms' ); ?></option>
 						<option value="asc"<?php selected( $_orderby, 'asc' ); ?>><?php esc_html_e( 'Alphabetically (A To Z)', 'bluedolphin-lms' ); ?></option>
 						<option value="desc"<?php selected( $_orderby, 'desc' ); ?>><?php esc_html_e( 'Alphabetically (Z To A)', 'bluedolphin-lms' ); ?></option>
@@ -126,7 +126,7 @@ $layout      = bdlms_addons_template();
 					</select>
 				</form>
 			</div>
-			<button class="bdlms-filter-toggle" aria-label="Filter course">
+			<button class="bdlms-filter-toggle" aria-label="<?php esc_attr_e( 'Filter course', 'bluedolphin-lms' ); ?>">
 				<svg width="24" height="24">
 					<use xlink:href="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/sprite-front.svg#filters"></use>
 				</svg>
@@ -138,7 +138,7 @@ $layout      = bdlms_addons_template();
 		<div class="bdlms-container">
 			<?php if ( $courses->have_posts() && ( isset( $args['filter'] ) && 'yes' === $args['filter'] ) ) : ?>
 				<div class="bdlms-course-filter">
-					<button class="bdlms-filter-toggle" aria-label="Close sidebar">
+					<button class="bdlms-filter-toggle" aria-label="<?php esc_attr_e( 'Close sidebar', 'bluedolphin-lms' ); ?>">
 						<svg width="24" height="24">
 							<use xlink:href="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
 						</svg>

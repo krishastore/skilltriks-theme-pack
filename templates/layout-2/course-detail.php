@@ -166,7 +166,7 @@ $layout             = bdlms_addons_template();
 						</ul>
 					</div>
 					<div class="tab-content">
-						<div class="tab-pane" id="about-course" role="tabpanel" aria-labelledby="about-course-tab" tabindex="0">
+						<div class="tab-pane" id="about-course" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'about-course-tab', 'bluedolphin-lms' ); ?>" tabindex="0">
 							<div class="tab-content-wrap">
 								<?php if ( $content ) : ?>
 									<div class="bdlms-course-requirement-box">
@@ -260,7 +260,7 @@ $layout             = bdlms_addons_template();
 
 						if ( $has_curriculum ) :
 							?>
-							<div class="tab-pane" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab" tabindex="0">
+							<div class="tab-pane" id="curriculum" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'curriculum-tab', 'bluedolphin-lms' ); ?>" tabindex="0">
 								<div class="bdlms-accordion-course-content">
 									<div class="bdlms-accordion">
 									<?php
@@ -380,7 +380,7 @@ $layout             = bdlms_addons_template();
 							</div>
 						<?php endif; ?>
 						<?php if ( $faq_questions && $faq_answers ) : ?>
-							<div class="tab-pane" id="faq" role="tabpanel" aria-labelledby="faq-tab" tabindex="0">
+							<div class="tab-pane" id="faq" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'faq-tab', 'bluedolphin-lms' ); ?>" tabindex="0">
 								<div class="bdlms-accordion-faq">
 									<div class="bdlms-accordion">
 									<?php

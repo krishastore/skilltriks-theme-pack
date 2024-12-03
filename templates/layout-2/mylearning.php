@@ -110,7 +110,7 @@ $layout        = bdlms_addons_template();
 			<?php endif; ?>
 			<div class="bdlms-sort-by">
 				<form onsubmit="return false;">
-					<select aria-label="Sort by">
+					<select aria-label="<?php esc_attr_e( 'Sort by', 'bluedolphin-lms' ); ?>">
 						<option value=""><?php esc_html_e( 'Sort By', 'bluedolphin-lms' ); ?></option>
 						<option value="asc"<?php selected( $_orderby, 'asc' ); ?>><?php esc_html_e( 'Alphabetically (A To Z)', 'bluedolphin-lms' ); ?></option>
 						<option value="desc"<?php selected( $_orderby, 'desc' ); ?>><?php esc_html_e( 'Alphabetically (Z To A)', 'bluedolphin-lms' ); ?></option>
@@ -118,7 +118,7 @@ $layout        = bdlms_addons_template();
 					</select>
 				</form>
 			</div>
-			<button class="bdlms-filter-toggle" aria-label="Filter course">
+			<button class="bdlms-filter-toggle" aria-label="<?php esc_attr_e( 'Filter course', 'bluedolphin-lms' ); ?>">
 				<svg width="24" height="24">
 					<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#filters"></use>
 				</svg>
@@ -129,7 +129,7 @@ $layout        = bdlms_addons_template();
 	<div class="bdlms-course-list-wrap">
 		<div class="bdlms-container">
 			<div class="bdlms-course-filter">
-				<button class="bdlms-filter-toggle" aria-label="Close sidebar">
+				<button class="bdlms-filter-toggle" aria-label="<?php esc_attr_e( 'Close sidebar', 'bluedolphin-lms' ); ?>">
 					<svg width="24" height="24">
 						<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 					</svg>
@@ -143,7 +143,7 @@ $layout        = bdlms_addons_template();
 						<form onsubmit="return false;">
 							<div class="bdlms-search input-group">
 								<input type="text" class="bdlms-form-control" placeholder="<?php esc_attr_e( 'Search Course', 'bluedolphin-lms' ); ?>" value="<?php echo esc_attr( $search_keyword ); ?>">
-								<button type="submit" aria-label="Search course">
+								<button type="submit" aria-label="<?php esc_attr_e( 'Search course', 'bluedolphin-lms' ); ?>">
 									<svg width="30" height="30">
 										<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#search-icon"></use>
 									</svg>

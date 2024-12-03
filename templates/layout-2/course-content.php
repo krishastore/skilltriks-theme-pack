@@ -100,9 +100,9 @@ load_template(
 								<li class="<?php echo $inactive ? esc_attr( 'active' ) : ''; ?>">
 									<div class="<?php echo esc_attr( $inactive ? esc_attr( 'in-progress ' ) : '' ) . esc_attr( $completed ? 'completed ' : '' ); ?>course-progress">
 										<?php if ( $inactive ) : ?>
-											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" class="bdlms-check curriculum-progress-box" value="<?php echo esc_attr( $item_id ); ?>" aria-label="Course progress" checked='checked' disabled>
+											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" class="bdlms-check curriculum-progress-box" value="<?php echo esc_attr( $item_id ); ?>" aria-label="<?php esc_attr_e( 'Course progress', 'bluedolphin-lms' ); ?>" checked='checked' disabled>
 										<?php else : ?>
-											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" value="<?php echo esc_attr( $item_id ); ?>" class="bdlms-check curriculum-progress-box"<?php echo $inactive ? ' readonly' : ''; ?><?php checked( true, in_array( $needle, $haystack, true ) ); ?> disabled aria-label="Course progress">
+											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" value="<?php echo esc_attr( $item_id ); ?>" class="bdlms-check curriculum-progress-box"<?php echo $inactive ? ' readonly' : ''; ?><?php checked( true, in_array( $needle, $haystack, true ) ); ?> disabled aria-label="<?php esc_attr_e( 'Course progress', 'bluedolphin-lms' ); ?>">
 										<?php endif; ?>
 
 										<a href="<?php echo in_array( $needle, $haystack, true ) ? esc_url( get_permalink() . $section_id . '/' . rtrim( $curriculum_type, '_id' ) . '/' . $item_id ) : 'javascript:;'; ?>" class="bdlms-lesson-class">

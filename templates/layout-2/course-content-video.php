@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				?>
 				<div id="player" class="lesson-video" data-plyr-provider="vimeo" data-plyr-embed-id="<?php echo esc_html( str_replace( '/video/', '', $video_id ) ); ?>"></div>
 			<?php else : ?>
-				<iframe src="<?php echo esc_url( $args['curriculum']['media']['embed_video_url'] ); ?>" frameborder="0" title="Lesson video"></iframe>
+				<iframe src="<?php echo esc_url( $args['curriculum']['media']['embed_video_url'] ); ?>" frameborder="0" title="<?php esc_html_e( 'Lesson video', 'bluedolphin-lms' ); ?>"></iframe>
 			<?php endif; ?>
 		<?php endif; ?>
 	</div>
