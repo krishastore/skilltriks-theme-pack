@@ -2,7 +2,7 @@
 /**
  * Template: Course Final Result Page
  *
- * @package BlueDolphin\Lms
+ * @package BD\Lms
  *
  * phpcs:disable WordPress.Security.NonceVerification.Recommended
  */
@@ -11,11 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$course_id         = get_query_var( 'course_id', 0 );
-$grade_percentage  = 0;
-$curriculums       = get_post_meta( $course_id, \BlueDolphin\Lms\META_KEY_COURSE_CURRICULUM, true );
-$assessment        = get_post_meta( $course_id, \BlueDolphin\Lms\META_KEY_COURSE_ASSESSMENT, true );
-$completed_results = \BlueDolphin\Lms\calculate_assessment_result( $assessment, $curriculums, $course_id );
+$course_id          = get_query_var( 'course_id', 0 );
+$grade_percentage   = 0;
+$curriculums        = get_post_meta( $course_id, \BD\Lms\META_KEY_COURSE_CURRICULUM, true );
+$assessment         = get_post_meta( $course_id, \BD\Lms\META_KEY_COURSE_ASSESSMENT, true );
+$completed_results  = \BD\Lms\calculate_assessment_result( $assessment, $curriculums, $course_id );
+$course_certificate = get_post_meta( $course_id, \BD\Lms\META_KEY_COURSE_SIGNATURE, true );
+$has_certificate    = isset( $course_certificate['certificate'] ) ? $course_certificate['certificate'] : 0;
 // Get result value from array.
 list( $passing_grade, $grade_percentage, $completed_on ) = $completed_results;
 
@@ -24,7 +26,11 @@ list( $passing_grade, $grade_percentage, $completed_on ) = $completed_results;
 	<div class="bdlms-course-result">
 		<div class="course-result-box">
 			<div class="bdlms-quiz-complete">
-				<img src="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/certificate-<?php echo $grade_percentage >= $passing_grade ? 'pass' : 'fail'; ?>.svg" alt="">
+				<div class="certificate-<?php echo $grade_percentage >= $passing_grade ? 'pass' : 'fail'; ?>-icon">
+					<svg width="110" height="138" class="certificate">
+						<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . bdlms_addons_template() ); ?>/images/sprite-front.svg#certificate"></use>
+					</svg>
+				</div>
 				<?php if ( $grade_percentage >= $passing_grade ) : ?>
 					<h3 class="bdlms-h3"><?php esc_html_e( 'Congratulations on completing your course!', 'bluedolphin-lms' ); ?> 🎉</h3>
 					<p>
@@ -57,12 +63,14 @@ list( $passing_grade, $grade_percentage, $completed_on ) = $completed_results;
 					<?php if ( $grade_percentage >= $passing_grade ) : ?>
 						<span>
 							<?php
-                                    // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-									printf( esc_html__( 'Certificate issued on %s Does not expire', 'bluedolphin-lms' ), esc_html( date_i18n( 'F d, Y', $completed_on ) ) );
+							// phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+							echo esc_html( sprintf( __( 'Certificate issued on %s Does not expire', 'bluedolphin-lms' ), date_i18n( 'F d, Y', $completed_on ) ) );
 							?>
 						</span>
-						<a href="javascript:;" class="bdlms-link-text" id="download-certificate" data-course="<?php echo esc_attr( $course_id ); ?>"><?php esc_html_e( 'Get your Certificate', 'bluedolphin-lms' ); ?></a><i class="bdlms-loader"></i>
-						<?php
+						<?php if ( $has_certificate ) : ?>
+							<a href="javascript:;" class="bdlms-link-text" id="download-certificate" data-course="<?php echo esc_attr( $course_id ); ?>"><?php esc_html_e( 'Get your Certificate', 'bluedolphin-lms' ); ?></a><i class="bdlms-loader"></i>
+							<?php
+						endif;
 					else :
 						echo wp_kses(
                             // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
@@ -83,16 +91,16 @@ list( $passing_grade, $grade_percentage, $completed_on ) = $completed_results;
 				</div>
 				<div class="bdlms-quiz-result-list bdlms-course-complete-result">
 					<div class="bdlms-quiz-result-item">
-						<p class="bdlms-h4"><?php echo (int) \BlueDolphin\Lms\calculate_assessment_result( $assessment, $curriculums, $course_id, 'lesson' ); ?>%</p>
+						<p class="bdlms-h4"><?php echo (int) \BD\Lms\calculate_assessment_result( $assessment, $curriculums, $course_id, 'lesson' ); ?>%</p>
 						<span class="bdlms-p-large"><?php esc_html_e( 'Lessons Completed', 'bluedolphin-lms' ); ?></span>
 					</div>
 					<div class="bdlms-quiz-result-item">
-						<p class="bdlms-h4"><?php echo (int) \BlueDolphin\Lms\calculate_assessment_result( $assessment, $curriculums, $course_id, 'quiz' ); ?>%</p>
+						<p class="bdlms-h4"><?php echo (int) \BD\Lms\calculate_assessment_result( $assessment, $curriculums, $course_id, 'quiz' ); ?>%</p>
 						<span class="bdlms-p-large"><?php esc_html_e( 'Quiz Completed', 'bluedolphin-lms' ); ?></span>
 					</div>
 				</div>
 				<div class="cta">
-					<a href="<?php echo esc_url( \BlueDolphin\Lms\get_page_url( 'courses' ) ); ?>" class="bdlms-btn bdlms-btn-flate"><?php esc_html_e( 'Find More Courses', 'bluedolphin-lms' ); ?></a>
+					<a href="<?php echo esc_url( \BD\Lms\get_page_url( 'courses' ) ); ?>" class="bdlms-btn bdlms-btn-flate"><?php esc_html_e( 'Find More Courses', 'bluedolphin-lms' ); ?></a>
 				</div>
 			</div>
 		</div>
