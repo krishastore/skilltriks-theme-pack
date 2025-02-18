@@ -11,7 +11,7 @@
  * Domain Path:     /languages
  * Version:         1.0.0
  *
- * @package         BlueDolphin\Lms
+ * @package         BD\Lms
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -59,6 +59,9 @@ function bdlms_addons_styles() {
 	if ( 'layout-default' === $layout ) {
 		wp_register_style( 'bdlms-frontend', BDLMS_ASSETS . '/css/frontend.css', array(), BDLMS_ADDONS_VERSION );
 	} else {
+		if ( 'layout-2' === $layout ) {
+			wp_enqueue_style( 'lato-font-family', 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', array(), BDLMS_ADDONS_VERSION );
+		}
 		wp_register_style( 'bdlms-frontend', BDLMS_ADDONS_ASSETS . '/' . $layout . '/css/bdlms-style.css', array(), BDLMS_ADDONS_VERSION );
 		wp_register_script( 'bdlms-addons-frontend', BDLMS_ADDONS_ASSETS . '/' . $layout . '/js/bdlms-setting.js', array( 'jquery' ), BDLMS_ADDONS_VERSION, true );
 		wp_enqueue_script( 'bdlms-addons-frontend' );
@@ -88,6 +91,12 @@ function customise_css() {
 							echo '--bdlms-' . str_replace( '_', '-', $typography ) . '-' . str_replace( '_', '-', $key ) . ': ' . $v . ';'; //phpcs:ignore.
 						}
 					}
+				}
+				if ( isset( $customise_typography['global']['font_family'] ) ) {
+					echo '--bdlms-heading-font-family: ' . $customise_typography['global']['font_family']; //phpcs:ignore.
+				}
+				if ( isset( $customise_typography['body']['font_family'] ) ) {
+					echo '--bdlms-body-font-family: ' . $customise_typography['body']['font_family']; //phpcs:ignore.
 				}
 				?>
 			}
