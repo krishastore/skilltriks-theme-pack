@@ -1,4 +1,4 @@
-.bdlms-lesson-view {
+.stlms-lesson-view {
   position: relative;
   display: flex;
   padding: 60px 0;
@@ -20,7 +20,7 @@
     padding: 30px 0;
   }
 
-  .bdlms-course-content {
+  .stlms-course-content {
     width: 66.66%;
     padding: 0 15px;
     height: calc(100vh - 200px);
@@ -43,7 +43,7 @@
     position: relative;
     padding: 15px;
     border-radius: 4px;
-    background-color: var(--bdlms-primary-color);
+    background-color: var(--stlms-primary-color);
     flex-shrink: 0;
     margin-bottom: 10px;
     
@@ -69,7 +69,7 @@
 
       li {
         padding-right: 10px;
-        color: var(--bdlms-white-color) !important;
+        color: var(--stlms-white-color) !important;
 
         @include breakpoint(max, $md) {
           font-size: $font_size_base;
@@ -77,7 +77,7 @@
 
         a {
           display: inline-block;
-          color: var(--bdlms-white-color);
+          color: var(--stlms-white-color);
         }
 
         & + li {
@@ -86,7 +86,7 @@
 
           &:before {
             content: "/";
-            color: var(--bdlms-white-color);
+            color: var(--stlms-white-color);
             margin-right: 16px;
             font-weight: $font_weight_normal;
           }
@@ -100,26 +100,26 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    .bdlms-btn {
+    .stlms-btn {
 
       @include breakpoint(max, $sm) {
         font-size: 0;
         gap: 0;
         padding: 8px;
-        background: var(--bdlms-paragraph-color);
+        background: var(--stlms-paragraph-color);
       }
     }
   }
 
   &__footer {
-    border-top: 1px solid var(--bdlms-border-color);
+    border-top: 1px solid var(--stlms-border-color);
     padding: 20px 30px;
     display: flex;
     align-items: center;
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: var(--bdlms-white-color);
+    background-color: var(--stlms-white-color);
     height: 80px;
 
     &.hidden {
@@ -129,20 +129,20 @@
     .left {
       width: 50%;
 
-      .bdlms-quiz-timer {
+      .stlms-quiz-timer {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         font-size: $font_size_base;
         font-weight: 500;
-        color: var(--bdlms-heading-color);
-        background: var(--bdlms-paragraph-color);
+        color: var(--stlms-heading-color);
+        background: var(--stlms-paragraph-color);
         padding: 8px 20px;
         border-radius: 24px;
 
         svg {
           flex-shrink: 0;
-          color: var(--bdlms-primary-color);
+          color: var(--stlms-primary-color);
           display: block;
         }
       }
@@ -155,7 +155,7 @@
   }
 
   &__body {
-    background-color: var(--bdlms-white-color);
+    background-color: var(--stlms-white-color);
     position: relative;
     height: 100%;
     overflow: auto;
@@ -168,19 +168,19 @@
       padding-right: 0;
     }
 
-    .bdlms-lesson-sidebar {
+    .stlms-lesson-sidebar {
       right: 0;
     }
 
-    .bdlms-lesson-view__header {
-      .bdlms-lesson-toggle {
+    .stlms-lesson-view__header {
+      .stlms-lesson-toggle {
         opacity: 0;
         visibility: hidden;
       }
     }
 
-    .bdlms-lesson-video-box {
-      &.bdlms-pdf-view {
+    .stlms-lesson-video-box {
+      &.stlms-pdf-view {
         @include breakpoint(max, $sm) {
           padding-bottom: 140.25%;
         }
@@ -189,7 +189,7 @@
   }
 }
 
-.bdlms-quiz-header {
+.stlms-quiz-header {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -202,12 +202,12 @@
 
   .share-btn {
     padding: 10px 15px;
-    background-color: var(--bdlms-white-color);
-    border: 1px solid var(--bdlms-border-color);
+    background-color: var(--stlms-white-color);
+    border: 1px solid var(--stlms-border-color);
     border-radius: 5px;
     height: 44px;
     font-size: $font_size_base;
-    color: var(--bdlms-paragraph-light-color);
+    color: var(--stlms-paragraph-light-color);
     line-height: 1.5;
     display: inline-flex;
     gap: 5px;
@@ -216,15 +216,15 @@
 
     @include transition(all 0.3s ease-in-out);
     svg {
-      color: var(--bdlms-icon-color);
+      color: var(--stlms-icon-color);
     }
     &:hover {
-      background-color: var(--bdlms-border-color);
+      background-color: var(--stlms-border-color);
     }
   }
 }
 
-.bdlms-lesson-video-box {
+.stlms-lesson-video-box {
   --plyr-color-main: #0f5aa7;
   position: relative;
   width: 100%;
@@ -241,14 +241,14 @@
     top: 0;
   }
 
-  &.bdlms-pdf-view {
+  &.stlms-pdf-view {
     @include breakpoint(max, $sm) {
       padding-bottom: 140.25%;
     }
   }
 }
 
-.bdlms-lesson-sidebar {
+.stlms-lesson-sidebar {
   width: 33.33%;
   height: 100%;
   padding: 0 15px;
@@ -259,7 +259,7 @@
     height: auto;
   }
 
-  .bdlms-sidebar-toggle {
+  .stlms-sidebar-toggle {
     display: none;
     margin-bottom: 15px;
     @include breakpoint(max, $lg) {
@@ -273,25 +273,25 @@
     padding: 0;
   }
 
-  .bdlms-lesson-toggle {
+  .stlms-lesson-toggle {
     display: flex;
     align-items: center;
     cursor: pointer;
     gap: 20px;
     padding: 16px;
     border-radius: 6px;
-    background: var(--bdlms-paragraph-color);
+    background: var(--stlms-paragraph-color);
     font-size: $font_size_base;
     font-weight: $font_weight_medium;
-    color: var(--bdlms-heading-color);
+    color: var(--stlms-heading-color);
     margin-bottom: 4px;
     .icon-cross {
       margin-left: auto;
-      color: var(--bdlms-icon-color);
+      color: var(--stlms-icon-color);
     }
   }
 
-  .bdlms-lesson-accordion {
+  .stlms-lesson-accordion {
     height: 100%;
     overflow: auto;
     display: block;
@@ -304,27 +304,27 @@
   }
 }
 
-.bdlms-lesson-accordion {
-  .bdlms-accordion-item {
-    .bdlms-accordion-header {
+.stlms-lesson-accordion {
+  .stlms-accordion-item {
+    .stlms-accordion-header {
       &::after {
         top: 15px;
         transform: translateY(0);
       }
     }
 
-    .bdlms-accordion-collapse {
-      background-color: var(--bdlms-white-color);
+    .stlms-accordion-collapse {
+      background-color: var(--stlms-white-color);
       padding: 0;
-      .bdlms-accordion-note {
+      .stlms-accordion-note {
         padding: 15px;
-        color: var(--bdlms-paragraph-light-color);
-        border-bottom: 1px solid var(--bdlms-border-color);
+        color: var(--stlms-paragraph-light-color);
+        border-bottom: 1px solid var(--stlms-border-color);
       }
     }
   }
 
-  .bdlms-lesson-title {
+  .stlms-lesson-title {
     display: flex;
 
     @include breakpoint(max, $md) {
@@ -336,7 +336,7 @@
       flex-shrink: 0;
     }
 
-    .bdlms-lesson-name {
+    .stlms-lesson-name {
       width: 100%;
 
       .name {
@@ -364,10 +364,10 @@
   }
 }
 
-.bdlms-lesson-list {
+.stlms-lesson-list {
   > ul {
     > li {
-      border-bottom: 1px solid var(--bdlms-border-color);
+      border-bottom: 1px solid var(--stlms-border-color);
       &:last-child {
         border-bottom: 0;
       }
@@ -376,34 +376,34 @@
         width: 100%;
         gap: 10px;
         padding: 10px 15px;
-        color: var(--bdlms-paragraph-color);
+        color: var(--stlms-paragraph-color);
 
         @include transition(all 0.3s ease-in-out);
 
         &.in-progress {
-          color: var(--bdlms-paragraph-color);
-          background-color: var(--bdlms-border-color);
+          color: var(--stlms-paragraph-color);
+          background-color: var(--stlms-border-color);
         }
         &.completed {
-          color: var(--bdlms-paragraph-light-color);
+          color: var(--stlms-paragraph-light-color);
         }
-        .bdlms-check {
+        .stlms-check {
           flex-shrink: 0;
           margin-top: 4px;
         }
 
         &:hover {
-          color: var(--bdlms-paragraph-color);
-          background-color: var(--bdlms-border-color);
+          color: var(--stlms-paragraph-color);
+          background-color: var(--stlms-border-color);
           .class-name {
-            color: var(--bdlms-paragraph-color);
+            color: var(--stlms-paragraph-color);
           }
           .class-type {
-            color: var(--bdlms-paragraph-color);
+            color: var(--stlms-paragraph-color);
           }
         }
 
-        .bdlms-lesson-class {
+        .stlms-lesson-class {
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -433,12 +433,12 @@
           }
         }
 
-        &:has(.bdlms-check[readonly]),
-        &:has(.bdlms-check[disable]),
-        &:has(.bdlms-check[disabled]) {
+        &:has(.stlms-check[readonly]),
+        &:has(.stlms-check[disable]),
+        &:has(.stlms-check[disabled]) {
           pointer-events: none;
-          .bdlms-check {
-            border-color: var(--bdlms-icon-color);
+          .stlms-check {
+            border-color: var(--stlms-icon-color);
           }
         }
       }
@@ -446,15 +446,15 @@
   }
 }
 
-.bdlms-quiz-view {
+.stlms-quiz-view {
   position: relative;
   height: 100%;
   display: grid;
   place-items: center;
-  background-color: var(--bdlms-white-color);
+  background-color: var(--stlms-white-color);
 }
 
-.bdlms-quiz-start {
+.stlms-quiz-start {
   text-align: center;
   h3 {
     padding-bottom: 10px;
@@ -466,7 +466,7 @@
     justify-content: center;
     padding-bottom: 20px;
     font-size: $font_size_sm;
-    color: var(--bdlms-paragraph-light-color);
+    color: var(--stlms-paragraph-light-color);
 
     span {
       display: flex;
@@ -487,7 +487,7 @@
   }
 }
 
-.bdlms-quiz-question {
+.stlms-quiz-question {
   padding: 24px 0;
   max-width: 784px;
   width: 100%;
@@ -496,50 +496,50 @@
   > .qus-no {
     text-align: center;
     font-size: $font_size_sm;
-    color: var(--bdlms-paragraph-light-color);
+    color: var(--stlms-paragraph-light-color);
     font-weight: 400;
     padding-bottom: 10px;
   }
 
   > h3 {
-    color: var(--bdlms-heading-color);
+    color: var(--stlms-heading-color);
     font-size: $font_size_2xl;
     font-weight: $font_weight_bold;
     padding-bottom: 10px;
     text-align: center;
   }
 
-  .bdlms-quiz-input-ans {
+  .stlms-quiz-input-ans {
     padding-top: 30px;
 
-    .bdlms-form-group {
+    .stlms-form-group {
       padding: 0;
     }
 
-    .bdlms-form-label {
+    .stlms-form-label {
       &.valid {
-        color: var(--bdlms-success-color);
+        color: var(--stlms-success-color);
       }
       &.invalid {
-        color: var(--bdlms-error-color);
+        color: var(--stlms-error-color);
       }
     }
 
     textarea {
       &.valid {
-        border-color: var(--bdlms-success-color);
+        border-color: var(--stlms-success-color);
         background: rgba(37, 175, 61, 0.05);
         cursor: not-allowed;
       }
 
       &.invalid {
-        border-color: var(--bdlms-error-color);
+        border-color: var(--stlms-error-color);
         background: rgba(197, 52, 52, 0.05);
         cursor: not-allowed;
       }
     }
   }
-  .bdlms-quiz-option-list {
+  .stlms-quiz-option-list {
     max-width: 600px;
     margin: 0 auto;
     padding-top: 20px;
@@ -557,7 +557,7 @@
           width: 100%;
 
           label {
-            border: 1px solid var(--bdlms-border-color) !important;
+            border: 1px solid var(--stlms-border-color) !important;
           }
         }
 
@@ -581,61 +581,61 @@
         &:nth-child(1) label.boolean {
           border-top-left-radius: 4px;
           border-bottom-left-radius: 4px;
-          border: 1px solid var(--bdlms-border-color);
+          border: 1px solid var(--stlms-border-color);
           border-right: 0;
         }
         &:nth-child(2) label.boolean {
           border-top-right-radius: 4px;
           border-bottom-right-radius: 4px;
-          border: 1px solid var(--bdlms-border-color);
+          border: 1px solid var(--stlms-border-color);
         }
         label {
           display: flex;
           align-items: center;
           padding: 10px;
-          border: 1px solid var(--bdlms-border-color);
+          border: 1px solid var(--stlms-border-color);
           gap: 10px;
           font-size: $font_size_base;
           line-height: 1.5;
-          color: var(--bdlms-paragraph-light-color);
+          color: var(--stlms-paragraph-light-color);
           cursor: pointer;
-          .bdlms-check {
+          .stlms-check {
             flex-shrink: 0;
           }
-          &:has(.bdlms-check:checked) {
-            color: var(--bdlms-primary-color);
+          &:has(.stlms-check:checked) {
+            color: var(--stlms-primary-color);
           }
-          &:has(.bdlms-check:disabled) {
+          &:has(.stlms-check:disabled) {
             cursor: not-allowed;
           }
-          &:has(.bdlms-check.invalid) {
-            color: var(--bdlms-error-color);
-            input[type="checkbox"].bdlms-check {
-              border-color: var(--bdlms-error-color);
+          &:has(.stlms-check.invalid) {
+            color: var(--stlms-error-color);
+            input[type="checkbox"].stlms-check {
+              border-color: var(--stlms-error-color);
 
               &:checked {
-                background-color: var(--bdlms-error-color);
-                border-color: var(--bdlms-error-color);
+                background-color: var(--stlms-error-color);
+                border-color: var(--stlms-error-color);
               }
             }
-            input[type="radio"].bdlms-check {
-              border-color: var(--bdlms-error-color);
+            input[type="radio"].stlms-check {
+              border-color: var(--stlms-error-color);
 
               &:checked {
-                background-color: var(--bdlms-error-color);
-                border-color: var(--bdlms-error-color);
+                background-color: var(--stlms-error-color);
+                border-color: var(--stlms-error-color);
               }
             }
           }
-          &:has(.bdlms-check.valid) {
-            color: var(--bdlms-success-color);
-            input[type="checkbox"].bdlms-check:checked {
-              background-color: var(--bdlms-success-color);
-              border-color: var(--bdlms-success-color);
+          &:has(.stlms-check.valid) {
+            color: var(--stlms-success-color);
+            input[type="checkbox"].stlms-check:checked {
+              background-color: var(--stlms-success-color);
+              border-color: var(--stlms-success-color);
             }
-            input[type="radio"].bdlms-check:checked {
-              background-color: var(--bdlms-success-color);
-              border-color: var(--bdlms-success-color);
+            input[type="radio"].stlms-check:checked {
+              background-color: var(--stlms-success-color);
+              border-color: var(--stlms-success-color);
             }
           }
         }
@@ -667,11 +667,11 @@
   }
 }
 
-.bdlms-alert {
+.stlms-alert {
   max-width: 460px;
   margin: 0 auto;
   padding: 15px;
-  border: 1px solid var(--bdlms-error-color);
+  border: 1px solid var(--stlms-error-color);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -689,7 +689,7 @@
     width: 100%;
     font-size: $font_size_sm;
     line-height: 1.5;
-    color: var(--bdlms-paragraph-color);
+    color: var(--stlms-paragraph-color);
     p {
       margin: 0;
     }
@@ -698,32 +698,32 @@
     font-size: $font_size_lg;
     font-weight: $font_weight_bold;
     padding-bottom: 5px;
-    color: var(--bdlms-heading-color);
+    color: var(--stlms-heading-color);
   }
-  &.bdlms-alert-error {
-    background: rgba(var(--bdlms-error-color), 0.05);
-    border-color: var(--bdlms-error-color);
-    .bdlms-alert-icon {
-      color: var(--bdlms-error-color);
+  &.stlms-alert-error {
+    background: rgba(var(--stlms-error-color), 0.05);
+    border-color: var(--stlms-error-color);
+    .stlms-alert-icon {
+      color: var(--stlms-error-color);
     }
   }
-  &.bdlms-alert-success {
-    background: rgba(var(--bdlms-success-color), 0.05);
-    border-color: var(--bdlms-success-color);
-    .bdlms-alert-icon {
-      color: var(--bdlms-success-color);
+  &.stlms-alert-success {
+    background: rgba(var(--stlms-success-color), 0.05);
+    border-color: var(--stlms-success-color);
+    .stlms-alert-icon {
+      color: var(--stlms-success-color);
     }
   }
 }
 
-.bdlms-quiz-content {
+.stlms-quiz-content {
   padding: 30px;
   width: 100%;
   margin: 0 auto;
   font-size: $font_size_base;
   line-height: 1.5;
-  color: var(--bdlms-paragraph-color);
-  background-color: var(--bdlms-white-color);
+  color: var(--stlms-paragraph-color);
+  background-color: var(--stlms-white-color);
   @include breakpoint(max, $sm) {
     padding: 15px;
   }
@@ -733,7 +733,7 @@
   h4,
   h5,
   h6 {
-    color: var(--bdlms-paragraph-color) !important;
+    color: var(--stlms-paragraph-color) !important;
     margin: 0;
     padding: 8px 0 16px;
   }
@@ -746,12 +746,12 @@
     padding-bottom: 16px;
   }
   strong {
-    color: var(--bdlms-paragraph-color);
+    color: var(--stlms-paragraph-color);
   }
   blockquote {
     margin: 10px 0;
     padding: 20px;
-    border: 1px solid var(--bdlms-border-color);
+    border: 1px solid var(--stlms-border-color);
   }
   ul,
   ol {
@@ -792,7 +792,7 @@
   }
 }
 
-.bdlms-quiz-complete {
+.stlms-quiz-complete {
   max-width: 784px;
   width: 100%;
   margin: 0 auto;
@@ -802,21 +802,21 @@
   }
   > p {
     font-size: $font_size_base;
-    color: var(--bdlms-paragraph-color);
+    color: var(--stlms-paragraph-color);
     margin: 0;
   }
-  .bdlms-quiz-result-list {
+  .stlms-quiz-result-list {
     display: flex;
     margin-top: 40px;
     box-shadow: $shadow_4;
 
-    .bdlms-quiz-result-item {
+    .stlms-quiz-result-item {
       width: 33.33%;
-      background-color: var(--bdlms-white-color);
-      border-right: 2px solid var(--bdlms-border-color);
+      background-color: var(--stlms-white-color);
+      border-right: 2px solid var(--stlms-border-color);
       padding: 15px;
       font-size: $font_size_base;
-      color: var(--bdlms-heading-color);
+      color: var(--stlms-heading-color);
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -835,7 +835,7 @@
       }
       p {
         margin: 0;
-        color: var(--bdlms-heading-color);
+        color: var(--stlms-heading-color);
         font-weight: 700;
         line-height: 1.2;
       }

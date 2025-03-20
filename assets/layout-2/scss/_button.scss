@@ -1,12 +1,12 @@
-.bdlms-btn {
+.stlms-btn {
   padding: 11px 30px;
   border-radius: $spacing_4;
   line-height: 1;
   font-size: $font_size_base;
   font-weight: $font_weight_bold;
-  background: var(--bdlms-primary-color);
-  border: 1px solid var(--bdlms-primary-color);
-  color: var(--bdlms-white-color) !important;
+  background: var(--stlms-primary-color);
+  border: 1px solid var(--stlms-primary-color);
+  color: var(--stlms-white-color) !important;
   cursor: pointer;
   text-decoration: none;
   display: inline-flex;
@@ -21,26 +21,26 @@
     background: #7a22f7;
   }
 
-  &.bdlms-btn-block {
+  &.stlms-btn-block {
     width: 100%;
     display: flex;
     text-align: center;
     justify-content: center;
     font-size: $font_size_base;
     font-weight: $font_weight_bold;
-    color: var(--bdlms-white-color);
+    color: var(--stlms-white-color);
     height: 49px;
   }
 
   &.secondary {
-    background-color: var(--bdlms-secondary-color);
-    border-color: var(--bdlms-secondary-color);
+    background-color: var(--stlms-secondary-color);
+    border-color: var(--stlms-secondary-color);
   }
 
   &.outline {
     background-color: transparent;
-    border: 1px solid var(--bdlms-primary-color);
-    color: var(--bdlms-primary-color) !important;
+    border: 1px solid var(--stlms-primary-color);
+    color: var(--stlms-primary-color) !important;
   }
 
   &.small {
@@ -52,28 +52,28 @@
     padding: 5px 20px;
     height: 37px;
     background-color: transparent;
-    border: 1px solid var(--bdlms-primary-color);
-    color: var(--bdlms-primary-color) !important;
+    border: 1px solid var(--stlms-primary-color);
+    color: var(--stlms-primary-color) !important;
   }
 
   &-light {
-    background: rgba(var(--bdlms-primary-color), 0.5);
-    border-color: rgba(var(--bdlms-primary-color), 0.5);
+    background: rgba(var(--stlms-primary-color), 0.5);
+    border-color: rgba(var(--stlms-primary-color), 0.5);
 
     &:hover,
     &:focus {
-      background: rgba(var(--bdlms-primary-color), 0.6);
-      border-color: rgba(var(--bdlms-primary-color), 0.6);
+      background: rgba(var(--stlms-primary-color), 0.6);
+      border-color: rgba(var(--stlms-primary-color), 0.6);
     }
   }
 
   &-dark {
-    background: var(--bdlms-heading-color);
-    border-color: var(--bdlms-heading-color);
+    background: var(--stlms-heading-color);
+    border-color: var(--stlms-heading-color);
 
     &:hover,
     &:focus {
-      background: rgba(var(--bdlms-heading-color), 0.9);
+      background: rgba(var(--stlms-heading-color), 0.9);
     }
   }
 

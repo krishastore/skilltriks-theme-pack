@@ -1,17 +1,17 @@
 $theme-map: (
-  --bdlms-primary-color: #893bf8,
-  --bdlms-secondary-color: #00cfbe,
-  --bdlms-bg-color: #f6f6f7,
-  --bdlms-bg-light-color: #fbfbfb,
-  --bdlms-border-color: #ededed,
-  --bdlms-white-color: #ffffff,
-  --bdlms-heading-color: #101011,
-  --bdlms-paragraph-color: #5d5d73,
-  --bdlms-paragraph-light-color: #85859d,
-  --bdlms-link-color: #7d3cd9,
-  --bdlms-icon-color: #a9a9a9,
-  --bdlms-success-color: #25af3d,
-  --bdlms-error-color: #c53434,
+  --stlms-primary-color: #893bf8,
+  --stlms-secondary-color: #00cfbe,
+  --stlms-bg-color: #f6f6f7,
+  --stlms-bg-light-color: #fbfbfb,
+  --stlms-border-color: #ededed,
+  --stlms-white-color: #ffffff,
+  --stlms-heading-color: #101011,
+  --stlms-paragraph-color: #5d5d73,
+  --stlms-paragraph-light-color: #85859d,
+  --stlms-link-color: #7d3cd9,
+  --stlms-icon-color: #a9a9a9,
+  --stlms-success-color: #25af3d,
+  --stlms-error-color: #c53434,
 );
 
 // Colors
@@ -29,7 +29,7 @@ $icon_color: #a9a9a9;
 $success: #25af3d;
 $error: #c53434;
 
-$prefix: "bdlms";
+$prefix: "stlms";
 
 // Shadows
 $shadow: 0px 10px 25px 10px #893bf80d;

@@ -1,4 +1,4 @@
-.bdlms-course-list {
+.stlms-course-list {
   > ul {
     display: flex;
     flex-wrap: wrap;
@@ -39,14 +39,14 @@
   }
 }
 
-.bdlms-course-list {
-  .bdlms-course-item {
+.stlms-course-list {
+  .stlms-course-item {
     height: 100%;
     border-radius: 4px;
     padding: 15px;
     display: flex;
     flex-direction: column;
-    background: var(--bdlms-white-color);
+    background: var(--stlms-white-color);
     box-shadow: $shadow_2;
 
     @include transition(all 0.3s ease-in-out);
@@ -89,17 +89,17 @@
 
     &__by {
       font-size: $font_size_xs;
-      color: var(--bdlms-paragraph-light-color);
+      color: var(--stlms-paragraph-light-color);
       display: flex;
       align-items: center;
       gap: 10px;
 
       a {
-        color: var(--bdlms-paragraph-light-color);
+        color: var(--stlms-paragraph-light-color);
         text-decoration: none;
 
         &:hover {
-          color: var(--bdlms-primary-color);
+          color: var(--stlms-primary-color);
         }
       }
     }
@@ -113,7 +113,7 @@
 
       a {
         display: inline-block;
-        color: var(--bdlms-heading-color);
+        color: var(--stlms-heading-color);
         text-decoration: none;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -125,7 +125,7 @@
         transition: all 0.3s ease-in-out;
 
         &:hover {
-          color: var(--bdlms-primary-color);
+          color: var(--stlms-primary-color);
         }
       }
     }
@@ -140,12 +140,12 @@
           display: flex;
           align-items: center;
           gap: 3px;
-          color: var(--bdlms-paragraph-light-color);
+          color: var(--stlms-paragraph-light-color);
           font-size: $font_size_xs;
 
           svg {
             flex-shrink: 0;
-            color: var(--bdlms-icon-color);
+            color: var(--stlms-icon-color);
           }
         }
       }
@@ -153,7 +153,7 @@
 
     &__action {
       margin-top: auto;
-      border-top: 1px solid var(--bdlms-border-color);
+      border-top: 1px solid var(--stlms-border-color);
       padding-top: 15px;
       display: flex;
       flex-direction: column;
@@ -164,18 +164,18 @@
         grid-template-columns: 1fr 1fr;
         gap: 20px;
 
-        .bdlms-btn.bdlms-btn-block {
+        .stlms-btn.stlms-btn-block {
           padding-left: 4px;
           padding-right: 4px;
         }
       }
 
-      .bdlms-btn-wrap {
+      .stlms-btn-wrap {
         position: relative;
         border-radius: 4px;
         overflow: hidden;
 
-        .bdlms-progress__bar {
+        .stlms-progress__bar {
           position: absolute;
           bottom: 0;
           left: 0;
@@ -186,20 +186,20 @@
 
     &:hover {
       transform: translate(0, -12px);
-      box-shadow: 0 0 20px rgba(var(--bdlms-heading-color), 0.09);
+      box-shadow: 0 0 20px rgba(var(--stlms-heading-color), 0.09);
     }
 
     &:hover & {
       &__info {
-        background: rgba(var(--bdlms-primary-color), 0.05);
+        background: rgba(var(--stlms-primary-color), 0.05);
       }
     }
 
-    .bdlms-progress {
+    .stlms-progress {
       margin-top: auto;
     }
 
-    &:not(.bdlms-progress) & {
+    &:not(.stlms-progress) & {
       &__action {
         margin-top: auto;
       }
@@ -207,7 +207,7 @@
   }
 
   &.list-view {
-    .bdlms-course-item {
+    .stlms-course-item {
       display: flex;
       flex-direction: row;
       gap: 30px;
@@ -243,7 +243,7 @@
       }
 
       &__title {
-        font-size: calc(var(--bdlms-h5-font-size) * 1.5);
+        font-size: calc(var(--stlms-h5-font-size) * 1.5);
 
         @include breakpoint(max, $md) {
           font-size: $font_size_2xl;
@@ -278,7 +278,7 @@
           grid-template-columns: 1fr 1fr;
           gap: 20px;
 
-          .bdlms-btn.bdlms-btn-block {
+          .stlms-btn.stlms-btn-block {
             padding-left: 4px;
             padding-right: 4px;
           }
@@ -287,20 +287,20 @@
 
       &:hover {
         transform: translate(0, -12px);
-        box-shadow: 0 0 20px rgba(var(--bdlms-heading-color), 0.09);
+        box-shadow: 0 0 20px rgba(var(--stlms-heading-color), 0.09);
       }
 
       &:hover & {
         &__info {
-          background: rgba(var(--bdlms-primary-color), 0.05);
+          background: rgba(var(--stlms-primary-color), 0.05);
         }
       }
 
-      .bdlms-progress {
+      .stlms-progress {
         margin-top: auto;
       }
 
-      &:not(.bdlms-progress) & {
+      &:not(.stlms-progress) & {
         &__action {
           margin-top: auto;
         }
