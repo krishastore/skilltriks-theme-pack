@@ -1,4 +1,4 @@
-.bdlms-form {
+.stlms-form {
   &-group {
     padding-bottom: $spacing_24;
 
@@ -12,7 +12,7 @@
     margin: 0;
     font-size: $font_size_base;
     font-weight: $font_weight_normal;
-    color: var(--bdlms-paragraph-color);
+    color: var(--stlms-paragraph-color);
     padding-bottom: $spacing_8;
   }
 
@@ -22,29 +22,29 @@
     padding: 0 $spacing_20;
     font-size: $font_size_sm;
     line-height: 20px;
-    color: var(--bdlms-paragraph-color);
-    border: 1px solid var(--bdlms-border-color);
+    color: var(--stlms-paragraph-color);
+    border: 1px solid var(--stlms-border-color);
     border-radius: 4px;
-    background-color: var(--bdlms-white-color);
+    background-color: var(--stlms-white-color);
     @include transition(all 0.3s ease-in-out);
     @include placeholder {
-      color: var(--bdlms-paragraph-light-color);
+      color: var(--stlms-paragraph-light-color);
     }
 
     &.error {
-      border-color: var(--bdlms-error-color);
+      border-color: var(--stlms-error-color);
     }
   }
 
   &-error {
     font-size: $font_size_xs;
-    color: var(--bdlms-error-color);
+    color: var(--stlms-error-color);
     padding-top: $spacing_4;
     display: block;
   }
 }
 
-textarea.bdlms-form-control {
+textarea.stlms-form-control {
   height: 125px;
   padding: 20px;
 
@@ -54,14 +54,14 @@ textarea.bdlms-form-control {
   }
 }
 
-.bdlms-password-field {
+.stlms-password-field {
   position: relative;
 
-  .bdlms-form-control {
+  .stlms-form-control {
     padding-right: 48px;
   }
 
-  .bdlms-password-toggle {
+  .stlms-password-toggle {
     position: absolute;
     right: 20px;
     top: 50%;
@@ -73,7 +73,7 @@ textarea.bdlms-form-control {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--bdlms-icon-color);
+    color: var(--stlms-icon-color);
     cursor: pointer;
 
     svg {
@@ -96,25 +96,25 @@ textarea.bdlms-form-control {
 }
 
 // Checkbox
-.bdlms-check-wrap {
+.stlms-check-wrap {
   display: flex;
   gap: 10px;
   // width: 100%;
 
-  input[type="checkbox"].bdlms-check {
+  input[type="checkbox"].stlms-check {
     flex-shrink: 0;
   }
 }
 
-input[type="checkbox"].bdlms-check {
+input[type="checkbox"].stlms-check {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   width: 18px;
   height: 18px;
   border-radius: 3px;
-  border: 2px solid var(--bdlms-icon-color);
-  background-color: var(--bdlms-white-color);
+  border: 2px solid var(--stlms-icon-color);
+  background-color: var(--stlms-white-color);
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -136,34 +136,34 @@ input[type="checkbox"].bdlms-check {
   }
 
   &:checked {
-    background-color: var(--bdlms-primary-color);
-    border-color: var(--bdlms-primary-color);
+    background-color: var(--stlms-primary-color);
+    border-color: var(--stlms-primary-color);
 
     &::after {
       opacity: 1;
     }
 
-    & ~ .bdlms-check-label {
-      color: var(--bdlms-paragraph-color);
+    & ~ .stlms-check-label {
+      color: var(--stlms-paragraph-color);
     }
   }
 
-  & ~ .bdlms-check-label {
-    color: var(--bdlms-paragraph-light-color);
+  & ~ .stlms-check-label {
+    color: var(--stlms-paragraph-light-color);
 
     @include transition(all 0.3s ease-in-out);
   }
 }
 
-input[type="radio"].bdlms-check {
+input[type="radio"].stlms-check {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   width: 16px;
   height: 16px;
   border-radius: 4px;
-  border: 1px solid var(--bdlms-border-color);
-  background-color: var(--bdlms-white-color);
+  border: 1px solid var(--stlms-border-color);
+  background-color: var(--stlms-white-color);
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -196,28 +196,28 @@ input[type="radio"].bdlms-check {
   }
 
   &:checked {
-    background-color: var(--bdlms-primary-color);
-    border-color: var(--bdlms-primary-color);
+    background-color: var(--stlms-primary-color);
+    border-color: var(--stlms-primary-color);
 
     &::after {
       opacity: 1;
     }
 
-    & ~ .bdlms-check-label {
-      color: var(--bdlms-heading-color);
+    & ~ .stlms-check-label {
+      color: var(--stlms-heading-color);
     }
   }
 
-  & ~ .bdlms-check-label {
-    color: var(--bdlms-paragraph-light-color);
+  & ~ .stlms-check-label {
+    color: var(--stlms-paragraph-light-color);
     @include transition(all 0.3s ease-in-out);
   }
 }
 
-.bdlms-check-label {
+.stlms-check-label {
   font-size: $font_size_sm;
   line-height: 20px;
-  color: var(--bdlms-heading-color);
+  color: var(--stlms-heading-color);
   cursor: pointer;
 
   &.text-sm {
@@ -226,19 +226,19 @@ input[type="radio"].bdlms-check {
   }
 }
 
-.bdlms-keep-login {
+.stlms-keep-login {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.bdlms-search {
+.stlms-search {
   position: relative;
 
-  .bdlms-form-control {
+  .stlms-form-control {
     padding-right: 48px;
-    background: var(--bdlms-white-color);
-    border-color: var(--bdlms-border-color);
+    background: var(--stlms-white-color);
+    border-color: var(--stlms-border-color);
   }
 
   &-icon {

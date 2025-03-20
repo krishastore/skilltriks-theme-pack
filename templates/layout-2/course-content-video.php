@@ -2,7 +2,7 @@
 /**
  * Template: Course Curriculum - Video.
  *
- * @package BD\Lms
+ * @package ST\Lms
  *
  * phpcs:disable WordPress.Security.NonceVerification.Recommended
  */
@@ -12,8 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<div class="bdlms-lesson-view__body">
-	<div class="bdlms-lesson-video-box">
+<div class="stlms-lesson-view__body">
+	<div class="stlms-lesson-video-box">
 		<?php
 		if ( ! empty( $args['curriculum']['media']['video_id'] ) ) :
 			$video_id   = $args['curriculum']['media']['video_id'];
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					type="video/<?php echo esc_attr( $fileformat ); ?>" size="<?php echo (int) $filesize; ?>">
 
 				<a href="<?php echo esc_url( $media_url ); ?>"
-					download><?php esc_html_e( 'Download', 'bluedolphin-lms' ); ?></a>
+					download><?php esc_html_e( 'Download', 'skilltriks-lms' ); ?></a>
 			</video>
 			<?php
 		elseif ( ! empty( $args['curriculum']['media']['embed_video_url'] ) ) :
@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				?>
 				<div id="player" class="lesson-video" data-plyr-provider="vimeo" data-plyr-embed-id="<?php echo esc_html( str_replace( '/video/', '', $video_id ) ); ?>"></div>
 			<?php else : ?>
-				<iframe src="<?php echo esc_url( $args['curriculum']['media']['embed_video_url'] ); ?>" frameborder="0" title="<?php esc_html_e( 'Lesson video', 'bluedolphin-lms' ); ?>"></iframe>
+				<iframe src="<?php echo esc_url( $args['curriculum']['media']['embed_video_url'] ); ?>" frameborder="0" title="<?php esc_html_e( 'Lesson video', 'skilltriks-lms' ); ?>"></iframe>
 			<?php endif; ?>
 		<?php endif; ?>
 	</div>

@@ -1,19 +1,19 @@
-.bdlms-login-wrap {
+.stlms-login-wrap {
   padding: $spacing_20;
   min-height: 90vh;
   display: grid;
   place-items: center;
-  background-color: var(--bdlms-bg-light-color);
+  background-color: var(--stlms-bg-light-color);
 
   @include breakpoint(max, $sm) {
     padding: $spacing_16;
   }
 }
 
-.bdlms-login {
+.stlms-login {
   padding: $spacing_32 $spacing_48 $spacing_48 $spacing_48;
   border-radius: 5px;
-  background: var(--bdlms-white-color);
+  background: var(--stlms-white-color);
   box-shadow: $shadow;
   width: 100%;
   max-width: 790px;

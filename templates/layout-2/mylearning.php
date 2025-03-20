@@ -2,7 +2,7 @@
 /**
  * Template: My learning
  *
- * @package BD\Lms
+ * @package ST\Lms
  *
  * phpcs:disable WordPress.Security.NonceVerification.Recommended
  */
@@ -20,7 +20,7 @@ $levels         = ! empty( $_GET['levels'] ) ? explode( ',', sanitize_text_field
 $levels         = array_map( 'intval', $levels );
 
 $course_args = array(
-	'post_type'      => \BD\Lms\BDLMS_COURSE_CPT,
+	'post_type'      => \ST\Lms\STLMS_COURSE_CPT,
 	'post_status'    => 'publish',
 	'posts_per_page' => -1,
 );
@@ -30,7 +30,7 @@ if ( get_query_var( 'page' ) ) {
 }
 if ( isset( $args['pagination'] ) && 'yes' === $args['pagination'] ) {
 	$course_args['paged']          = $_paged;
-	$course_args['posts_per_page'] = apply_filters( 'bdlms_courses_list_per_page', get_option( 'posts_per_page' ) );
+	$course_args['posts_per_page'] = apply_filters( 'stlms_courses_list_per_page', get_option( 'posts_per_page' ) );
 }
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 $author = ! empty( $_GET['filter_author'] ) ? (int) $_GET['filter_author'] : 0;
@@ -52,7 +52,7 @@ if ( in_array( $_orderby, array( 'asc', 'desc' ), true ) ) {
 if ( ! empty( $category ) ) {
 	// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 	$course_args['tax_query'][] = array(
-		'taxonomy' => \BD\Lms\BDLMS_COURSE_CATEGORY_TAX,
+		'taxonomy' => \ST\Lms\STLMS_COURSE_CATEGORY_TAX,
 		'field'    => 'term_id',
 		'terms'    => $category,
 		'operator' => 'IN',
@@ -61,46 +61,46 @@ if ( ! empty( $category ) ) {
 if ( ! empty( $levels ) ) {
 	// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 	$course_args['tax_query'][] = array(
-		'taxonomy' => \BD\Lms\BDLMS_COURSE_TAXONOMY_TAG,
+		'taxonomy' => \ST\Lms\STLMS_COURSE_TAXONOMY_TAG,
 		'field'    => 'term_id',
 		'terms'    => $levels,
 		'operator' => 'IN',
 	);
 }
-$enrol_courses = get_user_meta( get_current_user_id(), \BD\Lms\BDLMS_ENROL_COURSES, true );
-$layout        = bdlms_addons_template();
+$enrol_courses = get_user_meta( get_current_user_id(), \ST\Lms\STLMS_ENROL_COURSES, true );
+$layout        = stlms_addons_template();
 ?>
 
-<div class="bdlms-wrap alignfull">
-	<div class="bdlms-inner-banner">
-		<div class="bdlms-container">
-			<div class="bdlms-banner-content">
-				<div class="bdlms-banner-info">
-					<h1 class="title bdlms-h1">
-						<?php esc_html_e( 'My Learnings', 'bluedolphin-lms' ); ?>
+<div class="stlms-wrap alignfull">
+	<div class="stlms-inner-banner">
+		<div class="stlms-container">
+			<div class="stlms-banner-content">
+				<div class="stlms-banner-info">
+					<h1 class="title stlms-h1">
+						<?php esc_html_e( 'My Learnings', 'skilltriks-lms' ); ?>
 					</h1>
 				</div>
-				<div class="bdlms-banner-media">
-					<img src="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/banner-image2.png" alt="">
+				<div class="stlms-banner-media">
+					<img src="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/banner-image2.png" alt="">
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="bdlms-container">
-		<div class="bdlms-course-view__header">
+	<div class="stlms-container">
+		<div class="stlms-course-view__header">
 			<?php
 			$courses      = new \WP_Query( $course_args );
 			$total_course = $courses->found_posts;
 
 			if ( $courses->have_posts() ) :
 				?>
-			<div class="bdlms-filtered-item">
+			<div class="stlms-filtered-item">
 				<?php
 				echo esc_html(
 					sprintf(
 						// phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment 
-						__( 'Showing %1$s course of %2$s courses', 'bluedolphin-lms' ),
+						__( 'Showing %1$s course of %2$s courses', 'skilltriks-lms' ),
 						$courses->post_count,
 						number_format_i18n( $total_course )
 					)
@@ -108,44 +108,44 @@ $layout        = bdlms_addons_template();
 				?>
 			</div>
 			<?php endif; ?>
-			<div class="bdlms-sort-by">
+			<div class="stlms-sort-by">
 				<form onsubmit="return false;">
-					<select aria-label="<?php esc_attr_e( 'Sort by', 'bluedolphin-lms' ); ?>">
-						<option value=""><?php esc_html_e( 'Sort By', 'bluedolphin-lms' ); ?></option>
-						<option value="asc"<?php selected( $_orderby, 'asc' ); ?>><?php esc_html_e( 'Alphabetically (A To Z)', 'bluedolphin-lms' ); ?></option>
-						<option value="desc"<?php selected( $_orderby, 'desc' ); ?>><?php esc_html_e( 'Alphabetically (Z To A)', 'bluedolphin-lms' ); ?></option>
-						<option value="newest"<?php selected( $_orderby, 'newest' ); ?>><?php esc_html_e( 'Newest', 'bluedolphin-lms' ); ?></option>
+					<select aria-label="<?php esc_attr_e( 'Sort by', 'skilltriks-lms' ); ?>">
+						<option value=""><?php esc_html_e( 'Sort By', 'skilltriks-lms' ); ?></option>
+						<option value="asc"<?php selected( $_orderby, 'asc' ); ?>><?php esc_html_e( 'Alphabetically (A To Z)', 'skilltriks-lms' ); ?></option>
+						<option value="desc"<?php selected( $_orderby, 'desc' ); ?>><?php esc_html_e( 'Alphabetically (Z To A)', 'skilltriks-lms' ); ?></option>
+						<option value="newest"<?php selected( $_orderby, 'newest' ); ?>><?php esc_html_e( 'Newest', 'skilltriks-lms' ); ?></option>
 					</select>
 				</form>
 			</div>
-			<button class="bdlms-filter-toggle" aria-label="<?php esc_attr_e( 'Filter course', 'bluedolphin-lms' ); ?>">
+			<button class="stlms-filter-toggle" aria-label="<?php esc_attr_e( 'Filter course', 'skilltriks-lms' ); ?>">
 				<svg width="24" height="24">
-					<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#filters"></use>
+					<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#filters"></use>
 				</svg>
 			</button>
 		</div>
 	</div>
 
-	<div class="bdlms-course-list-wrap">
-		<div class="bdlms-container">
-			<div class="bdlms-course-filter">
-				<button class="bdlms-filter-toggle" aria-label="<?php esc_attr_e( 'Close sidebar', 'bluedolphin-lms' ); ?>">
+	<div class="stlms-course-list-wrap">
+		<div class="stlms-container">
+			<div class="stlms-course-filter">
+				<button class="stlms-filter-toggle" aria-label="<?php esc_attr_e( 'Close sidebar', 'skilltriks-lms' ); ?>">
 					<svg width="24" height="24">
-						<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
+						<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 					</svg>
 				</button>
-				<?php do_action( 'bdlms_before_search_bar' ); ?>
-				<div class="bdlms-filter-item">
-					<div class="bdlms-filter-title bdlms-h4">
-					<?php esc_html_e( 'Search', 'bluedolphin-lms' ); ?>
+				<?php do_action( 'stlms_before_search_bar' ); ?>
+				<div class="stlms-filter-item">
+					<div class="stlms-filter-title stlms-h4">
+					<?php esc_html_e( 'Search', 'skilltriks-lms' ); ?>
 					</div>
-					<div class="bdlms-course-search">
+					<div class="stlms-course-search">
 						<form onsubmit="return false;">
-							<div class="bdlms-search input-group">
-								<input type="text" class="bdlms-form-control" placeholder="<?php esc_attr_e( 'Search Course', 'bluedolphin-lms' ); ?>" value="<?php echo esc_attr( $search_keyword ); ?>">
-								<button type="submit" aria-label="<?php esc_attr_e( 'Search course', 'bluedolphin-lms' ); ?>">
+							<div class="stlms-search input-group">
+								<input type="text" class="stlms-form-control" placeholder="<?php esc_attr_e( 'Search Course', 'skilltriks-lms' ); ?>" value="<?php echo esc_attr( $search_keyword ); ?>">
+								<button type="submit" aria-label="<?php esc_attr_e( 'Search course', 'skilltriks-lms' ); ?>">
 									<svg width="30" height="30">
-										<use xlink:href="<?php echo esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#search-icon"></use>
+										<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#search-icon"></use>
 									</svg>
 								</button>
 							</div>
@@ -153,7 +153,7 @@ $layout        = bdlms_addons_template();
 					</div>
 				</div>
 				<?php
-					$course_status = \BD\Lms\course_statistics();
+					$course_status = \ST\Lms\course_statistics();
 					$total_course  = 0;
 					$max_num_page  = 0;
 					$has_course    = false;
@@ -182,11 +182,11 @@ $layout        = bdlms_addons_template();
 						'course_not_started' => count( $course_status['not_started'] ),
 					);
 					?>
-				<form method="get" onsubmit="return false;" class="bdlms-filter-form">
+				<form method="get" onsubmit="return false;" class="stlms-filter-form">
 					<?php
 					$terms_list = array();
 					foreach ( $enrol_courses as $course_id ) :
-						$_terms = get_the_terms( $course_id, \BD\Lms\BDLMS_COURSE_CATEGORY_TAX );
+						$_terms = get_the_terms( $course_id, \ST\Lms\STLMS_COURSE_CATEGORY_TAX );
 						if ( ! empty( $_terms ) && ! is_wp_error( $_terms ) ) {
 							foreach ( $_terms as $_term ) {
 								if ( isset( $terms_list[ $_term->term_id ] ) ) {
@@ -202,23 +202,23 @@ $layout        = bdlms_addons_template();
 					endforeach;
 
 					?>
-					<div class="bdlms-filter-item">
-						<div class="bdlms-filter-title bdlms-h4">
-							<?php esc_html_e( 'Categories', 'bluedolphin-lms' ); ?>
+					<div class="stlms-filter-item">
+						<div class="stlms-filter-title stlms-h4">
+							<?php esc_html_e( 'Categories', 'skilltriks-lms' ); ?>
 						</div>
-						<div class="bdlms-filter-list">
+						<div class="stlms-filter-list">
 							<ul>
 								<li>
-									<div class="bdlms-check-wrap">
-										<input type="checkbox" class="bdlms-check" id="bdlms_category_all">
-										<label for="bdlms_category_all" class="bdlms-check-label"><?php esc_html_e( 'All', 'bluedolphin-lms' ); ?><span><?php echo esc_html( (string) $total_course ); ?></span></label>
+									<div class="stlms-check-wrap">
+										<input type="checkbox" class="stlms-check" id="stlms_category_all">
+										<label for="stlms_category_all" class="stlms-check-label"><?php esc_html_e( 'All', 'skilltriks-lms' ); ?><span><?php echo esc_html( (string) $total_course ); ?></span></label>
 									</div>
 								</li>
 								<?php foreach ( $terms_list as $term_id => $term_details ) : ?>
 								<li>
-									<div class="bdlms-check-wrap">
-										<input type="checkbox" name="category[]" class="bdlms-check" id="bd_course_term_<?php echo (int) $term_id; ?>" value="<?php echo esc_attr( $term_id ); ?>" <?php echo in_array( $term_id, $category, true ) ? 'checked' : ''; ?>>
-										<label for="bd_course_term_<?php echo (int) $term_id; ?>" class="bdlms-check-label">
+									<div class="stlms-check-wrap">
+										<input type="checkbox" name="category[]" class="stlms-check" id="st_course_term_<?php echo (int) $term_id; ?>" value="<?php echo esc_attr( $term_id ); ?>" <?php echo in_array( $term_id, $category, true ) ? 'checked' : ''; ?>>
+										<label for="st_course_term_<?php echo (int) $term_id; ?>" class="stlms-check-label">
 											<?php echo esc_html( $term_details['name'] ); ?>
 											<?php if ( isset( $term_details['count'] ) ) : ?>
 												<span><?php echo esc_html( $term_details['count'] ); ?></span>
@@ -233,7 +233,7 @@ $layout        = bdlms_addons_template();
 					<?php
 						$levels_list = array();
 					foreach ( $enrol_courses as $course_id ) :
-						$_levels = get_the_terms( $course_id, \BD\Lms\BDLMS_COURSE_TAXONOMY_TAG );
+						$_levels = get_the_terms( $course_id, \ST\Lms\STLMS_COURSE_TAXONOMY_TAG );
 						if ( ! empty( $_levels ) && ! is_wp_error( $_levels ) ) {
 							foreach ( $_levels as $_level ) {
 								if ( isset( $levels_list[ $_level->term_id ] ) ) {
@@ -248,25 +248,25 @@ $layout        = bdlms_addons_template();
 						}
 						endforeach;
 					?>
-					<div class="bdlms-filter-item">
-						<div class="bdlms-filter-title bdlms-h4">
-							<?php esc_html_e( 'Skill Level', 'bluedolphin-lms' ); ?>
+					<div class="stlms-filter-item">
+						<div class="stlms-filter-title stlms-h4">
+							<?php esc_html_e( 'Skill Level', 'skilltriks-lms' ); ?>
 						</div>
-						<div class="bdlms-filter-list">
+						<div class="stlms-filter-list">
 							<ul>
 								<li>
-									<div class="bdlms-check-wrap">
-										<input type="checkbox" class="bdlms-check" id="bdlms_level_all">
-										<label for="bdlms_level_all" class="bdlms-check-label">
-											<?php esc_html_e( 'All', 'bluedolphin-lms' ); ?><span><?php echo esc_html( (string) $course_status['total_course'] ); ?></span>
+									<div class="stlms-check-wrap">
+										<input type="checkbox" class="stlms-check" id="stlms_level_all">
+										<label for="stlms_level_all" class="stlms-check-label">
+											<?php esc_html_e( 'All', 'skilltriks-lms' ); ?><span><?php echo esc_html( (string) $course_status['total_course'] ); ?></span>
 										</label>
 									</div>
 								</li>
 								<?php foreach ( $levels_list as $level_id => $level_details ) : ?>
 									<li>
-										<div class="bdlms-check-wrap">
-											<input type="checkbox" name="levels[]" class="bdlms-check" id="bd_course_level_<?php echo (int) $level_id; ?>" value="<?php echo esc_attr( $level_id ); ?>" <?php echo in_array( $level_id, $levels, true ) ? 'checked' : ''; ?>>
-											<label for="bd_course_level_<?php echo (int) $level_id; ?>" class="bdlms-check-label">
+										<div class="stlms-check-wrap">
+											<input type="checkbox" name="levels[]" class="stlms-check" id="st_course_level_<?php echo (int) $level_id; ?>" value="<?php echo esc_attr( $level_id ); ?>" <?php echo in_array( $level_id, $levels, true ) ? 'checked' : ''; ?>>
+											<label for="st_course_level_<?php echo (int) $level_id; ?>" class="stlms-check-label">
 												<?php echo esc_html( $level_details['name'] ); ?>
 												<span><?php echo esc_html( $level_details['count'] ); ?></span>
 											</label>
@@ -280,46 +280,46 @@ $layout        = bdlms_addons_template();
 					<input type="hidden" name="order_by" value="<?php echo esc_attr( $_orderby ); ?>">
 				</form>
 			</div>
-			<div class="bdlms-course-view" id="bdlms_course_view">
-				<div class="bdlms-course-view__body">
-					<div class="bdlms-statistics">
+			<div class="stlms-course-view" id="stlms_course_view">
+				<div class="stlms-course-view__body">
+					<div class="stlms-statistics">
 						<ul>
 							<?php
 							foreach ( $statistics as $key => $value ) :
 								$stat_title = ucwords( str_replace( '_', ' ', $key ) );
 								?>
 								<li>
-									<div class="bdlms-statistics__title"><?php echo esc_html( $stat_title ); ?></div>
-									<div class="bdlms-statistics__no bdlms-h2"><?php echo esc_html( $value ); ?></div>
+									<div class="stlms-statistics__title"><?php echo esc_html( $stat_title ); ?></div>
+									<div class="stlms-statistics__no stlms-h2"><?php echo esc_html( $value ); ?></div>
 								</li>
 							<?php endforeach; ?>
 						</ul>
 					</div>
 					<?php if ( $has_course && $courses->have_posts() ) : ?>
-						<div class="bdlms-course-list">
+						<div class="stlms-course-list">
 							<ul>
 								<?php
 								while ( $courses->have_posts() ) :
 									$courses->the_post();
 
 									$course_id        = get_the_ID();
-									$get_terms        = get_the_terms( $course_id, \BD\Lms\BDLMS_COURSE_CATEGORY_TAX );
+									$get_terms        = get_the_terms( $course_id, \ST\Lms\STLMS_COURSE_CATEGORY_TAX );
 									$terms_name       = join( ', ', wp_list_pluck( $get_terms, 'name' ) );
-									$curriculums      = get_post_meta( $course_id, \BD\Lms\META_KEY_COURSE_CURRICULUM, true );
+									$curriculums      = get_post_meta( $course_id, \ST\Lms\META_KEY_COURSE_CURRICULUM, true );
 									$total_lessons    = 0;
 									$total_quizzes    = 0;
 									$course_view_link = get_the_permalink();
 									$course_link      = $course_view_link;
-									$button_text      = esc_html__( 'Start Learning', 'bluedolphin-lms' );
+									$button_text      = esc_html__( 'Start Learning', 'skilltriks-lms' );
 									$extra_class      = '';
 									$course_progress  = '0%';
 									if ( ! empty( $curriculums ) ) {
-										$lessons          = \BD\Lms\get_curriculums( $curriculums, \BD\Lms\BDLMS_LESSON_CPT );
+										$lessons          = \ST\Lms\get_curriculums( $curriculums, \ST\Lms\STLMS_LESSON_CPT );
 										$total_lessons    = count( $lessons );
-										$quizzes          = \BD\Lms\get_curriculums( $curriculums, \BD\Lms\BDLMS_QUIZ_CPT );
+										$quizzes          = \ST\Lms\get_curriculums( $curriculums, \ST\Lms\STLMS_QUIZ_CPT );
 										$total_quizzes    = count( $quizzes );
-										$total_duration   = \BD\Lms\count_duration( array_merge( $lessons, $quizzes ) );
-										$curriculums      = \BD\Lms\merge_curriculum_items( $curriculums );
+										$total_duration   = \ST\Lms\count_duration( array_merge( $lessons, $quizzes ) );
+										$curriculums      = \ST\Lms\merge_curriculum_items( $curriculums );
 										$curriculums      = array_keys( $curriculums );
 										$first_curriculum = reset( $curriculums );
 										$first_curriculum = explode( '_', $first_curriculum );
@@ -327,30 +327,30 @@ $layout        = bdlms_addons_template();
 										$section_id       = reset( $first_curriculum );
 										$item_id          = end( $first_curriculum );
 										if ( is_user_logged_in() ) {
-											$meta_key       = sprintf( \BD\Lms\BDLMS_COURSE_STATUS, get_the_ID() );
+											$meta_key       = sprintf( \ST\Lms\STLMS_COURSE_STATUS, get_the_ID() );
 											$user_id        = get_current_user_id();
 											$current_status = get_user_meta( $user_id, $meta_key, true );
 											if ( ! empty( $current_status ) ) {
-												$course_progress = \BD\Lms\calculate_course_progress( get_the_ID(), $curriculums, $current_status ) . '%';
+												$course_progress = \ST\Lms\calculate_course_progress( get_the_ID(), $curriculums, $current_status ) . '%';
 												$current_status  = ! is_string( $current_status ) ? end( $current_status ) : $current_status;
 												$current_status  = explode( '_', $current_status );
 												$section_id      = (int) reset( $current_status );
 												$item_id         = (int) end( $current_status );
-												$button_text     = esc_html__( 'Continue Learning', 'bluedolphin-lms' );
+												$button_text     = esc_html__( 'Continue Learning', 'skilltriks-lms' );
 												$extra_class     = ' secondary';
 												$last_curriculum = end( $curriculums );
 												$last_curriculum = explode( '_', $last_curriculum );
 												$last_curriculum = array_map( 'absint', $last_curriculum );
 												if ( reset( $last_curriculum ) === $section_id && end( $last_curriculum ) === $item_id ) {
-													$restart_course = \BD\Lms\restart_course( get_the_ID() );
+													$restart_course = \ST\Lms\restart_course( get_the_ID() );
 													if ( $restart_course ) {
 														$first_curriculum   = reset( $curriculums );
 														$first_curriculum   = explode( '_', $first_curriculum );
 														$first_curriculum   = array_map( 'absint', $first_curriculum );
 														$section_id         = reset( $first_curriculum );
 														$item_id            = end( $first_curriculum );
-														$button_text        = esc_html__( 'Restart Course', 'bluedolphin-lms' );
-														$course_certificate = get_post_meta( $course_id, \BD\Lms\META_KEY_COURSE_SIGNATURE, true );
+														$button_text        = esc_html__( 'Restart Course', 'skilltriks-lms' );
+														$course_certificate = get_post_meta( $course_id, \ST\Lms\META_KEY_COURSE_SIGNATURE, true );
 														$has_certificate    = isset( $course_certificate['certificate'] ) ? $course_certificate['certificate'] : 0;
 														$extra_class        = '';
 													}
@@ -358,87 +358,87 @@ $layout        = bdlms_addons_template();
 											}
 										}
 										$curriculum_type = get_post_type( $item_id );
-										$curriculum_type = str_replace( 'bdlms_', '', $curriculum_type );
+										$curriculum_type = str_replace( 'stlms_', '', $curriculum_type );
 										$course_link     = sprintf( '%s/%d/%s/%d/', untrailingslashit( $course_view_link ), $section_id, $curriculum_type, $item_id );
 
-										$button_text = apply_filters( 'bdlms_course_view_button_text', $button_text );
-										$course_link = apply_filters( 'bdlms_course_view_button_link', $course_link );
+										$button_text = apply_filters( 'stlms_course_view_button_text', $button_text );
+										$course_link = apply_filters( 'stlms_course_view_button_link', $course_link );
 										?>
 										<li>
-											<div class="bdlms-course-item">
-												<div class="bdlms-course-item__img">
+											<div class="stlms-course-item">
+												<div class="stlms-course-item__img">
 													<?php if ( ! empty( $terms_name ) ) : ?>
-														<div class="bdlms-course-item__tag">
-															<span class="bdlms-tag primary-light"><?php echo esc_html( $terms_name ); ?></span>
+														<div class="stlms-course-item__tag">
+															<span class="stlms-tag primary-light"><?php echo esc_html( $terms_name ); ?></span>
 														</div>
 													<?php endif; ?>
 													<a href="<?php echo esc_url( $course_view_link ); ?>" aria-label="<?php the_title(); ?>">
 														<?php if ( has_post_thumbnail() ) : ?>
 															<?php the_post_thumbnail(); ?>
 														<?php else : ?>
-															<img fetchpriority="high" decoding="async" src="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/course-item-placeholder.png" alt="<?php the_title(); ?>">
+															<img fetchpriority="high" decoding="async" src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png" alt="<?php the_title(); ?>">
 														<?php endif; ?>
 													</a>
 												</div>
-												<div class="bdlms-course-item__info">
-													<div class="bdlms-course-item__meta">
+												<div class="stlms-course-item__info">
+													<div class="stlms-course-item__meta">
 														<ul>
 															<li>
 																<svg width="16" height="16">
-																	<use xlink:href="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/sprite-front.svg#clock">
+																	<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#clock">
 																	</use>
 																</svg>
 																<?php
-																$duration_str = \BD\Lms\seconds_to_decimal_hours( $total_duration );
+																$duration_str = \ST\Lms\seconds_to_decimal_hours( $total_duration );
 																if ( ! empty( $duration_str ) ) {
                                                                     // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-																	echo esc_html( sprintf( __( '%s Hours', 'bluedolphin-lms' ), $duration_str ) );
+																	echo esc_html( sprintf( __( '%s Hours', 'skilltriks-lms' ), $duration_str ) );
 																} else {
-																	echo esc_html__( 'Lifetime', 'bluedolphin-lms' );
+																	echo esc_html__( 'Lifetime', 'skilltriks-lms' );
 																}
 																?>
 															</li>
 															<li>
 																<svg width="16" height="16">
-																	<use xlink:href="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/sprite-front.svg#lessons">
+																	<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#lessons">
 																	</use>
 																</svg>
 																<?php
 																if ( $total_lessons > 1 ) {
                                                                     // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-																	echo esc_html( sprintf( __( '%s Lessons', 'bluedolphin-lms' ), $total_lessons ) );
+																	echo esc_html( sprintf( __( '%s Lessons', 'skilltriks-lms' ), $total_lessons ) );
 																} else {
                                                                     // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-																	echo esc_html( sprintf( __( '%s Lesson', 'bluedolphin-lms' ), $total_lessons ) );
+																	echo esc_html( sprintf( __( '%s Lesson', 'skilltriks-lms' ), $total_lessons ) );
 																}
 																?>
 															</li>
 															<li>
 																<svg width="16" height="16">
-																	<use xlink:href="<?php echo esc_url( BDLMS_ASSETS ); ?>/images/sprite-front.svg#quiz">
+																	<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#quiz">
 																	</use>
 																</svg>
 																<?php
 																if ( $total_quizzes > 1 ) {
                                                                     // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-																	echo esc_html( sprintf( __( '%s Quizzes', 'bluedolphin-lms' ), $total_quizzes ) );
+																	echo esc_html( sprintf( __( '%s Quizzes', 'skilltriks-lms' ), $total_quizzes ) );
 																} else {
                                                                     // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-																	echo esc_html( sprintf( __( '%s Quiz', 'bluedolphin-lms' ), $total_quizzes ) );
+																	echo esc_html( sprintf( __( '%s Quiz', 'skilltriks-lms' ), $total_quizzes ) );
 																}
 																?>
 															</li>
 														</ul>
 													</div>
-													<h2 class="bdlms-course-item__title bdlms-h5"><a href="<?php echo esc_url( $course_link ); ?>"><?php the_title(); ?></a></h2>
-													<div class="bdlms-course-item__action">
-														<div class="bdlms-course-item__by">
+													<h2 class="stlms-course-item__title stlms-h5"><a href="<?php echo esc_url( $course_link ); ?>"><?php the_title(); ?></a></h2>
+													<div class="stlms-course-item__action">
+														<div class="stlms-course-item__by">
 															<?php echo get_avatar( get_the_author_meta( 'ID' ), 30 ); ?>
 															<?php
 																echo wp_kses(
 																	sprintf(
 																		// Translators: %1$s to filter url, %2$s author name.
-																		__( '<a href="%1$s">%2$s</a>', 'bluedolphin-lms' ),
+																		__( '<a href="%1$s">%2$s</a>', 'skilltriks-lms' ),
 																		add_query_arg(
 																			array(
 																				'filter_author' => get_the_author_meta( 'ID' ),
@@ -456,16 +456,16 @@ $layout        = bdlms_addons_template();
 																);
 															?>
 														</div>
-														<div class="bdlms-btn-wrap">
+														<div class="stlms-btn-wrap">
 															<?php if ( $has_certificate && '100%' === $course_progress ) { ?>
-																<a href="javascript:;" id="download-certificate" data-course="<?php echo esc_attr( (string) $course_id ); ?>" class="bdlms-btn bdlms-btn-block secondary download-certificate"><?php esc_html_e( 'Download certificate', 'bluedolphin-lms' ); ?></a>
+																<a href="javascript:;" id="download-certificate" data-course="<?php echo esc_attr( (string) $course_id ); ?>" class="stlms-btn stlms-btn-block secondary download-certificate"><?php esc_html_e( 'Download certificate', 'skilltriks-lms' ); ?></a>
 															<?php } else { ?>
-																<div class="bdlms-progress">
-																	<div class="bdlms-progress__bar">
-																		<div class="bdlms-progress__bar-inner" style="width: <?php echo esc_attr( $course_progress ); ?>"></div>
+																<div class="stlms-progress">
+																	<div class="stlms-progress__bar">
+																		<div class="stlms-progress__bar-inner" style="width: <?php echo esc_attr( $course_progress ); ?>"></div>
 																	</div>
 																</div>
-																<a href="<?php echo esc_url( $course_link ); ?>" class="bdlms-btn bdlms-btn-block <?php echo esc_attr( $extra_class ); ?>"><?php echo esc_html( $button_text ); ?></a>
+																<a href="<?php echo esc_url( $course_link ); ?>" class="stlms-btn stlms-btn-block <?php echo esc_attr( $extra_class ); ?>"><?php echo esc_html( $button_text ); ?></a>
 															<?php } ?>
 														</div>
 													</div>
@@ -479,18 +479,18 @@ $layout        = bdlms_addons_template();
 							</ul>
 						</div>
 					<?php elseif ( ! empty( $search_keyword ) ) : ?>
-						<div class="bdlms-text-xl bdlms-p-16 bdlms-bg-gray bdlms-text-center bdlms-text-primary-dark"><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'bluedolphin-lms' ); ?> <a href="<?php echo esc_url( \BD\Lms\get_page_url( 'my_learning' ) ); ?>"><?php esc_html_e( 'Back to my learning', 'bluedolphin-lms' ); ?>.</a></div>
+						<div class="stlms-text-xl stlms-p-16 stlms-bg-gray stlms-text-center stlms-text-primary-dark"><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'skilltriks-lms' ); ?> <a href="<?php echo esc_url( \ST\Lms\get_page_url( 'my_learning' ) ); ?>"><?php esc_html_e( 'Back to my learning', 'skilltriks-lms' ); ?>.</a></div>
 					<?php else : ?>
-						<div class="bdlms-text-xl bdlms-p-16 bdlms-bg-gray bdlms-text-center bdlms-text-primary-dark"><?php esc_html_e( 'No courses were found.', 'bluedolphin-lms' ); ?></div>
+						<div class="stlms-text-xl stlms-p-16 stlms-bg-gray stlms-text-center stlms-text-primary-dark"><?php esc_html_e( 'No courses were found.', 'skilltriks-lms' ); ?></div>
 					<?php endif; ?>
 				</div>
 				<?php if ( isset( $args['pagination'] ) && 'yes' === $args['pagination'] ) : ?>
-					<div class="bdlms-course-view__footer">
-						<div class="bdlms-pagination">
+					<div class="stlms-course-view__footer">
+						<div class="stlms-pagination">
 							<?php
 							$big            = 999999999;
-							$next           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-next' ) . '"></use></svg>';
-							$prev           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( BDLMS_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-prev' ) . '"></use></svg>';
+							$next           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( STLMS_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-next' ) . '"></use></svg>';
+							$prev           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( STLMS_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-prev' ) . '"></use></svg>';
 							$paginate_links = paginate_links(
 								array(
 									'base'      => str_replace( (string) $big, '%#%', get_pagenum_link( $big ) ),

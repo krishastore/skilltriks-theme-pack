@@ -14,7 +14,7 @@
 
   &__path-elapsed {
     stroke-width: 6px;
-    stroke: var(--bdlms-border-color);
+    stroke: var(--stlms-border-color);
   }
 
   &__path-remaining {
@@ -25,7 +25,7 @@
     transition: 1s linear all;
     fill-rule: nonzero;
     stroke: currentColor;
-    color: var(--bdlms-primary-color);
+    color: var(--stlms-primary-color);
   }
 
   &__label {
@@ -38,7 +38,7 @@
     justify-content: center;
     font-size: $font_size_xs;
     font-weight: $font_weight_normal;
-    color: var(--bdlms-paragraph-color);
+    color: var(--stlms-paragraph-color);
     line-height: 1.2;
   }
 }

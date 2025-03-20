@@ -45,19 +45,19 @@ $text-align-map: (
 
 // Colors
 $color-map: (
-  "primary": var(--bdlms-primary-color),
-  "secondary": var(--bdlms-secondary-color),
-  "bg_color": var(--bdlms-bg-color),
-  "bg_color_light": var(--bdlms-bg-light-color),
-  "border_color": var(--bdlms-border-color),
-  "white": var(--bdlms-white-color),
-  "heading_color": var(--bdlms-heading-color),
-  "paragraph": var(--bdlms-paragraph-color),
-  "paragraph_light": var(--bdlms-paragraph-light-color),
-  "link_color": var(--bdlms-link-color),
-  "icon_color": var(--bdlms-icon-color),
-  "success": var(--bdlms-success-color),
-  "error": var(--bdlms-error-color),
+  "primary": var(--stlms-primary-color),
+  "secondary": var(--stlms-secondary-color),
+  "bg_color": var(--stlms-bg-color),
+  "bg_color_light": var(--stlms-bg-light-color),
+  "border_color": var(--stlms-border-color),
+  "white": var(--stlms-white-color),
+  "heading_color": var(--stlms-heading-color),
+  "paragraph": var(--stlms-paragraph-color),
+  "paragraph_light": var(--stlms-paragraph-light-color),
+  "link_color": var(--stlms-link-color),
+  "icon_color": var(--stlms-icon-color),
+  "success": var(--stlms-success-color),
+  "error": var(--stlms-error-color),
 );
 
 @each $name, $spacing in $spacing-map {
