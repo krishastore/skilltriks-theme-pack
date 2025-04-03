@@ -62,10 +62,10 @@ $layout             = stlms_addons_template();
 							<?php
 							if ( $total_lessons > 1 ) {
                                 // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-								echo esc_html( sprintf( __( '%d Lessons', 'skilltriks-lms' ), $total_lessons ) );
+								echo esc_html( sprintf( __( '%d Lessons', 'skilltriks' ), $total_lessons ) );
 							} else {
                                 // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-								echo esc_html( sprintf( __( '%d Lesson', 'skilltriks-lms' ), $total_lessons ) );
+								echo esc_html( sprintf( __( '%d Lesson', 'skilltriks' ), $total_lessons ) );
 							}
 							?>
 						</li>
@@ -77,10 +77,10 @@ $layout             = stlms_addons_template();
 							<?php
 							if ( $total_quizzes > 1 ) {
                                 // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-								echo esc_html( sprintf( __( '%d Quizzes', 'skilltriks-lms' ), $total_quizzes ) );
+								echo esc_html( sprintf( __( '%d Quizzes', 'skilltriks' ), $total_quizzes ) );
 							} else {
                                 // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-								echo esc_html( sprintf( __( '%d Quiz', 'skilltriks-lms' ), $total_quizzes ) );
+								echo esc_html( sprintf( __( '%d Quiz', 'skilltriks' ), $total_quizzes ) );
 							}
 							?>
 						</li>
@@ -92,9 +92,9 @@ $layout             = stlms_addons_template();
 							<?php
 							if ( ! empty( $total_duration_str ) ) {
                                 // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-								echo esc_html( sprintf( __( '%s Hours', 'skilltriks-lms' ), $total_duration_str ) );
+								echo esc_html( sprintf( __( '%s Hours', 'skilltriks' ), $total_duration_str ) );
 							} else {
-								esc_html_e( 'Lifetime', 'skilltriks-lms' );
+								esc_html_e( 'Lifetime', 'skilltriks' );
 							}
 							?>
 						</li>
@@ -137,7 +137,7 @@ $layout             = stlms_addons_template();
 											<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#course-book">
 											</use>
 										</svg>
-										<?php esc_html_e( 'About Course', 'skilltriks-lms' ); ?>
+										<?php esc_html_e( 'About Course', 'skilltriks' ); ?>
 									</button>
 								</li>
 							<?php endif; ?>
@@ -148,7 +148,7 @@ $layout             = stlms_addons_template();
 											<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#curriculum">
 											</use>
 										</svg>
-										<?php esc_html_e( 'Course Curriculum', 'skilltriks-lms' ); ?>
+										<?php esc_html_e( 'Course Curriculum', 'skilltriks' ); ?>
 									</button>
 								</li>
 							<?php endif; ?>
@@ -159,18 +159,18 @@ $layout             = stlms_addons_template();
 											<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#faq">
 											</use>
 										</svg>
-										<?php esc_html_e( 'FAQ', 'skilltriks-lms' ); ?>
+										<?php esc_html_e( 'FAQ', 'skilltriks' ); ?>
 									</button>
 								</li>
 							<?php endif; ?>
 						</ul>
 					</div>
 					<div class="tab-content">
-						<div class="tab-pane" id="about-course" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'about-course-tab', 'skilltriks-lms' ); ?>" tabindex="0">
+						<div class="tab-pane" id="about-course" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'about-course-tab', 'skilltriks' ); ?>" tabindex="0">
 							<div class="tab-content-wrap">
 								<?php if ( $content ) : ?>
 									<div class="stlms-course-requirement-box">
-										<h3 class="stlms-h4"><?php esc_html_e( 'About Course', 'skilltriks-lms' ); ?></h3>
+										<h3 class="stlms-h4"><?php esc_html_e( 'About Course', 'skilltriks' ); ?></h3>
 										<div class="stlms-quiz-content">
 											<?php echo wp_kses_post( wpautop( $content ) ); ?>
 										</div>
@@ -178,7 +178,7 @@ $layout             = stlms_addons_template();
 								<?php endif; ?>
 								<?php if ( $requirements ) : ?>
 									<div class="stlms-course-requirement-box">
-										<h3 class="stlms-h4"><?php esc_html_e( 'Course Requirement', 'skilltriks-lms' ); ?></h3>
+										<h3 class="stlms-h4"><?php esc_html_e( 'Course Requirement', 'skilltriks' ); ?></h3>
 										<ul class="stlms-course-requirement-check">
 											<?php foreach ( $requirements as $requirement ) : ?>
 												<li><?php echo esc_html( $requirement ); ?></li>
@@ -188,7 +188,7 @@ $layout             = stlms_addons_template();
 								<?php endif; ?>
 								<?php if ( $what_you_learn ) : ?>
 									<div class="stlms-course-requirement-box">
-										<h3 class="stlms-h4"><?php esc_html_e( 'What We Learn', 'skilltriks-lms' ); ?></h3>
+										<h3 class="stlms-h4"><?php esc_html_e( 'What We Learn', 'skilltriks' ); ?></h3>
 										<ul class="stlms-course-requirement-check">
 											<?php foreach ( $what_you_learn as $learn ) : ?>
 												<li><?php echo esc_html( $learn ); ?></li>
@@ -198,7 +198,7 @@ $layout             = stlms_addons_template();
 								<?php endif; ?>
 								<?php if ( $skills_gain ) : ?>
 									<div class="stlms-course-requirement-box">
-										<h3 class="stlms-h4"><?php esc_html_e( 'Skills you Gain', 'skilltriks-lms' ); ?></h3>
+										<h3 class="stlms-h4"><?php esc_html_e( 'Skills you Gain', 'skilltriks' ); ?></h3>
 										<ul class="stlms-course-requirement-check">
 											<?php foreach ( $skills_gain as $skill ) : ?>
 												<li><?php echo esc_html( $skill ); ?></li>
@@ -208,7 +208,7 @@ $layout             = stlms_addons_template();
 								<?php endif; ?>
 								<?php if ( $course_includes ) : ?>
 									<div class="stlms-course-requirement-box">
-										<h3 class="stlms-h4"><?php esc_html_e( 'Course Includes', 'skilltriks-lms' ); ?></h3>
+										<h3 class="stlms-h4"><?php esc_html_e( 'Course Includes', 'skilltriks' ); ?></h3>
 										<ul class="stlms-course-requirement-check">
 											<?php foreach ( $course_includes as $include ) : ?>
 												<li><?php echo esc_html( $include ); ?></li>
@@ -226,17 +226,17 @@ $layout             = stlms_addons_template();
 						$section_id       = 1;
 						$item_id          = isset( $first_item['item_id'] ) ? $first_item['item_id'] : 0;
 						$course_link      = get_the_permalink();
-						$button_text      = esc_html__( 'Enrol Now', 'skilltriks-lms' );
+						$button_text      = esc_html__( 'Enrol Now', 'skilltriks' );
 						$extra_class      = '';
 						$meta_key         = sprintf( \ST\Lms\STLMS_COURSE_STATUS, $course_id );
-						$button_text      = $is_enrol ? esc_html__( 'Start Learning', 'skilltriks-lms' ) : $button_text;
+						$button_text      = $is_enrol ? esc_html__( 'Start Learning', 'skilltriks' ) : $button_text;
 						$current_status   = get_user_meta( $current_user_id, $meta_key, true );
 						if ( ! empty( $current_status ) ) {
 							$current_status  = ! is_string( $current_status ) ? end( $current_status ) : $current_status;
 							$current_status  = explode( '_', $current_status );
 							$section_id      = (int) reset( $current_status );
 							$item_id         = (int) end( $current_status );
-							$button_text     = esc_html__( 'Continue Learning', 'skilltriks-lms' );
+							$button_text     = esc_html__( 'Continue Learning', 'skilltriks' );
 							$extra_class     = ' secondary';
 							$last_curriculum = end( $curriculums_list );
 							$items           = isset( $last_curriculum['items'] ) ? $last_curriculum['items'] : array();
@@ -248,7 +248,7 @@ $layout             = stlms_addons_template();
 								if ( $restart_course ) {
 									$section_id       = 1;
 									$item_id          = isset( $first_item['item_id'] ) ? $first_item['item_id'] : 0;
-									$button_text      = esc_html__( 'Restart Course', 'skilltriks-lms' );
+									$button_text      = esc_html__( 'Restart Course', 'skilltriks' );
 									$extra_class      = '';
 									$course_completed = true;
 								}
@@ -260,7 +260,7 @@ $layout             = stlms_addons_template();
 
 						if ( $has_curriculum ) :
 							?>
-							<div class="tab-pane" id="curriculum" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'curriculum-tab', 'skilltriks-lms' ); ?>" tabindex="0">
+							<div class="tab-pane" id="curriculum" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'curriculum-tab', 'skilltriks' ); ?>" tabindex="0">
 								<div class="stlms-accordion-course-content">
 									<div class="stlms-accordion">
 									<?php
@@ -353,12 +353,12 @@ $layout             = stlms_addons_template();
 																			$duration_type .= $duration > 1 ? 's' : '';
 																			echo esc_html( sprintf( '%d %s', (int) $duration, ucfirst( $duration_type ) ) );
 																		} else {
-																			esc_html_e( 'No duration', 'skilltriks-lms' );
+																			esc_html_e( 'No duration', 'skilltriks' );
 																		}
 																		?>
 																		</span>
-																		<?php if ( ( $in_progress && ! $course_completed ) || ( 0 === $current_section_id && 1 === $item_key && 1 === $key ) ) : ?>
-																			<a href="<?php echo esc_url( $course_link ); ?>" class="stlms-btn small"><?php esc_html_e( 'Continue', 'skilltriks-lms' ); ?></a>
+																		<?php if ( ( $in_progress && ! $course_completed ) || ( 0 === $current_section_id && 1 === $item_key && 1 === $key && $is_enrol ) ) : ?>
+																			<a href="<?php echo esc_url( $course_link ); ?>" class="stlms-btn small"><?php esc_html_e( 'Continue', 'skilltriks' ); ?></a>
 																		<?php elseif ( $inactive && ! $course_completed ) : ?>
 																			<svg class="lock-icon" width="16" height="16">
 																				<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#lock">
@@ -380,14 +380,14 @@ $layout             = stlms_addons_template();
 							</div>
 						<?php endif; ?>
 						<?php if ( $faq_questions && $faq_answers ) : ?>
-							<div class="tab-pane" id="faq" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'faq-tab', 'skilltriks-lms' ); ?>" tabindex="0">
+							<div class="tab-pane" id="faq" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'faq-tab', 'skilltriks' ); ?>" tabindex="0">
 								<div class="stlms-accordion-faq">
 									<div class="stlms-accordion">
 									<?php
 									foreach ( $faq_questions as $key => $faq_question ) :
 										if ( ! empty( $faq_answers[ $key ] ) ) :
 											?>
-											<div class="stlms-accordion-item" data-expanded="true">
+											<div class="stlms-accordion-item" <?php echo 0 === $key ? 'data-expanded="true"' : ''; ?>>
 												<div class="stlms-accordion-header">
 													<?php echo esc_html( $faq_question ); ?>
 												</div>
@@ -409,17 +409,17 @@ $layout             = stlms_addons_template();
 				</div>
 				<div class="stlms-course-right">
 					<div class="stlms-course-info-box">
-						<h3 class="title stlms-h4"><?php esc_html_e( 'Course Includes', 'skilltriks-lms' ); ?></h3>
+						<h3 class="title stlms-h4"><?php esc_html_e( 'Course Includes', 'skilltriks' ); ?></h3>
 						<ul class="stlms-course-include">
 							<li>
-								<?php esc_html_e( 'Video Total Duration', 'skilltriks-lms' ); ?>
+								<?php esc_html_e( 'Video Total Duration', 'skilltriks' ); ?>
 								<span class="stlms-tag secondary">
 									<?php
 									if ( ! empty( $total_duration_str ) ) {
                                         // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-										echo esc_html( sprintf( __( '%s Hours', 'skilltriks-lms' ), $total_duration_str ) );
+										echo esc_html( sprintf( __( '%s Hours', 'skilltriks' ), $total_duration_str ) );
 									} else {
-										esc_html_e( 'Lifetime', 'skilltriks-lms' );
+										esc_html_e( 'Lifetime', 'skilltriks' );
 									}
 									?>
 								</span>
@@ -429,7 +429,7 @@ $layout             = stlms_addons_template();
 							echo wp_kses(
 								sprintf(
 									// Translators: %d total number of lesson.
-									__( 'Lesson <span class="stlms-tag secondary">%d</span>', 'skilltriks-lms' ),
+									__( 'Lesson <span class="stlms-tag secondary">%d</span>', 'skilltriks' ),
 									$total_lessons
 								),
 								array(
@@ -445,7 +445,7 @@ $layout             = stlms_addons_template();
 							echo wp_kses(
 								sprintf(
 									// Translators: %d total number of quiz.
-									__( 'Quiz<span class="stlms-tag secondary">%d</span>', 'skilltriks-lms' ),
+									__( 'Quiz<span class="stlms-tag secondary">%d</span>', 'skilltriks' ),
 									$total_quizzes
 								),
 								array(
@@ -461,7 +461,7 @@ $layout             = stlms_addons_template();
 								echo wp_kses(
 									sprintf(
 										// Translators: %s skill level.
-										'<li>' . __( 'Skill Level<span class="stlms-tag secondary">%s</span>', 'skilltriks-lms' ) . '</li>',
+										'<li>' . __( 'Skill Level<span class="stlms-tag secondary">%s</span>', 'skilltriks' ) . '</li>',
 										$level
 									),
 									array(
@@ -474,15 +474,15 @@ $layout             = stlms_addons_template();
 							}
 							?>
 							<li>
-								<?php esc_html_e( 'Certificate Of Completion', 'skilltriks-lms' ); ?>
-								<span class="stlms-tag secondary"><?php esc_html_e( 'Yes', 'skilltriks-lms' ); ?></span>
+								<?php esc_html_e( 'Certificate Of Completion', 'skilltriks' ); ?>
+								<span class="stlms-tag secondary"><?php $has_certificate ? esc_html_e( 'Yes', 'skilltriks' ) : esc_html_e( 'No', 'skilltriks' ); ?></span>
 							</li>
 							<li>
 							<?php
 							echo wp_kses(
 								sprintf(
 									// Translators: %s passing grade.
-									__( 'Passing Grade<span class="stlms-tag secondary">%s</span>', 'skilltriks-lms' ),
+									__( 'Passing Grade<span class="stlms-tag secondary">%s</span>', 'skilltriks' ),
 									esc_html( $passing_grade )
 								),
 								array(
@@ -504,7 +504,7 @@ $layout             = stlms_addons_template();
 						</div>
 						<?php if ( $has_certificate && '100%' === $course_progress ) : ?>
 							<div class="stlms-btn-wrap">
-								<a href="javascript:;" id="download-certificate" class="stlms-btn stlms-btn-block secondary" data-course="<?php echo esc_attr( $course_id ); ?>"><?php esc_html_e( 'Download Certificate', 'skilltriks-lms' ); ?></a>
+								<a href="javascript:;" id="download-certificate" class="stlms-btn stlms-btn-block secondary" data-course="<?php echo esc_attr( $course_id ); ?>"><?php esc_html_e( 'Download Certificate', 'skilltriks' ); ?></a>
 							</div>
 						<?php endif; ?>
 					</div>
@@ -537,7 +537,7 @@ $layout             = stlms_addons_template();
 					if ( $courses->have_posts() ) :
 						?>
 						<div class="stlms-similar-course">
-							<h3 class="title stlms-h4"><?php esc_html_e( 'Similar Courses', 'skilltriks-lms' ); ?></h3>
+							<h3 class="title stlms-h4"><?php esc_html_e( 'Similar Courses', 'skilltriks' ); ?></h3>
 							<ul>
 							<?php
 							while ( $courses->have_posts() ) :

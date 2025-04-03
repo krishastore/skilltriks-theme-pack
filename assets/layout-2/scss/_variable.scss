@@ -1,32 +1,35 @@
 $theme-map: (
   --stlms-primary-color: #893bf8,
-  --stlms-secondary-color: #00cfbe,
-  --stlms-bg-color: #f6f6f7,
-  --stlms-bg-light-color: #fbfbfb,
+  --stlms-secondary-color: #66c7c4,
+  --stlms-background-color: #f6f6f7,
+  --stlms-background-light-color: #fbfbfb,
   --stlms-border-color: #ededed,
   --stlms-white-color: #ffffff,
   --stlms-heading-color: #101011,
   --stlms-paragraph-color: #5d5d73,
-  --stlms-paragraph-light-color: #85859d,
+  --stlms-paragraph-light-color: #72728c,
   --stlms-link-color: #7d3cd9,
-  --stlms-icon-color: #a9a9a9,
-  --stlms-success-color: #25af3d,
+  --stlms-icon-color: #757575,
+  --stlms-success-color: #208738,
   --stlms-error-color: #c53434,
 );
 
+// Header Height
+$header-height: 78px;
+
 // Colors
 $primary: #893bf8;
-$secondary: #00cfbe;
+$secondary: #66c7c4;
 $bg_color: #f6f6f7;
 $bg_color_light: #fbfbfb;
 $border_color: #ededed;
 $white: #ffffff;
 $heading_color: #101011;
 $paragraph: #5d5d73;
-$paragraph_light: #85859d;
+$paragraph_light: #72728c;
 $link_color: #7d3cd9;
-$icon_color: #a9a9a9;
-$success: #25af3d;
+$icon_color: #757575;
+$success: #208738;
 $error: #c53434;
 
 $prefix: "stlms";

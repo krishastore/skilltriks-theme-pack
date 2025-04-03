@@ -5,7 +5,7 @@
  * Description:     A Comprehensive Solution For Training Management. Contact Us For More Details On Training Management System.
  * Author:          KrishaWeb
  * Author URI:      https://www.skilltriks.com/
- * Text Domain:     skilltriks-lms
+ * Text Domain:     skilltriks
  * License:         GPL v2 or later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
  * Domain Path:     /languages

@@ -1,7 +1,11 @@
 .stlms-inner-banner {
   padding: 30px 0;
-  background: var(--stlms-bg-color);
+  background: var(--stlms-background-color);
   position: relative;
+  height: 414px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &::after,
   &::before {
@@ -12,9 +16,8 @@
     top: 0;
     background-repeat: no-repeat;
     background-size: contain;
-
     @include breakpoint(max, $sm) {
-      content: none;
+      display: none;
     }
   }
 
@@ -53,7 +56,8 @@
     .stlms-banner-media {
       img {
         width: 100%;
-        height: 100%;
+        height: auto;
+        max-height: 100%;
       }
     }
   }
@@ -61,7 +65,7 @@
 
 .stlms-course-detail-banner {
   padding-top: 60px;
-  background-color: var(--stlms-bg-color);
+  background-color: var(--stlms-background-color);
   position: relative;
 
   &::after,
@@ -122,15 +126,26 @@
           display: flex;
           align-items: center;
           gap: 3px;
+
+          svg {
+            color: var(--stlms-icon-color);
+          }
         }
       }
     }
   }
 
   .stlms-banner-media {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
     img {
-      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
       height: 100%;
+      width: 100%;
     }
   }
 }

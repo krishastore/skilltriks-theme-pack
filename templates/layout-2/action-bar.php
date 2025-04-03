@@ -36,7 +36,7 @@ $result_page_url = sprintf( '%s/%s/%d/', untrailingslashit( home_url() ), $cours
 	<div class="stlms-lesson-view__breadcrumb">
 		<ul>
 			<li>
-				<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'courses' ) ); ?>" aria-label="<?php esc_attr_e( 'Course page', 'skilltriks-lms' ); ?>">
+				<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'courses' ) ); ?>" aria-label="<?php esc_attr_e( 'Course page', 'skilltriks' ); ?>">
 					<svg class="icon" width="16" height="16">
 						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#home"></use>
 					</svg>
@@ -45,19 +45,24 @@ $result_page_url = sprintf( '%s/%s/%d/', untrailingslashit( home_url() ), $cours
 			<li><?php echo esc_html( get_the_title( $args['current_item'] ) ); ?></li>
 		</ul>
 	</div>
-	<div class="stlms-lesson-view__pagination" style="display:none;">
+	<div class="stlms-lesson-view__pagination">
+		<?php if ( $prev_key >= 0 && isset( $curriculums_keys[ $prev_key ] ) ) : ?>
+			<a href="<?php echo esc_url( \ST\Lms\get_curriculum_link( $curriculums_keys[ $prev_key ] ) ); ?>" class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-prev-btn">
+				<svg class="icon" width="11" height="19">
+					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#nav-left"></use>
+				</svg>
+			</a>
+		<?php endif; ?>
 		<?php if ( $next_key >= 1 && isset( $curriculums_keys[ $next_key ] ) ) : ?>
 			<a href="<?php echo esc_url( \ST\Lms\get_curriculum_link( $curriculums_keys[ $next_key ] ) ); ?>" class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-next-btn">
-				<?php esc_html_e( 'Next', 'skilltriks-lms' ); ?>
-				<svg class="icon" width="16" height="16">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#arrow-right"></use>
+				<svg class="icon" width="11" height="19">
+					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#nav-right"></use>
 				</svg>
 			</a>
 		<?php else : ?>
 			<a href="<?php echo esc_url( $result_page_url ); ?>" class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-next-btn<?php echo 'video' === $curriculum_type ? ' hidden' : ''; ?>">
-				<?php esc_html_e( 'Next', 'skilltriks-lms' ); ?>
 				<svg class="icon" width="16" height="16">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#arrow-right"></use>
+					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#nav-right"></use>
 				</svg>
 			</a>
 		<?php endif; ?>

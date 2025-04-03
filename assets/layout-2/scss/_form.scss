@@ -22,7 +22,7 @@
     padding: 0 $spacing_20;
     font-size: $font_size_sm;
     line-height: 20px;
-    color: var(--stlms-paragraph-color);
+    color: var(--stlms-paragraph-light-color);
     border: 1px solid var(--stlms-border-color);
     border-radius: 4px;
     background-color: var(--stlms-white-color);
@@ -162,7 +162,7 @@ input[type="radio"].stlms-check {
   width: 16px;
   height: 16px;
   border-radius: 4px;
-  border: 1px solid var(--stlms-border-color);
+  border: 2px solid var(--stlms-icon-color);
   background-color: var(--stlms-white-color);
   display: grid;
   place-items: center;
@@ -266,5 +266,37 @@ input[type="radio"].stlms-check {
     justify-content: center;
     cursor: pointer;
     padding: 0 !important;
+  }
+
+  &.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    background: var(--stlms-white-color);
+    border: 1px solid var(--stlms-border-color);
+    border-radius: 4px;
+    overflow: hidden;
+
+    .stlms-form-control {
+      position: relative;
+      flex: 1 1 auto;
+      width: 1%;
+      min-width: 0;
+      border: 0;
+      padding-right: 0;
+    }
+
+    button {
+      width: 48px;
+      display: grid;
+      place-items: center;
+      background: white;
+      border: 0;
+      color: var(--stlms-icon-color);
+      z-index: 2;
+      cursor: pointer;
+    }
   }
 }
