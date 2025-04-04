@@ -20,6 +20,6 @@ if ( ! empty( $args['curriculum']['media']['file_id'] ) ) {
 ?>
 <div class="stlms-lesson-view__body">
 	<div class="stlms-lesson-video-box stlms-pdf-view">
-		<iframe src="<?php echo esc_url( $file_url ); ?>" frameborder="0" title="<?php esc_html_e( 'Lesson file', 'skilltriks-lms' ); ?>"></iframe>
+		<iframe src="<?php echo esc_url( $file_url ); ?>" frameborder="0" title="<?php esc_html_e( 'Lesson file', 'skilltriks' ); ?>"></iframe>
 	</div>
 </div>

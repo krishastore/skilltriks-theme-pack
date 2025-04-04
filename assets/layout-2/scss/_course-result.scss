@@ -3,6 +3,7 @@
   place-items: center;
   width: 100%;
   padding: 60px 0;
+  background-color: var(--stlms-background-color);
 
   @include breakpoint(max, $sm) {
     padding: 0;
@@ -104,7 +105,7 @@
         padding: 5px 10px;
         border-radius: 4px;
         line-height: 1;
-        height: 25px;
+        // height: 25px;
       }
       a {
         display: inline-block;
@@ -119,7 +120,7 @@
       flex-wrap: wrap;
       row-gap: 8px;
       justify-content: center;
-      
+
       span {
         display: inline-block;
         font-size: $font_size_xxs;
@@ -128,10 +129,17 @@
         background: var(--stlms-primary-color);
         color: var(--stlms-white-color);
         padding: 6px 12px;
-        height: 25px;
+        // height: 25px;
         line-height: 1;
         border-radius: 4px;
       }
     }
   }
+}
+
+.stlms-quiz-complete .certificate-pass-icon {
+  color: var(--stlms-success-color);
+}
+.stlms-quiz-complete .certificate-fail-icon {
+  color: var(--stlms-icon-color);
 }
