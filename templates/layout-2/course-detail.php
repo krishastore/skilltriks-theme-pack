@@ -35,6 +35,7 @@ $layout             = stlms_addons_template();
 	$lessons            = \ST\Lms\get_curriculums( $curriculums_list, \ST\Lms\STLMS_LESSON_CPT );
 	$total_lessons      = count( $lessons );
 	$quizzes            = \ST\Lms\get_curriculums( $curriculums_list, \ST\Lms\STLMS_QUIZ_CPT );
+	$last_quiz          = end( $quizzes );
 	$total_quizzes      = count( $quizzes );
 	$total_duration     = \ST\Lms\count_duration( array_merge( $lessons, $quizzes ) );
 	$total_duration_str = \ST\Lms\seconds_to_decimal_hours( $total_duration );
@@ -42,6 +43,9 @@ $layout             = stlms_addons_template();
 	$is_enrol           = ! empty( $enrol_courses ) && in_array( get_the_ID(), $enrol_courses, true );
 	$course_certificate = get_post_meta( $course_id, \ST\Lms\META_KEY_COURSE_SIGNATURE, true );
 	$has_certificate    = isset( $course_certificate['certificate'] ) ? $course_certificate['certificate'] : 0;
+	if ( 2 === $assessment['evaluation'] ) {
+		$passing_grade = isset( $last_quiz['settings']['passing_marks'] ) ? $last_quiz['settings']['passing_marks'] : '0';
+	}
 	?>
 	<div class="stlms-course-detail-banner">
 		<div class="stlms-container">
@@ -479,10 +483,12 @@ $layout             = stlms_addons_template();
 							</li>
 							<li>
 							<?php
+							$passing_text = 2 === $assessment['evaluation'] ? 'Marks' : 'Grade';
 							echo wp_kses(
 								sprintf(
 									// Translators: %s passing grade.
-									__( 'Passing Grade<span class="stlms-tag secondary">%s</span>', 'skilltriks' ),
+									__( 'Passing %1$s<span class="stlms-tag secondary">%2$s</span>', 'skilltriks' ),
+									esc_html( $passing_text ),
 									esc_html( $passing_grade )
 								),
 								array(

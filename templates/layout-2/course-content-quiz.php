@@ -140,7 +140,7 @@ $layout          = stlms_addons_template();
 								<div class="stlms-quiz-input-ans">
 									<div class="stlms-form-group">
 										<label class="stlms-form-label"><?php esc_html_e( 'Your Answer', 'skilltriks' ); ?></label>
-										<textarea name="stlms_written_answer[<?php echo esc_attr( (string) $question ); ?>]" class="stlms-form-control" placeholder="<?php esc_attr_e( 'Enter Your thoughts here...', 'skilltriks' ); ?>"></textarea>	
+										<input type="text" name="stlms_written_answer[<?php echo esc_attr( (string) $question ); ?>]" class="stlms-form-control" placeholder="<?php esc_attr_e( 'Enter Your thoughts here...', 'skilltriks' ); ?>">
 									</div>
 								</div>
 							<?php endif; ?>
