@@ -8,6 +8,7 @@
   background-color: var(--stlms-background-color);
 
   @include transition(all 0.3s ease-in-out);
+
   @include breakpoint(max, $lg) {
     flex-wrap: wrap;
     flex-direction: column-reverse;
@@ -39,7 +40,7 @@
 
   &__header {
     display: flex;
-    height: 60px;
+    // height: 60px;
     justify-content: space-between;
     align-items: center;
     position: relative;
@@ -51,21 +52,25 @@
 
     @include breakpoint(max, $lg) {
       padding-left: 32px;
-      padding-right: 80px;
+      padding-right: 32px;
     }
+
     @include breakpoint(max, $sm) {
       padding: 8px 16px;
       gap: 12px;
     }
+
     @include breakpoint(max, 500) {
-      flex-wrap: wrap;
+      // flex-wrap: wrap;
       height: 100%;
     }
   }
+
   &__breadcrumb {
     @include breakpoint(max, $sm) {
       width: 100%;
     }
+
     ul {
       display: flex;
       align-items: center;
@@ -233,9 +238,11 @@
     cursor: pointer;
 
     @include transition(all 0.3s ease-in-out);
+
     svg {
       color: var(--stlms-icon-color);
     }
+
     &:hover {
       background-color: var(--stlms-border-color);
     }
@@ -283,12 +290,14 @@
   .stlms-sidebar-toggle {
     display: none;
     margin-bottom: 15px;
+
     @include breakpoint(max, $lg) {
       display: inline-flex;
     }
   }
 
   @include transition(all 0.3s ease-in-out);
+
   @include breakpoint(max, $lg) {
     width: 100%;
     padding: 0;
@@ -306,6 +315,7 @@
     font-weight: $font_weight_medium;
     color: var(--stlms-heading-color);
     margin-bottom: 4px;
+
     .icon-cross {
       margin-left: auto;
       color: var(--stlms-icon-color);
@@ -316,9 +326,11 @@
     height: 100%;
     overflow: auto;
     display: block;
+
     @include breakpoint(min, 1282) {
       display: block !important;
     }
+
     @include breakpoint(max, $lg) {
       display: none;
     }
@@ -337,6 +349,7 @@
     .stlms-accordion-collapse {
       background-color: var(--stlms-white-color);
       padding: 0;
+
       .stlms-accordion-note {
         padding: 15px;
         color: var(--stlms-paragraph-light-color);
@@ -366,10 +379,12 @@
 
       .info {
         display: inline-flex;
+
         span {
           display: flex;
           align-items: center;
           padding-right: 4px;
+
           & + span {
             &:before {
               content: "";
@@ -389,9 +404,11 @@
   > ul {
     > li {
       border-bottom: 1px solid var(--stlms-border-color);
+
       &:last-child {
         border-bottom: 0;
       }
+
       label,
       .course-progress {
         display: flex;
@@ -406,9 +423,11 @@
           color: var(--stlms-paragraph-color);
           background-color: var(--stlms-border-color);
         }
+
         &.completed {
           color: var(--stlms-paragraph-light-color);
         }
+
         .stlms-check {
           flex-shrink: 0;
           margin-top: 4px;
@@ -418,9 +437,11 @@
         &:hover {
           color: var(--stlms-paragraph-color);
           background-color: var(--stlms-border-color);
+
           .class-name {
             color: var(--stlms-paragraph-color);
           }
+
           .class-type {
             color: var(--stlms-paragraph-color);
           }
@@ -449,9 +470,11 @@
             font-size: $font_size_base;
             font-weight: $font_weight_medium;
             gap: 4px;
+
             @include breakpoint(max, $md) {
               font-size: $font_size_sm;
             }
+
             span {
               flex-shrink: 0;
               // width: 32px;
@@ -463,6 +486,7 @@
             display: flex;
             font-size: $font_size_sm;
             gap: 10px;
+
             svg {
               flex-shrink: 0;
               width: 16px;
@@ -471,6 +495,7 @@
 
           .class-time {
             color: var(--stlms-paragraph-light-color);
+
             svg {
               color: var(--stlms-paragraph-color);
             }
@@ -500,6 +525,7 @@
 
 .stlms-quiz-start {
   text-align: center;
+
   h3 {
     padding-bottom: 10px;
   }
@@ -564,6 +590,7 @@
       &.valid {
         color: var(--stlms-success-color);
       }
+
       &.invalid {
         color: var(--stlms-error-color);
       }
@@ -583,10 +610,12 @@
       }
     }
   }
+
   .stlms-quiz-option-list {
     max-width: 600px;
     margin: 0 auto;
     padding-top: 20px;
+
     > ul {
       display: flex;
       flex-wrap: wrap;
@@ -594,6 +623,7 @@
       @include breakpoint(max, $sm) {
         row-gap: 15px;
       }
+
       > li {
         width: 50%;
 
@@ -610,14 +640,17 @@
           border-bottom: 0;
           border-right: 0;
         }
+
         &:nth-child(2) label {
           border-top-right-radius: 4px;
           border-bottom: 0;
         }
+
         &:nth-child(3) label {
           border-bottom-left-radius: 4px;
           border-right: 0;
         }
+
         &:nth-child(4) label {
           border-bottom-right-radius: 4px;
         }
@@ -628,11 +661,13 @@
           border: 1px solid var(--stlms-border-color);
           border-right: 0;
         }
+
         &:nth-child(2) label.boolean {
           border-top-right-radius: 4px;
           border-bottom-right-radius: 4px;
           border: 1px solid var(--stlms-border-color);
         }
+
         label {
           display: flex;
           align-items: center;
@@ -644,17 +679,22 @@
           color: var(--stlms-paragraph-light-color);
           height: 100%;
           cursor: pointer;
+
           .stlms-check {
             flex-shrink: 0;
           }
+
           &:has(.stlms-check:checked) {
             color: var(--stlms-primary-color);
           }
+
           &:has(.stlms-check:disabled) {
             cursor: not-allowed;
           }
+
           &:has(.stlms-check.invalid) {
             color: var(--stlms-error-color);
+
             input[type="checkbox"].stlms-check {
               border-color: var(--stlms-error-color);
 
@@ -663,6 +703,7 @@
                 border-color: var(--stlms-error-color);
               }
             }
+
             input[type="radio"].stlms-check {
               border-color: var(--stlms-error-color);
 
@@ -672,12 +713,15 @@
               }
             }
           }
+
           &:has(.stlms-check.valid) {
             color: var(--stlms-success-color);
+
             input[type="checkbox"].stlms-check:checked {
               background-color: var(--stlms-success-color);
               border-color: var(--stlms-success-color);
             }
+
             input[type="radio"].stlms-check:checked {
               background-color: var(--stlms-success-color);
               border-color: var(--stlms-success-color);
@@ -699,12 +743,15 @@
     flex-direction: column;
     justify-content: center;
   }
+
   &.sw-theme-basic {
     border: 0;
+
     > .nav {
       display: none;
     }
   }
+
   .toolbar {
     &:empty {
       display: none;
@@ -729,39 +776,48 @@
   @include breakpoint(max, $sm) {
     margin-top: 20px;
   }
+
   &-icon {
     width: 30px;
     flex-shrink: 0;
   }
+
   &-text {
     width: 100%;
     font-size: $font_size_sm;
     line-height: 1.5;
     color: var(--stlms-paragraph-color);
+
     p {
       margin: 0;
     }
   }
+
   &-title {
     font-size: $font_size_lg;
     font-weight: $font_weight_bold;
     padding-bottom: 5px;
     color: var(--stlms-heading-color);
   }
+
   &.stlms-alert-error {
     background-color: var(--stlms-error-color);
     border-color: var(--stlms-error-color);
+
     .stlms-alert-icon {
       color: var(--stlms-error-color);
     }
   }
+
   &.stlms-alert-success {
     background-color: var(--stlms-success-color);
     border-color: var(--stlms-success-color);
+
     .stlms-alert-icon {
       color: var(--stlms-success-color);
     }
   }
+
   &::before {
     content: "";
     position: absolute;
@@ -783,9 +839,11 @@
   line-height: 1.5;
   color: var(--stlms-paragraph-color);
   background-color: var(--stlms-white-color);
+
   @include breakpoint(max, $sm) {
     padding: 15px;
   }
+
   h1,
   h2,
   h3,
@@ -795,31 +853,38 @@
     margin: 0;
     padding: 8px 0 16px;
   }
+
   a {
     color: var(--theme-link-color);
     text-decoration: none;
   }
+
   p {
     margin: 0;
     padding-bottom: 16px;
   }
+
   strong {
     color: var(--stlms-paragraph-color);
   }
+
   blockquote {
     margin: 10px 0;
     padding: 20px;
     border: 1px solid var(--stlms-border-color);
   }
+
   ul,
   ol {
     margin: 0;
     padding: 0 0 16px 0;
+
     li {
       padding-left: 15px;
       position: relative;
     }
   }
+
   ul {
     li {
       &:before {
@@ -835,10 +900,13 @@
       }
     }
   }
+
   ol {
     counter-reset: my-awesome-counter;
+
     li {
       counter-increment: my-awesome-counter;
+
       &:before {
         content: counter(my-awesome-counter) ". ";
         position: absolute;
@@ -848,12 +916,14 @@
       }
     }
   }
+
   img {
     display: block;
 
     &.aligncenter {
       margin: 0 auto;
     }
+
     &.alignright {
       margin-left: auto;
     }
@@ -865,14 +935,17 @@
   width: 100%;
   margin: 0 auto;
   text-align: center;
+
   h3 {
     padding: 20px 0 15px;
   }
+
   > p {
     font-size: $font_size_base;
     color: var(--stlms-paragraph-color);
     margin: 0;
   }
+
   .stlms-quiz-result-list {
     display: flex;
     margin-top: 40px;
@@ -891,6 +964,10 @@
       gap: 10px;
       line-height: 1.5;
 
+      @include breakpoint(max, $sm) {
+        padding: 10px;
+      }
+
       &:first-child {
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
@@ -901,15 +978,22 @@
         border-top-right-radius: 4px;
         border-bottom-right-radius: 4px;
       }
+
       p {
         margin: 0;
         color: var(--stlms-heading-color);
         font-weight: $font_weight_bold;
         line-height: 1.2;
+
+        @include breakpoint(max, $sm) {
+          font-size: 16px;
+        }
       }
+
       span {
         color: var(--stlms-paragraph-color);
       }
+
       span.stlms-p-large {
         color: var(--stlms-heading-color);
       }
