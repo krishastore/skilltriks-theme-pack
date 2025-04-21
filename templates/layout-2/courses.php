@@ -45,7 +45,7 @@ if ( in_array( $_orderby, array( 'asc', 'desc' ), true ) ) {
 } elseif ( 'newest' === $_orderby ) {
 	$course_args['order'] = 'DESC';
 } else {
-	$course_args['orderby'] = 'menu_order';
+	$course_args['orderby'] = 'post_date';
 }
 if ( ! empty( $category ) ) {
 	// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
@@ -73,16 +73,16 @@ $layout      = stlms_addons_template();
 ?>
 
 <div class="stlms-wrap alignfull">
-	<div class="stlms-inner-banner">
+	<div class="stlms-inner-banner" style="background-image: url(<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/banner-image.webp);">
+		<div class="stlms-inner-banner-overlay"></div>
 		<div class="stlms-container">
-			<div class="stlms-banner-content">
-				<div class="stlms-banner-info">
-					<h1 class="stlms-h1">
-						<?php esc_html_e( 'All Courses', 'skilltriks' ); ?>
-					</h1>
+			<div class="stlms-inner-banner-content">
+				<div class="stlms-banner-heading">
+					<h1><?php esc_html_e( 'Find the right course for you', 'skilltriks' ); ?></h1>
+					<p><?php esc_html_e( 'Find the right course tailored to your role and career growth. Our LMS curates industry-specific training, helping you upskill efficiently. Learn at your own pace and stay ahead!', 'skilltriks' ); ?></p>
 				</div>
-				<div class="stlms-banner-media">
-					<img fetchpriority="high" decoding="async" src="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/banner-image.webp" alt="" width="585" height="355">
+				<div class="stlms-banner-cta">
+					<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'my_learning' ) ); ?>" class="stlms-btn"><?php esc_html_e( 'Show My Learning', 'skilltriks' ); ?></a>
 				</div>
 			</div>
 		</div>

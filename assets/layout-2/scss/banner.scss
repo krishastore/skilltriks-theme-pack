@@ -1,63 +1,138 @@
-.stlms-inner-banner {
-  padding: 30px 0;
-  background: var(--stlms-background-color);
-  position: relative;
-  height: 414px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// .stlms-inner-banner {
+//   padding: 30px 0;
+//   background: var(--stlms-background-color);
+//   position: relative;
+//   height: 414px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
 
-  &::after,
-  &::before {
+//   &::after,
+//   &::before {
+//     position: absolute;
+//     content: "";
+//     width: 100%;
+//     height: 100%;
+//     top: 0;
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     @include breakpoint(max, $sm) {
+//       display: none;
+//     }
+//   }
+
+//   &::after {
+//     background-image: url("../images/swirl-right.png");
+//     background-position: right;
+//     right: 0;
+//   }
+
+//   &::before {
+//     background-image: url("../images/swirl-left.png");
+//     background-position: left;
+//     left: 0;
+//   }
+
+//   .stlms-banner-content {
+//     display: flex;
+//     flex-wrap: wrap;
+//     align-items: center;
+//     position: relative;
+//     row-gap: 20px;
+//     z-index: 1;
+//     margin: 0 -15px;
+
+//     .stlms-banner-info,
+//     .stlms-banner-media {
+//       width: 50%;
+//       padding: 0 15px;
+
+//       @include breakpoint(max, $sm) {
+//         width: 100%;
+//         text-align: center;
+//       }
+//     }
+
+//     .stlms-banner-media {
+//       img {
+//         width: 100%;
+//         height: auto;
+//         max-height: 100%;
+//       }
+//     }
+//   }
+// }
+
+// stlms-inner-banner
+.stlms-inner-banner {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .stlms-inner-banner-overlay {
     position: absolute;
-    content: "";
     width: 100%;
     height: 100%;
-    top: 0;
-    background-repeat: no-repeat;
-    background-size: contain;
-    @include breakpoint(max, $sm) {
-      display: none;
-    }
-  }
-
-  &::after {
-    background-image: url("../images/swirl-right.png");
-    background-position: right;
-    right: 0;
-  }
-
-  &::before {
-    background-image: url("../images/swirl-left.png");
-    background-position: left;
     left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
-  .stlms-banner-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+  .stlms-inner-banner-content {
+    max-width: 688px;
+    width: 100%;
+    padding: 115px 0;
     position: relative;
-    row-gap: 20px;
-    z-index: 1;
-    margin: 0 -15px;
+    z-index: 2;
 
-    .stlms-banner-info,
-    .stlms-banner-media {
-      width: 50%;
-      padding: 0 15px;
+    @include breakpoint(max, $sm) {
+      padding: 60px 0;
+    }
 
-      @include breakpoint(max, $sm) {
-        width: 100%;
-        text-align: center;
+    .stlms-banner-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      h1 {
+        font-weight: 700;
+        font-size: 42px;
+        line-height: 1.2;
+        color: $white;
+
+        @include breakpoint(max, $sm) {
+          font-size: 32px;
+        }
+      }
+      p {
+        font-size: 18px;
+        line-height: 26px;
+        color: #e6e9f0;
       }
     }
+    .stlms-banner-cta {
+      padding-top: 32px;
+    }
+  }
+}
 
-    .stlms-banner-media {
-      img {
-        width: 100%;
-        height: auto;
-        max-height: 100%;
+.stlms-title-banner {
+  padding: 50px 0;
+  background-color: #f6f6f7;
+
+  @include breakpoint(max, $sm) {
+    padding: 30px 0;
+  }
+
+  .stlms-page-title {
+    h1 {
+      font-weight: 700;
+      font-size: 42px;
+      line-height: 54px;
+
+      @include breakpoint(max, $sm) {
+        font-size: 32px;
       }
     }
   }

@@ -401,7 +401,7 @@ body {
 }
 
 .stlms-header-wrap {
-  height: 80px;
+  // height: 80px;
   position: relative;
 
   header {
@@ -420,3 +420,4 @@ body {
 @import "./course-detail";
 @import "./_statistics";
 @import "./banner.scss";
+@import "./landing-page.scss";

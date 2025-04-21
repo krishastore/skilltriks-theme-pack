@@ -72,21 +72,13 @@ $layout        = stlms_addons_template();
 ?>
 
 <div class="stlms-wrap alignfull">
-	<div class="stlms-inner-banner">
+	<div class="stlms-title-banner">
 		<div class="stlms-container">
-			<div class="stlms-banner-content">
-				<div class="stlms-banner-info">
-					<h1 class="title stlms-h1">
-						<?php esc_html_e( 'My Learnings', 'skilltriks' ); ?>
-					</h1>
-				</div>
-				<div class="stlms-banner-media">
-					<img src="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/banner-image2.png" alt="">
-				</div>
+			<div class="stlms-page-title">
+				<?php the_title( '<h1>', '</h1>' ); ?>
 			</div>
 		</div>
 	</div>
-
 	<div class="stlms-container">
 		<div class="stlms-course-view__header">
 			<?php
