@@ -1,0 +1,28 @@
+.stlms-assigned-course {
+  &__header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--stlms-border-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  &__btn {
+    padding: 15px 40px;
+    color: var(--stlms-paragraph-color);
+    text-decoration: none;
+    border: 1px solid var(--stlms-border-color);
+    border-bottom: 0;
+    @include transition(all 0.3s ease-in-out);
+
+    &.active {
+      font-weight: 700;
+      border-bottom: 3px solid var(--stlms-primary-color);
+    }
+
+    &:hover {
+      background-color: var(--stlms-primary-color);
+      color: var(--stlms-white-color);
+      font-weight: 700;
+    }
+  }
+}

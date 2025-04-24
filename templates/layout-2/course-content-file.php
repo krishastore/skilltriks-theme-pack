@@ -2,7 +2,7 @@
 /**
  * Template: Course Curriculum - File.
  *
- * @package BD\Lms
+ * @package ST\Lms
  *
  * phpcs:disable WordPress.Security.NonceVerification.Recommended
  */
@@ -18,8 +18,8 @@ if ( ! empty( $args['curriculum']['media']['file_id'] ) ) {
 	$file_url = $args['curriculum']['media']['file_url'];
 }
 ?>
-<div class="bdlms-lesson-view__body">
-	<div class="bdlms-lesson-video-box bdlms-pdf-view">
-		<iframe src="<?php echo esc_url( $file_url ); ?>" frameborder="0" title="<?php esc_html_e( 'Lesson file', 'bluedolphin-lms' ); ?>"></iframe>
+<div class="stlms-lesson-view__body">
+	<div class="stlms-lesson-video-box stlms-pdf-view">
+		<iframe src="<?php echo esc_url( $file_url ); ?>" frameborder="0" title="<?php esc_html_e( 'Lesson file', 'skilltriks' ); ?>"></iframe>
 	</div>
 </div>

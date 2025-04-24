@@ -1,22 +1,22 @@
 jQuery(document).ready(function ($) {
 
   // List-Grid View Toggle
-  $(document).on("click", ".bdlms-list-view, .bdlms-grid-view", function () {
-    const isListView = $(this).hasClass("bdlms-list-view");
+  $(document).on("click", ".stlms-list-view, .stlms-grid-view", function () {
+    const isListView = $(this).hasClass("stlms-list-view");
     
-    $(".bdlms-course-list").toggleClass("list-view", isListView);
-    $(".bdlms-list-view, .bdlms-grid-view").removeClass("active");
+    $(".stlms-course-list").toggleClass("list-view", isListView);
+    $(".stlms-list-view, .stlms-grid-view").removeClass("active");
     $(this).addClass("active");
   });  
 
   // Lesson Sidebar Toggle
-  $(".bdlms-lesson-toggle").on("click", function () {
-    $(".bdlms-lesson-view").toggleClass("active");
+  $(".stlms-lesson-toggle").on("click", function () {
+    $(".stlms-lesson-view").toggleClass("active");
   });
 
   // Sidebar - Course Content Toggle
-  $(".bdlms-sidebar-toggle").on("click", function () {
-    $(this).next(".bdlms-lesson-accordion").slideToggle();
+  $(".stlms-sidebar-toggle").on("click", function () {
+    $(this).next(".stlms-lesson-accordion").slideToggle();
   });
 });
 

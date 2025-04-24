@@ -2,7 +2,7 @@
 /**
  * Template: Userinfo shortcode.
  *
- * @package BD\Lms
+ * @package ST\Lms
  *
  * phpcs:disable WordPress.Security.NonceVerification.Recommended
  */
@@ -13,27 +13,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( is_user_logged_in() ) :
 	$userinfo   = wp_get_current_user();
-	$logout_url = wp_logout_url( \BD\Lms\get_page_url( 'login' ) );
+	$logout_url = wp_logout_url( \ST\Lms\get_page_url( 'login' ) );
 	?>
-	<div class="bdlms-filter-item">
-		<div class="bdlms-user">
-			<div class="bdlms-user-photo">
-				<div class="bdlms-photo">
+	<div class="stlms-filter-item">
+		<div class="stlms-user">
+			<div class="stlms-user-photo">
+				<div class="stlms-photo">
 					<?php echo get_avatar( $userinfo->ID ); ?>
 					<span class="notification-badge"></span>
 				</div>
 			</div>
-			<div class="bdlms-user-info">
-				<span class="bdlms-user-name"><?php echo esc_html( $userinfo->display_name ); ?></span>
-				<a href="<?php echo esc_url( $logout_url ); ?>" class="bdlms-logout bdlms-link-text"><?php esc_html_e( 'Logout', 'bluedolphin-lms' ); ?></a>
+			<div class="stlms-user-info">
+				<span class="stlms-user-name"><?php echo esc_html( $userinfo->display_name ); ?></span>
+				<a href="<?php echo esc_url( $logout_url ); ?>" class="stlms-logout stlms-link-text"><?php esc_html_e( 'Logout', 'skilltriks' ); ?></a>
 			</div>	
 		</div>
-		<div class="bdlms-user-dd__menu" style="display: block;">
-			<a href="<?php echo esc_url( \BD\Lms\get_page_url( 'my_learning' ) ); ?>" class="bdlms-user-dd__link bdlms-p-small active"><?php esc_html_e( 'My Learnings', 'bluedolphin-lms' ); ?></a>
-			<a href="#" class="bdlms-user-dd__link bdlms-p-small"><?php esc_html_e( 'Notifications', 'bluedolphin-lms' ); ?> <span class="bdlms-noti-count">12</span></a>
-			<a href="#" class="bdlms-user-dd__link bdlms-p-small"><?php esc_html_e( 'Account Settings', 'bluedolphin-lms' ); ?></a>
+		<div class="stlms-user-dd__menu" style="display: block;">
+			<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'my_learning' ) ); ?>" class="stlms-user-dd__link stlms-p-small<?php echo \ST\Lms\get_page_url( 'my_learning' ) === get_permalink() ? ' active' : ''; ?>"><?php esc_html_e( 'My Learnings', 'skilltriks' ); ?></a>
+			<a href="#" class="stlms-user-dd__link stlms-p-small" style="display: none;"><?php esc_html_e( 'Notifications', 'skilltriks' ); ?> <span class="stlms-noti-count">12</span></a>
+			<a href="#" class="stlms-user-dd__link stlms-p-small" style="display: none;"><?php esc_html_e( 'Account Settings', 'skilltriks' ); ?></a>
 		</div>
 	</div>
 <?php else : ?>
-	<a href="<?php echo esc_url( \BD\Lms\get_page_url( 'login' ) ); ?>" class="bdlms-btn bdlms-btn-block"><?php esc_html_e( 'Login', 'bluedolphin-lms' ); ?></a>
+	<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'login' ) ); ?>" class="stlms-btn stlms-btn-block"><?php esc_html_e( 'Login', 'skilltriks' ); ?></a>
 <?php endif; ?>

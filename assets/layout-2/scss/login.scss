@@ -1,22 +1,22 @@
-.bdlms-login-wrap {
+.stlms-login-wrap {
   padding: $spacing_20;
   min-height: 90vh;
   display: grid;
   place-items: center;
-  background-color: var(--bdlms-bg-light-color);
+  background-color: var(--stlms-background-light-color);
 
   @include breakpoint(max, $sm) {
     padding: $spacing_16;
   }
 }
 
-.bdlms-login {
-  padding: $spacing_32 $spacing_48 $spacing_48 $spacing_48;
+.stlms-login {
+  padding: 30px 50px 50px 50px;
   border-radius: 5px;
-  background: var(--bdlms-white-color);
+  background: var(--stlms-white-color);
   box-shadow: $shadow;
   width: 100%;
-  max-width: 790px;
+  max-width: 450px;
 
   &__header {
     text-align: center;
@@ -37,4 +37,26 @@
   @include breakpoint(max, $sm) {
     padding: $spacing_20;
   }
+}
+
+.stlms-login-with {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-top: 25px;
+
+  .stlms-hr {
+    height: 1px;
+    background-color: var(--stlms-border-color);
+    width: 100%;
+  }
+
+  .stlms-or-text {
+    flex-shrink: 0;
+  }
+}
+
+.stlms-login-with-cta {
+  padding-top: 15px;
+  text-align: center;
 }

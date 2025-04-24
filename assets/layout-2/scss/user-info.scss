@@ -1,4 +1,4 @@
-.bdlms-user {
+.stlms-user {
   display: flex;
   gap: 16px;
 
@@ -14,7 +14,7 @@
       border: 1px solid rgba(#293138, 0.16);
     }
 
-    .bdlms-photo {
+    .stlms-photo {
       width: 48px;
       height: 48px;
       position: relative;
@@ -26,9 +26,9 @@
         bottom: -2px;
         width: 12px;
         height: 12px;
-        background: var(--bdlms-primary-color);
+        background: var(--stlms-primary-color);
         border-radius: 4px;
-        border: 2px solid var(--bdlms-white-color);
+        border: 2px solid var(--stlms-white-color);
       }
     }
   }
@@ -40,37 +40,33 @@
   }
 
   &-email {
-    color: var(--bdlms-paragraph-color);
+    color: var(--stlms-paragraph-color);
     font-size: $font_size_sm;
     line-height: 1.4;
   }
 
-  .bdlms-logout {
+  .stlms-logout {
     width: max-content;
     border: 0;
     background-color: transparent;
     cursor: pointer;
-    color: var(--bdlms-primary-color);
-
-    &:hover {
-      color: #7a22f7;
-    }
+    color: var(--stlms-link-color);
   }
 }
 
-.bdlms-user-dd {
+.stlms-user-dd {
   position: relative;
 
   &__toggle {
     display: inline-flex;
     align-items: center;
-    color: var(--bdlms-primary-color);
+    color: var(--stlms-primary-color);
     font-size: $font_size_sm;
     cursor: pointer;
   }
 
   &__menu {
-    border: 1px solid var(--bdlms-border-color);
+    border: 1px solid var(--stlms-border-color);
   }
 
   &__link {
@@ -81,10 +77,10 @@
     gap: 12px;
     padding: 5px 10px;
     text-decoration: none;
-    color: var(--bdlms-paragraph-light-color);
+    color: var(--stlms-paragraph-light-color);
     background: transparent;
     border: 0;
-    border-bottom: 1px solid var(--bdlms-border-color);
+    border-bottom: 1px solid var(--stlms-border-color);
     cursor: pointer;
 
     @include transition(all 0.3s ease-in-out);
@@ -94,18 +90,18 @@
     }
     &:hover,
     &:focus {
-      color: var(--bdlms-primary-color);
+      color: var(--stlms-link-color);
     }
     &.active {
-      color: var(--bdlms-primary-color);
+      color: var(--stlms-link-color);
       font-weight: $font_weight_bold;
     }
-    
-    .bdlms-noti-count {
+
+    .stlms-noti-count {
       width: 22px;
       height: 22px;
-      background: var(--bdlms-primary-color);
-      color: var(--bdlms-white-color);
+      background: var(--stlms-primary-color);
+      color: var(--stlms-white-color);
       display: grid;
       place-items: center;
       font-size: $font_size_xxs;

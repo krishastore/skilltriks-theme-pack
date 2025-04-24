@@ -1,4 +1,4 @@
-.bdlms-course-banner {
+.stlms-course-banner {
   padding: 77px 0;
   background-size: cover;
   background-position: center center;
@@ -7,14 +7,14 @@
     padding: 32px 0;
   }
 
-  .bdlms-breadcrumb {
+  .stlms-breadcrumb {
     padding-bottom: 30px;
   }
 
-  .bdlms-course-title {
+  .stlms-course-title {
     font-size: $font_size_5xl;
     font-weight: $font_weight_medium;
-    color: var(--bdlms-white-color);
+    color: var(--stlms-white-color);
     max-width: 700px;
     margin: 0;
     padding: 0 0 15px 0;
@@ -24,8 +24,8 @@
     }
   }
 
-  .bdlms-course-text {
-    color: var(--bdlms-white-color);
+  .stlms-course-text {
+    color: var(--stlms-white-color);
     font-size: $font_size_xl;
     line-height: 1.7;
     max-width: 700px;
@@ -36,7 +36,7 @@
     }
   }
 
-  .bdlms-course-by-tag {
+  .stlms-course-by-tag {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -45,15 +45,15 @@
       padding: 5px 10px;
       display: inline-block;
       border-radius: 5px;
-      color: var(--bdlms-white-color);
-      background: var(--bdlms-icon-color);
+      color: var(--stlms-white-color);
+      background: var(--stlms-icon-color);
       font-size: $font_size_base;
       font-weight: $font_weight_medium;
     }
 
     .by {
       font-size: $font_size_xl;
-      color: var(--bdlms-white-color);
+      color: var(--stlms-white-color);
 
       a {
         color: var(--theme-link-color);
@@ -63,18 +63,18 @@
 
         &:hover,
         &:focus {
-          color: var(--bdlms-white-color);
+          color: var(--stlms-white-color);
         }
       }
     }
   }
 }
 
-.bdlms-breadcrumb {
+.stlms-breadcrumb {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  color: var(--bdlms-paragraph-light-color);
+  color: var(--stlms-paragraph-light-color);
   font-size: $font_size_xs;
 
   li {
@@ -83,17 +83,17 @@
 
     a {
       text-decoration: none;
-      color: var(--bdlms-paragraph-light-color);
+      color: var(--stlms-paragraph-light-color);
 
       @include transition(all 0.3s ease-in-out);
 
       &:hover {
-        color: var(--bdlms-white-color);
+        color: var(--stlms-white-color);
       }
     }
 
     &.active {
-      color: var(--bdlms-white-color);
+      color: var(--stlms-white-color);
     }
   }
 
@@ -101,12 +101,12 @@
     &::before {
       content: "/";
       display: block;
-      color: var(--bdlms-paragraph-light-color);
+      color: var(--stlms-paragraph-light-color);
     }
   }
 }
 
-.bdlms-course-detail-nav {
+.stlms-course-detail-nav {
   padding-bottom: 30px;
 
   ul {
@@ -116,7 +116,7 @@
 
     li {
       width: 33.33%;
-      border-right: 2px solid var(--bdlms-border-color);
+      border-right: 2px solid var(--stlms-border-color);
       box-shadow: $shadow_2;
 
       &:last-child {
@@ -131,9 +131,9 @@
         gap: 5px;
         padding: 15px;
         height: 60px;
-        color: var(--bdlms-paragraph-color);
+        color: var(--stlms-paragraph-color);
         text-decoration: none;
-        background-color: var(--bdlms-white-color);
+        background-color: var(--stlms-white-color);
         width: 100%;
         border: 0;
         outline: none;
@@ -146,12 +146,12 @@
         }
 
         &.active {
-          background-color: var(--bdlms-primary-color);
-          color: var(--bdlms-white-color);
+          background-color: var(--stlms-primary-color);
+          color: var(--stlms-white-color);
 
           svg {
             flex-shrink: 0;
-            color: var(--bdlms-white-color);
+            color: var(--stlms-white-color);
 
             @include breakpoint(max, 767) {
               width: 20px;
@@ -162,7 +162,7 @@
 
         svg {
           flex-shrink: 0;
-          color: var(--bdlms-icon-color);
+          color: var(--stlms-icon-color);
 
           @include breakpoint(max, 767) {
             width: 20px;
@@ -174,33 +174,31 @@
   }
 }
 
-.bdlms-course-detail-wrap {
+.stlms-course-detail-wrap {
   padding: 60px 0;
 
   @include breakpoint(max, 767) {
     padding: 32px 0;
   }
 
-  .bdlms-course-detail-column {
+  .stlms-course-detail-column {
     display: flex;
-    flex-direction: row-reverse;
+    gap: 30px;
 
     @include breakpoint(max, 1200) {
-      flex-direction: column;
-      gap: 30px;
+      flex-direction: column-reverse;
     }
 
-    .bdlms-course-left {
+    .stlms-course-left {
       width: calc(100% - 400px);
-      padding-right: 30px;
 
       @include breakpoint(max, 1200) {
         width: 100%;
         padding-right: 0;
       }
 
-      .bdlms-course-requirement-box {
-        border: 1px solid var(--bdlms-border-color);
+      .stlms-course-requirement-box {
+        border: 1px solid var(--stlms-border-color);
         border-radius: 4px;
         padding: 20px;
         margin-bottom: 30px;
@@ -213,7 +211,7 @@
           padding-bottom: 20px;
         }
 
-        .bdlms-course-requirement-check {
+        .stlms-course-requirement-check {
           list-style: none;
           margin: 0;
           padding: 0;
@@ -238,7 +236,7 @@
         }
 
         &.learn-box {
-          .bdlms-course-requirement-check {
+          .stlms-course-requirement-check {
             grid-template-columns: 1fr 1fr;
 
             @include breakpoint(max, 767) {
@@ -261,7 +259,7 @@
         }
 
         &.skill-box {
-          .bdlms-course-requirement-check {
+          .stlms-course-requirement-check {
             li {
               &:before {
                 width: 15px;
@@ -279,7 +277,7 @@
       }
     }
 
-    .bdlms-course-right {
+    .stlms-course-right {
       width: 400px;
       flex-shrink: 0;
       display: flex;
@@ -292,8 +290,8 @@
     }
   }
 
-  .bdlms-course-info-box {
-    background: var(--bdlms-white-color);
+  .stlms-course-info-box {
+    background: var(--stlms-white-color);
     border-radius: 4px;
     box-shadow: $shadow_3;
     padding: 32px 25px;
@@ -309,60 +307,61 @@
     ul {
       li {
         padding: 10px 0;
-        border-top: 1px solid var(--bdlms-border-color);
+        border-top: 1px solid var(--stlms-border-color);
         display: flex;
         align-items: center;
         justify-content: space-between;
         font-size: $font_size_sm;
-        color: var(--bdlms-paragraph-color);
+        color: var(--stlms-paragraph-color);
 
         &:last-child {
-          border-bottom: 1px solid var(--bdlms-border-color);
+          border-bottom: 1px solid var(--stlms-border-color);
         }
       }
     }
 
-    .bdlms-btn-wrap {
+    .stlms-btn-wrap {
       position: relative;
       border-radius: 4px;
       overflow: hidden;
 
-      .bdlms-progress__bar {
+      .stlms-progress__bar {
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
+        z-index: 2;
       }
     }
   }
 }
 
-.bdlms-accordion-course-content {
+.stlms-accordion-course-content {
   padding-bottom: 30px;
 
-  .bdlms-accordion {
+  .stlms-accordion {
     display: flex;
     flex-direction: column;
     gap: 20px;
 
-    .bdlms-accordion-item {
+    .stlms-accordion-item {
       &:last-child {
         border-bottom: 0;
       }
 
-      .bdlms-accordion-header {
-        padding: 15px 35px 15px 15px;
-        background-color: var(--bdlms-white-color);
+      .stlms-accordion-header {
+        padding: 15px 45px 15px 15px;
+        background-color: var(--stlms-white-color);
         border-radius: 4px;
 
         &.active {
-          background-color: var(--bdlms-border-color);
+          background-color: var(--stlms-border-color);
           border-radius: 0;
           border-top-left-radius: 4px;
           border-top-right-radius: 4px;
         }
 
-        .bdlms-lesson-name {
+        .stlms-lesson-name {
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -375,7 +374,7 @@
           .name {
             font-size: $font_size_xl;
             font-weight: $font_weight_bold;
-            color: var(--bdlms-heading-color);
+            color: var(--stlms-heading-color);
           }
 
           .info {
@@ -384,28 +383,28 @@
         }
       }
 
-      .bdlms-accordion-collapse {
-        background-color: var(--bdlms-white-color);
+      .stlms-accordion-collapse {
+        background-color: var(--stlms-white-color);
         padding: 15px;
       }
 
-      .bdlms-accordion-note {
+      .stlms-accordion-note {
         padding-bottom: 15px;
         font-size: $font_size_sm;
         line-height: 1.4;
-        color: var(--bdlms-paragraph-light-color);
-        border-bottom: 1px solid var(--bdlms-border-color);
+        color: var(--stlms-paragraph-light-color);
+        border-bottom: 1px solid var(--stlms-border-color);
       }
 
-      .bdlms-lesson-list {
+      .stlms-lesson-list {
         > ul {
           > li {
-            border-bottom: 1px solid var(--bdlms-border-color);
+            border-bottom: 1px solid var(--stlms-border-color);
             padding: 15px 0;
-            height: 64px;
+            // height: 64px;
             display: flex;
 
-            .bdlms-btn.small {
+            .stlms-btn.small {
               height: 34px;
             }
 
@@ -418,11 +417,11 @@
               padding: 0;
 
               &.completed {
-                color: var(--bdlms-paragraph-light-color);
+                color: var(--stlms-paragraph-light-color);
               }
 
               &.in-progress {
-                color: var(--bdlms-paragraph-color);
+                color: var(--stlms-paragraph-color);
                 background-color: transparent;
               }
 
@@ -430,13 +429,13 @@
                 background-color: transparent;
               }
 
-              .bdlms-check {
+              .stlms-check {
                 position: absolute;
                 opacity: 0;
                 visibility: hidden;
               }
 
-              .bdlms-lesson-class {
+              .stlms-lesson-class {
                 align-items: center;
                 flex-direction: row;
                 gap: 15px;
@@ -478,12 +477,12 @@
                     font-weight: $font_weight_normal;
                     line-height: 1.4;
                     text-wrap: nowrap;
-                    color: #85859d;
+                    color: var(--stlms-paragraph-light-color);
                   }
 
                   .lock-icon {
                     flex-shrink: 0;
-                    color: #85859d;
+                    color: var(--stlms-icon-color);
                   }
                 }
               }
@@ -495,44 +494,44 @@
   }
 }
 
-.bdlms-accordion-faq {
+.stlms-accordion-faq {
   padding-bottom: 30px;
 
-  .bdlms-accordion {
+  .stlms-accordion {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
-  .bdlms-accordion-item {
+  .stlms-accordion-item {
     &:last-child {
       border-bottom: 0;
     }
   }
 
-  .bdlms-accordion-header {
-    padding: 15px 35px 15px 15px;
-    background-color: var(--bdlms-white-color);
+  .stlms-accordion-header {
+    padding: 15px 45px 15px 15px;
+    background-color: var(--stlms-white-color);
     border-radius: 4px;
     font-size: $font_size_xl;
     font-weight: $font_weight_bold;
-    color: var(--bdlms-heading-color);
+    color: var(--stlms-heading-color);
     line-height: 1.2;
 
     &.active {
-      background-color: var(--bdlms-border-color);
+      background-color: var(--stlms-border-color);
       border-radius: 0;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
     }
   }
 
-  .bdlms-accordion-collapse {
-    background-color: var(--bdlms-white-color);
+  .stlms-accordion-collapse {
+    background-color: var(--stlms-white-color);
     padding: 15px;
   }
 
-  .bdlms-quiz-content {
+  .stlms-quiz-content {
     padding: 0;
     margin: 0;
 
@@ -548,10 +547,10 @@
   }
 }
 
-.bdlms-share-cta {
+.stlms-share-cta {
   padding: 20px;
-  border-top: 1px solid var(--bdlms-border-color);
-  border-bottom: 1px solid var(--bdlms-border-color);
+  border-top: 1px solid var(--stlms-border-color);
+  border-bottom: 1px solid var(--stlms-border-color);
   display: flex;
   gap: 15px;
   align-items: center;
@@ -567,32 +566,34 @@
         height: 40px;
         display: grid;
         place-items: center;
-        border: 1px solid var(--bdlms-border-color);
+        border: 1px solid var(--stlms-border-color);
         border-radius: 4px;
-        color: var(--bdlms-icon-color);
+        color: var(--stlms-icon-color);
         @include transition(all 0.3s ease-in-out);
 
         &:hover {
-          color: var(--bdlms-primary-color);
+          color: var(--stlms-primary-color);
         }
       }
     }
   }
 }
 
-.bdlms-similar-course {
+.stlms-similar-course {
   padding: 20px;
   border-radius: 4px;
-  border: 1px solid var(--bdlms-border-color);
+  border: 1px solid var(--stlms-border-color);
   background-color: transparent;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-height: 400px;
+  overflow-y: auto;
 
   ul {
     li {
       padding: 15px 0;
-      border-bottom: 1px solid var(--bdlms-border-color);
+      border-bottom: 1px solid var(--stlms-border-color);
 
       &:first-child {
         padding-top: 0;
@@ -603,13 +604,13 @@
         border-bottom: 0;
       }
 
-      .bdlms-similar-course-item {
+      .stlms-similar-course-item {
         display: flex;
         gap: 15px;
         align-items: center;
         text-decoration: none;
 
-        .bdlms-similar-course-media {
+        .stlms-similar-course-media {
           width: 130px;
           position: relative;
           padding-bottom: 20%;
@@ -632,7 +633,7 @@
           }
         }
 
-        .bdlms-similar-course-info {
+        .stlms-similar-course-info {
           .title {
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -645,7 +646,7 @@
 
         &:hover {
           .title {
-            color: var(--bdlms-primary-color);
+            color: var(--stlms-primary-color);
           }
         }
       }
@@ -656,6 +657,11 @@
 .tab-content {
   .tab-pane {
     display: none;
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
 
     &.active {
       display: block;
