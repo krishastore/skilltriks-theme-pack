@@ -87,52 +87,6 @@ $layout      = stlms_addons_template();
 			</div>
 		</div>
 	</div>
-	<div class="stlms-container">
-		<div class="stlms-course-view__header">
-			<div class="stlms-filtered-item">
-				<?php
-				echo wp_kses(
-					sprintf(
-						// phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-						__( 'Showing <span>%1$d</span> of <span>%2$d</span> Courses', 'skilltriks' ),
-						esc_html( $courses->post_count ),
-						esc_html( $courses->found_posts )
-					),
-					array(
-						'span' => array(),
-					)
-				);
-				?>
-			</div>
-			<div class="stlms-list-grid-toggle">
-				<button class="stlms-grid-view active" aria-label="<?php esc_attr_e( 'Grid view', 'skilltriks' ); ?>">
-					<svg width="30" height="30">
-						<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#grid"></use>
-					</svg>
-				</button>
-				<button class="stlms-list-view" aria-label="<?php esc_attr_e( 'List view', 'skilltriks' ); ?>">
-					<svg width="30" height="30">
-						<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#list"></use>
-					</svg>
-				</button>
-			</div>
-			<div class="stlms-sort-by">
-				<form onsubmit="return false;">
-					<select aria-label="<?php esc_attr_e( 'Sort by', 'skilltriks' ); ?>">
-						<option value=""><?php esc_html_e( 'Sort By', 'skilltriks' ); ?></option>
-						<option value="asc"<?php selected( $_orderby, 'asc' ); ?>><?php esc_html_e( 'Alphabetically (A To Z)', 'skilltriks' ); ?></option>
-						<option value="desc"<?php selected( $_orderby, 'desc' ); ?>><?php esc_html_e( 'Alphabetically (Z To A)', 'skilltriks' ); ?></option>
-						<option value="newest"<?php selected( $_orderby, 'newest' ); ?>><?php esc_html_e( 'Newest', 'skilltriks' ); ?></option>
-					</select>
-				</form>
-			</div>
-			<button class="stlms-filter-toggle" aria-label="<?php esc_attr_e( 'Filter course', 'skilltriks' ); ?>">
-				<svg width="24" height="24">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#filters"></use>
-				</svg>
-			</button>
-		</div>
-	</div>
 
 	<div class="stlms-course-list-wrap">
 		<div class="stlms-container">
@@ -231,6 +185,53 @@ $layout      = stlms_addons_template();
 			<?php endif; ?>
 			<div class="stlms-course-view" id="stlms_course_view">
 				<div class="stlms-course-view__body">
+					<div class="stlms-course-view__title">
+						<h4> <?php esc_html_e( 'All Course', 'skilltriks' ); ?></h4>
+					</div>
+					<div class="stlms-course-view__header inner-header">
+						<div class="stlms-filtered-item">
+							<?php
+							echo wp_kses(
+								sprintf(
+									// phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+									__( 'Showing <span>%1$d</span> of <span>%2$d</span> Courses', 'skilltriks' ),
+									esc_html( $courses->post_count ),
+									esc_html( $courses->found_posts )
+								),
+								array(
+									'span' => array(),
+								)
+							);
+							?>
+						</div>
+						<div class="stlms-list-grid-toggle">
+							<button class="stlms-grid-view active" aria-label="<?php esc_attr_e( 'Grid view', 'skilltriks' ); ?>">
+								<svg width="30" height="30">
+									<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#grid"></use>
+								</svg>
+							</button>
+							<button class="stlms-list-view" aria-label="<?php esc_attr_e( 'List view', 'skilltriks' ); ?>">
+								<svg width="30" height="30">
+									<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#list"></use>
+								</svg>
+							</button>
+						</div>
+						<div class="stlms-sort-by">
+							<form onsubmit="return false;">
+								<select aria-label="<?php esc_attr_e( 'Sort by', 'skilltriks' ); ?>">
+									<option value=""><?php esc_html_e( 'Sort By', 'skilltriks' ); ?></option>
+									<option value="asc"<?php selected( $_orderby, 'asc' ); ?>><?php esc_html_e( 'Alphabetically (A To Z)', 'skilltriks' ); ?></option>
+									<option value="desc"<?php selected( $_orderby, 'desc' ); ?>><?php esc_html_e( 'Alphabetically (Z To A)', 'skilltriks' ); ?></option>
+									<option value="newest"<?php selected( $_orderby, 'newest' ); ?>><?php esc_html_e( 'Newest', 'skilltriks' ); ?></option>
+								</select>
+							</form>
+						</div>
+						<button class="stlms-filter-toggle" aria-label="<?php esc_attr_e( 'Filter course', 'skilltriks' ); ?>">
+							<svg width="24" height="24">
+								<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#filters"></use>
+							</svg>
+						</button>
+					</div>
 					<?php if ( $courses->have_posts() ) : ?>
 						<div class="stlms-course-list">
 							<ul>

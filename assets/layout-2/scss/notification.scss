@@ -1,0 +1,122 @@
+.stlms-notification-wrap {
+  ul {
+    li {
+    }
+  }
+  .stlms-notification-card {
+    padding: 20px;
+    display: flex;
+    gap: 12px;
+    background-color: var(--stlms-background-color);
+    border-bottom: 1px solid var(--stlms-border-color);
+
+    &:hover {
+      .stlms-notification-icon {
+        opacity: 1;
+      }
+    }
+
+    @include breakpoint(max, $md) {
+      padding: 15px;
+    }
+
+    &.read-notification {
+      background-color: transparent;
+    }
+
+    .stlms-notification-image {
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .stlms-notification-content {
+      width: 100%;
+    }
+
+    .stlms-notification-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .stlms-notification-title {
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--stlms-paragraph-light-color);
+
+      strong {
+        font-weight: 700;
+        color: var(--stlms-paragraph-color);
+      }
+
+      a {
+        color: var(--stlms-primary-color);
+        text-decoration: none;
+      }
+    }
+
+    .stlms-notification-time {
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--stlms-paragraph-light-color);
+    }
+
+    .stlms-notification-desc {
+      padding: 10px 10px 0px 10px;
+      border-top: 1px solid var(--stlms-border-color);
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--stlms-paragraph-color);
+      margin-top: 10px;
+
+      ol {
+        list-style: number;
+        padding-left: 16px;
+      }
+      ul {
+        list-style: disc;
+        padding-left: 16px;
+      }
+    }
+
+    .stlms-notification-icon {
+      opacity: 0;
+      flex-shrink: 0;
+      margin-left: auto;
+      @include transition(all 0.3s ease-in-out);
+
+      button {
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        color: var(--stlms-icon-color);
+
+        @include transition(all 0.3s ease-in-out);
+        &:hover {
+          color: var(--stlms-heading-color);
+        }
+      }
+    }
+  }
+}
+
+.stlms-filter-toggle-wrap {
+  .stlms-container {
+    display: flex;
+    justify-content: center;
+  }
+  @include breakpoint(max, $md) {
+    padding-top: 30px;
+  }
+}

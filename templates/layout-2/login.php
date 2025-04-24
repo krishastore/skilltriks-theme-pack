@@ -27,7 +27,7 @@ if ( 1 === $error_code ) {
 	<div class="stlms-login-wrap">
 		<div class="stlms-login">
 			<div class="stlms-login__header">
-				<div class="stlms-login__title stlms-h2"><?php esc_html_e( 'Login to BlueDolphin', 'skilltriks' ); ?></div>
+				<div class="stlms-login__title stlms-h2"><?php esc_html_e( 'Login to Skilltriks', 'skilltriks' ); ?></div>
 				<div class="stlms-login__text"><?php esc_html_e( 'Hey, Welcome back!', 'skilltriks' ); ?><br> <?php esc_html_e( 'Please sign in to grow yourself', 'skilltriks' ); ?></div>
 			</div>
 			<div class="stlms-login__body">
