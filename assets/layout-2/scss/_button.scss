@@ -13,10 +13,8 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   position: relative;
   z-index: 1;
-
   @include transition(all 0.3s ease-in-out);
 
   // &:hover,
@@ -61,6 +59,12 @@
     background-color: transparent;
     border: 1px solid var(--stlms-primary-color);
     color: var(--stlms-primary-color) !important;
+
+    &:hover {
+      border: 1px solid var(--stlms-primary-color);
+      background-color: var(--stlms-primary-color) !important;
+      color: var(--stlms-white-color) !important;
+    }
   }
 
   &.small {
