@@ -72,6 +72,7 @@ $layout        = stlms_addons_template();
 ?>
 
 <div class="stlms-wrap alignfull">
+	<?php require_once STLMS_ADDONS_TEMPLATEPATH . '/layout-2/sub-header.php'; ?>
 	<div class="stlms-title-banner">
 		<div class="stlms-container">
 			<div class="stlms-page-title">
@@ -129,24 +130,6 @@ $layout        = stlms_addons_template();
 						<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 					</svg>
 				</button>
-				<?php do_action( 'stlms_before_search_bar' ); ?>
-				<div class="stlms-filter-item">
-					<div class="stlms-filter-title stlms-h4">
-					<?php esc_html_e( 'Search', 'skilltriks' ); ?>
-					</div>
-					<div class="stlms-course-search">
-						<form onsubmit="return false;">
-							<div class="stlms-search input-group">
-								<input type="text" class="stlms-form-control" placeholder="<?php esc_attr_e( 'Search Course', 'skilltriks' ); ?>" value="<?php echo esc_attr( $search_keyword ); ?>">
-								<button type="submit" aria-label="<?php esc_attr_e( 'Search course', 'skilltriks' ); ?>">
-									<svg width="30" height="30">
-										<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#search-icon"></use>
-									</svg>
-								</button>
-							</div>
-						</form>
-					</div>
-				</div>
 				<?php
 					$course_status = \ST\Lms\course_statistics();
 					$total_course  = 0;
@@ -201,27 +184,14 @@ $layout        = stlms_addons_template();
 							<?php esc_html_e( 'Categories', 'skilltriks' ); ?>
 						</div>
 						<div class="stlms-filter-list">
-							<ul>
-								<li>
-									<div class="stlms-check-wrap">
-										<input type="checkbox" class="stlms-check" id="stlms_category_all">
-										<label for="stlms_category_all" class="stlms-check-label"><?php esc_html_e( 'All', 'skilltriks' ); ?><span><?php echo esc_html( (string) $total_course ); ?></span></label>
-									</div>
-								</li>
-								<?php foreach ( $terms_list as $term_id => $term_details ) : ?>
-								<li>
-									<div class="stlms-check-wrap">
-										<input type="checkbox" name="category[]" class="stlms-check" id="st_course_term_<?php echo (int) $term_id; ?>" value="<?php echo esc_attr( $term_id ); ?>" <?php echo in_array( $term_id, $category, true ) ? 'checked' : ''; ?>>
-										<label for="st_course_term_<?php echo (int) $term_id; ?>" class="stlms-check-label">
-											<?php echo esc_html( $term_details['name'] ); ?>
-											<?php if ( isset( $term_details['count'] ) ) : ?>
-												<span><?php echo esc_html( $term_details['count'] ); ?></span>
-											<?php endif; ?>
-										</label>
-									</div>
-								</li>
-								<?php endforeach; ?>
-							</ul>
+							<div class="stlms-form-group">
+								<select class="stlms-form-control category">
+									<option value=""><?php esc_html_e( 'Choose', 'skilltriks' ); ?></option>
+									<?php foreach ( $terms_list as $key => $term_level ) : ?>
+										<option value="<?php echo esc_attr( $key ); ?>" <?php selected( reset( $category ), $key ); ?>><?php echo esc_html( $term_level['name'] ); ?></option>
+									<?php endforeach; ?>
+								</select>
+							</div>
 						</div>
 					</div>
 					<?php
@@ -248,14 +218,6 @@ $layout        = stlms_addons_template();
 						</div>
 						<div class="stlms-filter-list">
 							<ul>
-								<li>
-									<div class="stlms-check-wrap">
-										<input type="checkbox" class="stlms-check" id="stlms_level_all">
-										<label for="stlms_level_all" class="stlms-check-label">
-											<?php esc_html_e( 'All', 'skilltriks' ); ?><span><?php echo esc_html( (string) $course_status['total_course'] ); ?></span>
-										</label>
-									</div>
-								</li>
 								<?php foreach ( $levels_list as $level_id => $level_details ) : ?>
 									<li>
 										<div class="stlms-check-wrap">
@@ -298,6 +260,7 @@ $layout        = stlms_addons_template();
 						</div>
 					</div>
 					<button class="stlms-reset-btn"><?php esc_html_e( 'Reset', 'skilltriks' ); ?></button>
+					<input type="hidden" name="category" value="<?php echo esc_attr( (string) reset( $category ) ); ?>">
 					<input type="hidden" name="_s" value="<?php echo esc_attr( $search_keyword ); ?>">
 					<input type="hidden" name="progress" value="<?php echo esc_attr( $progress ); ?>">
 					<input type="hidden" name="order_by" value="<?php echo esc_attr( $_orderby ); ?>">
