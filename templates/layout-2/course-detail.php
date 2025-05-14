@@ -47,6 +47,7 @@ $layout             = stlms_addons_template();
 		$passing_grade = isset( $last_quiz['settings']['passing_marks'] ) ? $last_quiz['settings']['passing_marks'] : '0';
 	}
 	?>
+	<?php require_once STLMS_ADDONS_TEMPLATEPATH . '/layout-2/sub-header.php'; ?>
 	<div class="stlms-course-detail-banner">
 		<div class="stlms-container">
 			<div class="stlms-banner-info">
