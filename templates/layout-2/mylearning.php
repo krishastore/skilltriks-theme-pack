@@ -4,7 +4,7 @@
  *
  * @package ST\Lms
  *
- * phpcs:disable WordPress.Security.NonceVerification.Recommended
+ * phpcs:disable WordPress.Security.NonceVerification.Recommended, PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -67,8 +67,11 @@ if ( ! empty( $levels ) ) {
 		'operator' => 'IN',
 	);
 }
-$enrol_courses = get_user_meta( get_current_user_id(), \ST\Lms\STLMS_ENROL_COURSES, true );
-$layout        = stlms_addons_template();
+$enrol_courses         = get_user_meta( get_current_user_id(), \ST\Lms\STLMS_ENROL_COURSES, true );
+$layout                = stlms_addons_template();
+$course_assigned_to_me = get_user_meta( get_current_user_id(), \ST\Lms\STLMS_COURSE_ASSIGN_TO_ME, true ) ? get_user_meta( get_current_user_id(), \ST\Lms\STLMS_COURSE_ASSIGN_TO_ME, true ) : array();
+$due_soon              = get_option( 'stlms_settings' );
+$due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'] : '';
 ?>
 
 <div class="stlms-wrap alignfull">
@@ -350,6 +353,8 @@ $layout        = stlms_addons_template();
 
 										$button_text = apply_filters( 'stlms_course_view_button_text', $button_text );
 										$course_link = apply_filters( 'stlms_course_view_button_link', $course_link );
+
+										$existing_users = get_post_meta( $course_id, \ST\Lms\META_KEY_COURSE_ASSIGNED, true ) ? get_post_meta( $course_id, \ST\Lms\META_KEY_COURSE_ASSIGNED, true ) : array();
 										?>
 										<li>
 											<div class="stlms-course-item">
@@ -358,6 +363,42 @@ $layout        = stlms_addons_template();
 														<div class="stlms-course-item__tag">
 															<span class="stlms-tag primary-light"><?php echo esc_html( $terms_name ); ?></span>
 														</div>
+													<?php endif; ?>
+													<?php
+													if ( in_array( get_current_user_id(), $existing_users, true ) ) :
+
+														foreach ( $course_assigned_to_me as $key => $date ) {
+															if ( strpos( $key, "{$course_id}_" ) === 0 ) {
+																$completion_date = $date;
+																break;
+															}
+														}
+														$completion_date = strtotime( $completion_date );
+														$date_format     = get_option( 'date_format' );
+														$due_soon_day    = '-' . $due_soon . ' day';
+														$due_date        = strtotime( $due_soon_day, $completion_date );
+														$formatted_date  = wp_date( $date_format, $completion_date );
+														?>
+													<div class="stlms-course-item__tag due-tag">
+														<?php
+														if ( ! empty( $completion_date ) && '100%' !== $course_progress ) :
+																$today_timestamp     = (int) current_datetime()->format( 'U' );
+																$formatted_timestamp = strtotime( $formatted_date );
+															?>
+															<?php if ( $today_timestamp >= $due_date && $today_timestamp <= $formatted_timestamp ) : ?>	
+																<span class="due-soon-tag">
+																	<?php esc_html_e( 'Due Soon', 'skilltriks' ); ?>
+																</span>
+															<?php endif; ?>
+															<?php if ( $today_timestamp > $formatted_timestamp ) : ?>	
+																<span class="due-tag">
+																	<?php esc_html_e( 'Due', 'skilltriks' ); ?>
+																</span>
+																<?php
+															endif;
+														endif;
+														?>
+													</div>
 													<?php endif; ?>
 													<a href="<?php echo esc_url( $course_view_link ); ?>" aria-label="<?php the_title(); ?>">
 														<?php if ( has_post_thumbnail() ) : ?>

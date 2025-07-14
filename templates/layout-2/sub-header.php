@@ -14,16 +14,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="stlms-sub-header">
 		<div class="stlms-browse-wrap">
 			<div class="stlms-browse-popup stlms-dd-wrap">
-				<button class="stlms-dd-btn" data-id="browseContent">
+				<button class="stlms-dd-btn" data-dropdown="browseContent">
 					<?php esc_html_e( 'Browse', 'skilltriks' ); ?>
 					<svg width="16" height="16">
 						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#ChevronDown"></use>
 					</svg>
 				</button>
 				<?php
-				$terms_list  = \ST\Lms\course_taxonomies( \ST\Lms\STLMS_COURSE_CATEGORY_TAX );
-				$total_count = $courses->found_posts;
-				$course_page = \ST\Lms\get_page_url( 'courses' );
+				$terms_list     = \ST\Lms\course_taxonomies( \ST\Lms\STLMS_COURSE_CATEGORY_TAX );
+				$course_page    = \ST\Lms\get_page_url( 'courses' );
+				$search_keyword = '';
 				?>
 				<div class="stlms-dd-content" id="browseContent">
 					<?php foreach ( $terms_list as $key => $course_term ) : ?>
@@ -54,7 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 			<?php $userinfo = wp_get_current_user(); ?>
 			<div class="stlms-profile-popup stlms-dd-wrap">
-				<button class="stlms-dd-btn" data-id="profile">
+				<button class="stlms-dd-btn" data-dropdown="profile">
 					<div class="profile-picture">
 						<?php echo get_avatar( $userinfo->ID ); ?>
 					</div>
@@ -80,6 +80,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 										<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#CaretRight"></use>
 									</svg>
 								</span>
+							</a>
+							<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'assign_course_to_me' ) ); ?>" class="stlms-profile-link">
+								<svg width="24" height="24">
+									<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#learning"></use>
+								</svg>
+								<?php esc_html_e( 'Assigned Course', 'skilltriks' ); ?>
 							</a>
 							<a href="<?php echo esc_url( wp_logout_url( \ST\Lms\get_page_url( 'login' ) ) ); ?>" class="stlms-profile-link sign-out">
 								<svg width="24" height="24">

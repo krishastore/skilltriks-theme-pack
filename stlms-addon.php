@@ -65,6 +65,7 @@ function stlms_addons_styles() {
 		wp_register_style( 'stlms-frontend', STLMS_ADDONS_ASSETS . '/' . $layout . '/css/stlms-style.css', array(), STLMS_ADDONS_VERSION );
 		wp_register_script( 'stlms-addons-frontend', STLMS_ADDONS_ASSETS . '/' . $layout . '/js/stlms-setting.js', array( 'jquery' ), STLMS_ADDONS_VERSION, true );
 		wp_enqueue_script( 'stlms-addons-frontend' );
+		wp_dequeue_style( 'stlms-frontend-assigncourse' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'stlms_addons_styles' );

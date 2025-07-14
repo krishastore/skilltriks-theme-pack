@@ -3,6 +3,8 @@
  * Template: Course Detail Page
  *
  * @package ST\Lms
+ *
+ * phpcs:disable PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -514,6 +516,9 @@ $layout             = stlms_addons_template();
 								<a href="javascript:;" id="download-certificate" class="stlms-btn stlms-btn-block secondary" data-course="<?php echo esc_attr( $course_id ); ?>"><?php esc_html_e( 'Download Certificate', 'skilltriks' ); ?></a>
 							</div>
 						<?php endif; ?>
+						<?php if ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) : //phpcs:ignore WordPress.WP.Capabilities.Unknown ?>
+							<a href="javascript:void(0);" data-fancybox data-src="#assign-course" class="stlms-btn stlms-btn-outline stlms-btn-block"><?php esc_html_e( 'Assign Course', 'skilltriks' ); ?></a>
+						<?php endif; ?>
 					</div>
 					<?php
 					$parent_terms_id = array();
@@ -584,4 +589,79 @@ $layout             = stlms_addons_template();
 			</div>
 		</div>
 	</div>
+</div>
+
+<!-- assign popup -->
+<?php
+$stlms_users    = get_users(
+	array(
+		'fields'       => array( 'ID', 'display_name' ),
+		'role__not_in' => array( 'Administrator' ),
+		'exclude'      => get_current_user_id(),
+	)
+);
+$assigned_users = get_post_meta( $course_id, ST\LMS\META_KEY_COURSE_ASSIGNED, true ) ? get_post_meta( $course_id, ST\LMS\META_KEY_COURSE_ASSIGNED, true ) : array();
+?>
+<div id="assign-course" class="stlms-dialog" data-course="<?php echo esc_attr( $course_id ); ?>" style="display: none;">
+	<form class="stlms-assign-course__box">
+		<div class="stlms-dialog__header">
+			<div class="stlms-dialog__title">
+				<?php esc_html_e( 'Assign This Course', 'skilltriks' ); ?>
+			</div>
+			<button class="stlms-dialog__close" data-fancybox-close>
+				<svg width="30" height="30">
+					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
+				</svg>
+			</button>
+		</div>
+		<div class="stlms-dialog__content-box">
+			<div class="stlms-dialog__content">
+				<div class="stlms-dialog__content-title">
+					<p>
+						<span>
+							<?php esc_html_e( 'Choose people whom you wish to assign this course', 'skilltriks' ); ?>
+						</span>
+					</p>
+				</div>
+			</div>
+			<div class="stlms-dialog__content">
+				<div class="stlms-form-group">
+					<label class="stlms-select-search" for="employee-list">
+						<?php esc_html_e( 'Choose Employee(s)', 'skilltriks' ); ?>
+						<select multiple data-placeholder="John Doe" class="stlms-select2-multi js-states form-control" id="employee-list">
+							<?php foreach ( $stlms_users as $users ) : ?>
+								<option value="<?php echo esc_attr( base64_encode( $users->ID ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode ?>" <?php echo in_array( (int) $users->ID, $assigned_users, true ) ? 'disabled' : ''; ?>><?php echo esc_html( $users->display_name ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</label>
+				</div>
+			</div>
+			<div class="stlms-dialog__content">
+				<div class="stlms-switch-wrap">
+					<label>
+						<input type="checkbox" class="stlms-check"><?php esc_html_e( 'Common completion date for all?', 'skilltriks' ); ?>
+					</label>
+				</div>
+			</div>
+			<div class="stlms-dialog__content" id="common-date">
+				<div class="stlms-form-group">
+					<label for="completion-date"><?php esc_html_e( 'Common completion date for all', 'skilltriks' ); ?></label>
+					<input type="date" id="completion-date" min="<?php echo esc_attr( wp_date( 'Y-m-d' ) ); ?>" />
+				</div>
+			</div>
+			<div class="stlms-dialog__content" id="unique-date">
+				<div class="stlms-form-col">
+					<div class="stlms-form-group">
+						<label for="completion-date"><?php esc_html_e( 'Common completion date for John Doe', 'skilltriks' ); ?></label>
+						<input type="date" id="completion-date" min="<?php echo esc_attr( wp_date( 'Y-m-d' ) ); ?>" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="stlms-dialog__footer">
+			<div class="stlms-dialog__cta center">
+				<button class="stlms-btn" data-fancybox-close id="showSnackbar"><?php esc_html_e( 'Assign Course', 'skilltriks' ); ?></button>
+			</div>
+		</div>
+	</form>
 </div>
