@@ -1,0 +1,31 @@
+{
+  "name": "skilltriks-addon",
+  "version": "1.0.0",
+  "description": "SkillTriks LMS Addon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krishastore/stlms-addon.git"
+  },
+  "keywords": [
+    "wordpress-plugin"
+  ],
+  "author": "KrishaWeb <support@krishaweb.com>",
+  "license": "GPL-2.0+",
+  "bugs": {
+    "url": "https://github.com/krishastore/stlms-addon/issues"
+  },
+  "scripts": {
+    "dev": "wp-scripts start --mode=development",
+    "build": "wp-scripts build --mode=production --config=webpack.config.js"
+  },
+  "dependencies": {
+    "@fancyapps/ui": "^5.0.36",
+    "@wordpress/scripts": "^27.9.0",
+    "datatables.net-dt": "^2.3.2",
+    "datatables.net-responsive-dt": "^3.0.5",
+    "datatables.net-scroller-dt": "^2.4.3",
+    "lodash": "^4.17.21",
+    "raw-loader": "^4.0.2",
+    "select2": "^4.1.0-rc.0"
+  }
+}

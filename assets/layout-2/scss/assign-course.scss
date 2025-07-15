@@ -1,8 +1,8 @@
-@import '../css/fancybox.css';
-@import '../css/dataTables.dataTables.min.css';
-@import '../css/responsive.dataTables.min.css';
-@import '../css/scroller.dataTables.min.css';
-@import '../css/select2.min.css';
+@import '~@fancyapps/ui/dist/fancybox/fancybox.css';
+@import '~datatables.net-dt/css/dataTables.dataTables.min.css';
+@import '~datatables.net-responsive-dt/css/responsive.dataTables.min.css';
+@import '~datatables.net-scroller-dt/css/scroller.dataTables.min.css';
+@import '~select2/dist/css/select2.min.css';
 
 .stlms-assigned-course {
   &__header {
