@@ -398,6 +398,22 @@ body {
     background-color: var(--stlms-icon-color);
     border-radius: 4px;
   }
+  
+  &.due-soon-tag,
+  &.due-tag {
+    // display: inline-flex;
+    padding: 5px 6px;
+    border-radius: 4px;
+    background-color: var(--stlms-warning-color);
+    font-weight: 700;
+    font-size: $font_size_xxs;
+    line-height: 12px;
+    color: var(--stlms-white-color);
+    // width: max-content;
+  }
+  &.due-tag {
+    background-color: var(--stlms-error-color);
+  }
 }
 
 .stlms-header-wrap {

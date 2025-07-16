@@ -22,6 +22,7 @@ foreach ( $course_assigned_to_me as $key => $completion_date ) :
 endforeach;
 
 $stlms_users = array_unique( $stlms_users );
+$layout      = stlms_addons_template();
 ?>
 
 <div class="stlms-wrap alignfull">
@@ -33,42 +34,29 @@ $stlms_users = array_unique( $stlms_users );
 			</div>
 		</div>
 	</div>
+	<?php if ( ! empty( $_GET['status'] ) && 'success' === wp_unslash( sanitize_key( $_GET['status'] ) ) ) : ?>
 	<div class="stlms-snackbar-wrap">
 		<div class="stlms-container">
 			<div id="snackbar-success" class="stlms-snackbar">
 				<svg width="30" height="30">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#tick"></use>
+					<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#tick"></use>
 				</svg>
 				<?php esc_html_e( 'Course Assigned Successfully!', 'skilltriks' ); ?>
-				<button id="hideSnackbar">
+				<button id="hideSnackbar" class="hideSnackbar">
 					<svg width="24" height="24">
-						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
+						<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 					</svg>
 				</button>
 			</div>
 		</div>
 	</div>
-	<div class="stlms-snackbar-wrap">
-		<div class="stlms-container">
-			<div id="snackbar-error" class="stlms-snackbar error-snackbar">
-				<svg width="30" height="30">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross-error"></use>
-				</svg>
-				<?php esc_html_e( 'Oops, something went wrong. Please try again later.', 'skilltriks' ); ?>
-				<button id="hideSnackbar">
-					<svg width="24" height="24">
-						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
-					</svg>
-				</button>
-			</div>
-		</div>
-	</div>
+	<?php endif; ?>
 	<div class="stlms-course-list-wrap">
 		<div class="stlms-container">
 			<div class="stlms-course-filter">
 				<button class="stlms-filter-toggle stlms-filter-close">
 					<svg width="24" height="24">
-						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
+						<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 					</svg>
 				</button>
 				<?php if ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) : //phpcs:ignore WordPress.WP.Capabilities.Unknown ?>
@@ -81,7 +69,7 @@ $stlms_users = array_unique( $stlms_users );
 						<?php esc_html_e( 'Course Progress', 'skilltriks' ); ?>
 					</div>
 					<label class="stlms-select-search" for="select-progress">
-						<select data-placeholder="Select one" class="stlms-select2 js-states form-control" id="select-progress">
+						<select data-placeholder="Choose" class="stlms-select2 js-states form-control" id="select-progress">
 							<option value=""><?php esc_html_e( 'Choose', 'skilltriks' ); ?></option>
 							<option value="not-started"><?php esc_html_e( 'Not Started', 'skilltriks' ); ?></option>
 							<option value="in-progress"><?php esc_html_e( 'In Progress', 'skilltriks' ); ?></option>
@@ -95,7 +83,7 @@ $stlms_users = array_unique( $stlms_users );
 					</div>
 					<label class="stlms-select-search" for="select-employee">
 						<?php esc_html_e( 'Select Employee Name', 'skilltriks' ); ?>
-						<select data-placeholder="Select one" class="stlms-select2 js-states form-control" id="select-employee">
+						<select data-placeholder="Choose" class="stlms-select2 js-states form-control" id="select-employee">
 							<option value=""><?php esc_html_e( 'Choose', 'skilltriks' ); ?></option>
 							<?php foreach ( $stlms_users as $users ) : ?>
 							<option value="<?php echo esc_html( $users ); ?>"><?php echo esc_html( $users ); ?></option>
@@ -220,12 +208,12 @@ $stlms_users = array_unique( $stlms_users );
 													$formatted_timestamp = strtotime( $formatted_date );
 												?>
 												<?php if ( $today_timestamp >= $due_date && $today_timestamp <= $formatted_timestamp ) : ?>	
-													<span class="due-soon-tag">
+													<span class="stlms-tag due-soon-tag">
 														<?php esc_html_e( 'Due Soon', 'skilltriks' ); ?>
 													</span>
 												<?php endif; ?>
 												<?php if ( $today_timestamp > $formatted_timestamp ) : ?>	
-													<span class="due-tag">
+													<span class="stlms-tag due-tag">
 														<?php esc_html_e( 'Due', 'skilltriks' ); ?>
 													</span>
 													<?php
@@ -242,7 +230,7 @@ $stlms_users = array_unique( $stlms_users );
 											</div>
 										</div>
 									</td>
-									<td><a href="<?php echo ! $is_enrol && is_user_logged_in() ? 'javascript:;' : esc_url( $course_link ); ?>" class="stlms-btn stlms-btn-light" id="<?php echo ! $is_enrol && is_user_logged_in() ? 'enrol-now' : ''; ?>" data-course="<?php echo esc_html( $course_id ); ?>"><?php echo esc_html( $button_text ); ?><i class="stlms-loader"></i></a></td>
+									<td><a href="<?php echo ! $is_enrol && is_user_logged_in() ? 'javascript:;' : esc_url( $course_link ); ?>" class="stlms-btn outline small" id="<?php echo ! $is_enrol && is_user_logged_in() ? 'enrol-now' : ''; ?>" data-course="<?php echo esc_html( $course_id ); ?>"><?php echo esc_html( $button_text ); ?><i class="stlms-loader"></i></a></td>
 								</tr>
 										<?php
 									endif;

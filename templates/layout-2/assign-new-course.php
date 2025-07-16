@@ -10,6 +10,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+if ( ! ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) ) { //phpcs:ignore WordPress.WP.Capabilities.Unknown 
+	exit;
+}
 $course_args = array(
 	'post_type'      => \ST\Lms\STLMS_COURSE_CPT,
 	'post_status'    => 'publish',
@@ -121,6 +124,21 @@ $stlms_users = get_users(
 						</form>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+	<div class="stlms-snackbar-wrap">
+		<div class="stlms-container">
+			<div id="snackbar-error" class="stlms-snackbar error-snackbar">
+				<svg width="30" height="30">
+					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross-error"></use>
+				</svg>
+				<?php esc_html_e( 'Oops, something went wrong. Please try again later.', 'skilltriks' ); ?>
+				<button id="hideSnackbar" class="hideSnackbar">
+					<svg width="24" height="24">
+						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
+					</svg>
+				</button>
 			</div>
 		</div>
 	</div>

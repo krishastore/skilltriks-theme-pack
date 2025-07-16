@@ -517,7 +517,7 @@ $layout             = stlms_addons_template();
 							</div>
 						<?php endif; ?>
 						<?php if ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) : //phpcs:ignore WordPress.WP.Capabilities.Unknown ?>
-							<a href="javascript:void(0);" data-fancybox data-src="#assign-course" class="stlms-btn stlms-btn-outline stlms-btn-block"><?php esc_html_e( 'Assign Course', 'skilltriks' ); ?></a>
+							<a href="javascript:void(0);" data-fancybox data-src="#assign-course" class="stlms-btn outline stlms-btn-block"><?php esc_html_e( 'Assign Course', 'skilltriks' ); ?></a>
 						<?php endif; ?>
 					</div>
 					<?php

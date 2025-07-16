@@ -37,11 +37,11 @@
   }
 }
 
-.stmls-assigned-course__action {
+.stlms-assigned-course__action {
   display: flex;
   gap: 5px;
 
-  .stmls-assigned-course__button {
+  .stlms-assigned-course__button {
     cursor: pointer;
     border: 0;
     background-color: transparent;
@@ -170,8 +170,18 @@
           }
 
           &:has(input:disabled) {
-            opacity: 0.2;
+            color: $primary;
+            opacity: 0.4;
             cursor: default;
+            input {
+              pointer-events: none;
+              background-color: $primary;
+              border: 1px solid $primary !important;
+              &::after {
+                background-image: url("data:image/svg+xml,%3Csvg width='10' height='9' viewBox='0 0 10 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.60533 8.22224L3.58771 8.23986L0.187866 4.84001L1.62054 3.40733L3.60539 5.39218L8.37941 0.618164L9.81208 2.05084L3.62301 8.23992L3.60533 8.22224Z' fill='white'/%3E%3C/svg%3E%0A");
+                opacity: 1;
+              }
+            }
           }
         }
       }
@@ -592,11 +602,18 @@ table.dataTable > tbody > tr.child ul.dtr-details > li {
     background-color: var(--stlms-success-color);
     font-weight: 700;
     font-size: 18px;
-    line-height: 1;
+    line-height: 1.5;
     border: 1px solid var(--stlms-border-color);
 
     &.error-snackbar {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      right: 50px;
+      bottom: 50px;
+      margin-left: 50px;
       background-color: var(--stlms-error-color);
+      min-width: 450px;
     }
 
     &.show {
@@ -604,15 +621,31 @@ table.dataTable > tbody > tr.child ul.dtr-details > li {
       animation: fadein 0.5s, fadeout 0.5s 2.5s;
     }
 
+    &.hide {
+      display: none;
+    }
+
     button {
       margin-left: auto;
       color: white;
       cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    svg {
+      flex-shrink: 0;
     }
 
     @include breakpoint(max, $sm) {
       font-size: 15px;
       padding: 10px;
+      &.error-snackbar {
+        right: 15px;
+        bottom: 15px;
+        margin-left: 15px;
+        width: 280px;
+        min-width: auto;
+      }
     }
   }
 }
@@ -735,6 +768,11 @@ table.dataTable > tbody > tr.child ul.dtr-details > li {
     align-items: center;
     justify-content: flex-end;
     gap: 20px;
+
+    &.center {
+      justify-content: center;
+    }
+
     @include breakpoint(max, $sm) {
       gap: 15px;
     }
