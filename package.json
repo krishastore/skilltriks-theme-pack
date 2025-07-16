@@ -24,8 +24,6 @@
     "datatables.net-dt": "^2.3.2",
     "datatables.net-responsive-dt": "^3.0.5",
     "datatables.net-scroller-dt": "^2.4.3",
-    "lodash": "^4.17.21",
-    "raw-loader": "^4.0.2",
     "select2": "^4.1.0-rc.0"
   }
 }
