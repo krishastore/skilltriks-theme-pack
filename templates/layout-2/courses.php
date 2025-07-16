@@ -4,7 +4,7 @@
  *
  * @package ST\Lms
  *
- * phpcs:disable WordPress.Security.NonceVerification.Recommended
+ * phpcs:disable WordPress.Security.NonceVerification.Recommended, PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
