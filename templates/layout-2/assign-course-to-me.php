@@ -34,6 +34,15 @@ $layout      = stlms_addons_template();
 			</div>
 		</div>
 	</div>
+	<div class="stlms-filter-toggle-wrap">
+		<div class="stlms-container">
+			<button class="stlms-filter-toggle">
+				<svg width="24" height="24">
+					<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#filters"></use>
+				</svg>
+			</button>
+		</div>
+	</div>
 	<?php if ( ! empty( $_GET['status'] ) && 'success' === wp_unslash( sanitize_key( $_GET['status'] ) ) ) : ?>
 	<div class="stlms-snackbar-wrap">
 		<div class="stlms-container">
@@ -69,7 +78,7 @@ $layout      = stlms_addons_template();
 						<?php esc_html_e( 'Course Progress', 'skilltriks' ); ?>
 					</div>
 					<label class="stlms-select-search" for="select-progress">
-						<select data-placeholder="Choose" class="stlms-select2 js-states form-control" id="select-progress">
+						<select data-placeholder="Choose" class="stlms-select2 js-states form-control" data-minimum-results-for-search="Infinity" id="select-progress">
 							<option value=""><?php esc_html_e( 'Choose', 'skilltriks' ); ?></option>
 							<option value="not-started"><?php esc_html_e( 'Not Started', 'skilltriks' ); ?></option>
 							<option value="in-progress"><?php esc_html_e( 'In Progress', 'skilltriks' ); ?></option>

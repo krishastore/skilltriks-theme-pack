@@ -128,7 +128,7 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 	<div class="stlms-course-list-wrap">
 		<div class="stlms-container">
 			<div class="stlms-course-filter">
-				<button class="stlms-filter-toggle" aria-label="<?php esc_attr_e( 'Close sidebar', 'skilltriks' ); ?>">
+				<button class="stlms-filter-toggle stlms-filter-close" aria-label="<?php esc_attr_e( 'Close sidebar', 'skilltriks' ); ?>">
 					<svg width="24" height="24">
 						<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 					</svg>

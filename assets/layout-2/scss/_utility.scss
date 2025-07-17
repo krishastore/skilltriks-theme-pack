@@ -64,6 +64,7 @@ $color-map: (
   "icon_color": var(--stlms-icon-color),
   "success": var(--stlms-success-color),
   "error": var(--stlms-error-color),
+  "warning": var(--stlms-warning-color),
 );
 
 @each $name, $spacing in $spacing-map {

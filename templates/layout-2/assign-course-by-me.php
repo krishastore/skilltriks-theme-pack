@@ -36,6 +36,15 @@ $layout      = stlms_addons_template();
 			</div>
 		</div>
 	</div>
+	<div class="stlms-filter-toggle-wrap">
+		<div class="stlms-container">
+			<button class="stlms-filter-toggle">
+				<svg width="24" height="24">
+					<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#filters"></use>
+				</svg>
+			</button>
+		</div>
+	</div>
 	<?php if ( ! empty( $_GET['status'] ) && 'success' === wp_unslash( sanitize_key( $_GET['status'] ) ) ) : ?>
 	<div class="stlms-snackbar-wrap">
 		<div class="stlms-container">

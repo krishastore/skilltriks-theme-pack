@@ -89,14 +89,29 @@ function stlms_addons_dependency_notice() {
 				<img src="<?php echo esc_url( $plugin_icon_url ); ?>" alt="Skilltriks Icon" />
 			</div>
 			<div class="stlms-addon-notice__content">
-				<p><strong>ST LMS Layout Add-on</strong> requires the <strong>Skilltriks</strong> plugin to be installed and activated.</p>
+				<p>
+					<?php
+					echo wp_sprintf(
+						// translators: %1$s: SkillTriks LMS Theme Add-on, %2$s: SkillTriks plugin.
+						esc_html__( '%1$s requires the %2$s plugin to be installed and activated.', 'stlms-addon' ),
+						'<strong>' . esc_html__( 'SkillTriks LMS Theme Add-on', 'stlms-addon' ) . '</strong>',
+						'<strong>' . esc_html__( 'SkillTriks', 'stlms-addon' ) . '</strong>'
+					);
+					?>
+				</p>
 				<p>
 					<?php if ( ! $is_installed ) : ?>
-						<a href="<?php echo esc_url( $install_url ); ?>" class="button button-primary">Install Skilltriks</a>
+						<a href="<?php echo esc_url( $install_url ); ?>" class="button button-primary">
+							<?php esc_html_e( 'Install SkillTriks', 'stlms-addon' ); ?>
+						</a>
 					<?php elseif ( ! $is_active ) : ?>
-						<a href="<?php echo esc_url( $activate_url ); ?>" class="button button-primary">Activate Skilltriks</a>
+						<a href="<?php echo esc_url( $activate_url ); ?>" class="button button-primary">
+							<?php esc_html_e( 'Activate SkillTriks', 'stlms-addon' ); ?>
+						</a>
 					<?php endif; ?>
-					<a href="https://wordpress.org/plugins/skilltriks/" target="_blank" class="button">View Plugin</a>
+					<a href="https://wordpress.org/plugins/skilltriks/" target="_blank" class="button">
+						<?php esc_html_e( 'View Plugin', 'stlms-addon' ); ?>
+					</a>
 				</p>
 			</div>
 		</div>
