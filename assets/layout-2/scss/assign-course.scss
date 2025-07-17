@@ -217,6 +217,12 @@
   gap: 16px;
   align-items: center;
 
+  label {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
   .switch {
     position: relative;
     display: inline-block;
@@ -302,7 +308,7 @@
 
 .select2.select2-container.select2-container--open
   .select2-selection.select2-selection--single
-  .select2-selection__arrow {
+  .select2-selection__arrow { 
   transform: rotate(180deg);
 }
 
@@ -353,7 +359,8 @@
   }
 }
 
-.select2-results__option--selectable {
+.select2-results__option--selectable,
+.select2-results__option--disabled {
   padding: 5px 15px 5px 15px !important;
   font-size: $font_size_sm;
   line-height: 20px;
@@ -434,7 +441,7 @@
   border: 1px solid var(--stlms-border-color);
 }
 
-.select2-container--default .select2-results__option--selected {
+.select2-container--default .select2-results__option--selected, .select2-results__option--disabled {
   background-color: var(--stlms-background-color);
   color: var(--stlms-primary-color) !important;
 }
@@ -484,6 +491,9 @@
         background-color: var(--stlms-primary-color);
       }
     }
+  }
+  .stlms-btn {
+    text-wrap: nowrap;
   }
 }
 
@@ -736,6 +746,15 @@ table.dataTable > tbody > tr.child ul.dtr-details > li {
 
     &:hover {
       color: var(--stlms-heading-color);
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include breakpoint(max, $sm) {
+      gap: 15px;
     }
   }
   &__content-box {
