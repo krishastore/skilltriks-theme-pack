@@ -22,9 +22,8 @@ parameters:
     scanDirectories:
         - %currentWorkingDirectory%/src
         - %currentWorkingDirectory%/templates
-        - %currentWorkingDirectory%/tests
     scanFiles:
-        - skilltriks.php
+        - stlms-addon.php
         - uninstall.php
 includes:
     - %currentWorkingDirectory%/vendor/szepeviktor/phpstan-wordpress/extension.neon
