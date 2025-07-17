@@ -1,10 +1,6 @@
 parameters:
     level: 5
     reportUnmatchedIgnoredErrors: false
-    paths:
-        - %currentWorkingDirectory%/src
-    bootstrapFiles:
-        - %currentWorkingDirectory%/tests/php/phpstan/bootstrap.php
     dynamicConstantNames:
         - STLMS_VERSION
         - STLMS_LOCAL_DEBUG
@@ -20,7 +16,6 @@ parameters:
         - '#^Property WP_Term\:\:\$taxonomy \(string\) in isset\(\) is not nullable\.$#'
         - '#^Property WP_Term\:\:\$slug \(string\) in isset\(\) is not nullable\.$#'
     scanDirectories:
-        - %currentWorkingDirectory%/src
         - %currentWorkingDirectory%/templates
     scanFiles:
         - stlms-addon.php
