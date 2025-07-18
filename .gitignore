@@ -51,3 +51,4 @@ wp-config.php
 ######################
 .DS_Store*
 ehthumbs.db
+phpcs-report.xml
