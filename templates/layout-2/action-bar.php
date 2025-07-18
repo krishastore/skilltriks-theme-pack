@@ -30,6 +30,7 @@ if ( false !== $prev_key ) {
 }
 $course_result   = apply_filters( 'stlms_course_result_endpoint', 'course-result' );
 $result_page_url = sprintf( '%s/%s/%d/', untrailingslashit( home_url() ), $course_result, get_the_ID() );
+$layout          = stlms_addons_template();
 
 ?>
 <div class="stlms-course-content">
@@ -50,20 +51,20 @@ $result_page_url = sprintf( '%s/%s/%d/', untrailingslashit( home_url() ), $cours
 		<?php if ( $prev_key >= 0 && isset( $curriculums_keys[ $prev_key ] ) ) : ?>
 			<a href="<?php echo esc_url( \ST\Lms\get_curriculum_link( $curriculums_keys[ $prev_key ] ) ); ?>" class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-prev-btn">
 				<svg class="icon" width="11" height="19">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#nav-left"></use>
+					<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#nav-left"></use>
 				</svg>
 			</a>
 		<?php endif; ?>
 		<?php if ( $next_key >= 1 && isset( $curriculums_keys[ $next_key ] ) ) : ?>
 			<a href="<?php echo esc_url( \ST\Lms\get_curriculum_link( $curriculums_keys[ $next_key ] ) ); ?>" class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-next-btn<?php echo $is_quiz ? ' hidden' : ''; ?>">
 				<svg class="icon" width="11" height="19">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#nav-right"></use>
+					<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#nav-right"></use>
 				</svg>
 			</a>
 		<?php else : ?>
 			<a href="<?php echo esc_url( $result_page_url ); ?>" class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-next-btn<?php echo 'video' === $curriculum_type || $is_quiz ? ' hidden' : ''; ?>">
 				<svg class="icon" width="16" height="16">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#nav-right"></use>
+					<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#nav-right"></use>
 				</svg>
 			</a>
 		<?php endif; ?>

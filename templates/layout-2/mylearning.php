@@ -67,7 +67,7 @@ if ( ! empty( $levels ) ) {
 		'operator' => 'IN',
 	);
 }
-$enrol_courses         = get_user_meta( get_current_user_id(), \ST\Lms\STLMS_ENROL_COURSES, true );
+$enrol_courses         = get_user_meta( get_current_user_id(), \ST\Lms\STLMS_ENROL_COURSES, true ) ? get_user_meta( get_current_user_id(), \ST\Lms\STLMS_ENROL_COURSES, true ) : array();
 $layout                = stlms_addons_template();
 $course_assigned_to_me = get_user_meta( get_current_user_id(), \ST\Lms\STLMS_COURSE_ASSIGN_TO_ME, true ) ? get_user_meta( get_current_user_id(), \ST\Lms\STLMS_COURSE_ASSIGN_TO_ME, true ) : array();
 $due_soon              = get_option( 'stlms_settings' );
@@ -128,7 +128,7 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 	<div class="stlms-course-list-wrap">
 		<div class="stlms-container">
 			<div class="stlms-course-filter">
-				<button class="stlms-filter-toggle" aria-label="<?php esc_attr_e( 'Close sidebar', 'skilltriks' ); ?>">
+				<button class="stlms-filter-toggle stlms-filter-close" aria-label="<?php esc_attr_e( 'Close sidebar', 'skilltriks' ); ?>">
 					<svg width="24" height="24">
 						<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 					</svg>
@@ -386,12 +386,12 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 																$formatted_timestamp = strtotime( $formatted_date );
 															?>
 															<?php if ( $today_timestamp >= $due_date && $today_timestamp <= $formatted_timestamp ) : ?>	
-																<span class="due-soon-tag">
+																<span class="stlms-tag due-soon-tag">
 																	<?php esc_html_e( 'Due Soon', 'skilltriks' ); ?>
 																</span>
 															<?php endif; ?>
 															<?php if ( $today_timestamp > $formatted_timestamp ) : ?>	
-																<span class="due-tag">
+																<span class="stlms-tag due-tag">
 																	<?php esc_html_e( 'Due', 'skilltriks' ); ?>
 																</span>
 																<?php

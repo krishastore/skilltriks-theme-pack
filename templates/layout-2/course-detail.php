@@ -45,7 +45,7 @@ $layout             = stlms_addons_template();
 	$is_enrol           = ! empty( $enrol_courses ) && in_array( get_the_ID(), $enrol_courses, true );
 	$course_certificate = get_post_meta( $course_id, \ST\Lms\META_KEY_COURSE_SIGNATURE, true );
 	$has_certificate    = isset( $course_certificate['certificate'] ) ? $course_certificate['certificate'] : 0;
-	if ( 2 === $assessment['evaluation'] ) {
+	if ( isset( $assessment['evaluation'] ) && 2 === $assessment['evaluation'] ) {
 		$passing_grade = isset( $last_quiz['settings']['passing_marks'] ) ? $last_quiz['settings']['passing_marks'] : '0';
 	}
 	?>
@@ -486,7 +486,7 @@ $layout             = stlms_addons_template();
 							</li>
 							<li>
 							<?php
-							$passing_text = 2 === $assessment['evaluation'] ? 'Marks' : 'Grade';
+							$passing_text = isset( $assessment['evaluation'] ) && 2 === $assessment['evaluation'] ? 'Marks' : 'Grade';
 							echo wp_kses(
 								sprintf(
 									// Translators: %s passing grade.
@@ -517,7 +517,7 @@ $layout             = stlms_addons_template();
 							</div>
 						<?php endif; ?>
 						<?php if ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) : //phpcs:ignore WordPress.WP.Capabilities.Unknown ?>
-							<a href="javascript:void(0);" data-fancybox data-src="#assign-course" class="stlms-btn stlms-btn-outline stlms-btn-block"><?php esc_html_e( 'Assign Course', 'skilltriks' ); ?></a>
+							<a href="javascript:void(0);" data-fancybox data-src="#assign-course" class="stlms-btn outline stlms-btn-block"><?php esc_html_e( 'Assign Course', 'skilltriks' ); ?></a>
 						<?php endif; ?>
 					</div>
 					<?php
@@ -664,4 +664,20 @@ $assigned_users = get_post_meta( $course_id, ST\LMS\META_KEY_COURSE_ASSIGNED, tr
 			</div>
 		</div>
 	</form>
+</div>
+
+<div class="stlms-snackbar-wrap">
+	<div class="stlms-container">
+		<div id="snackbar-error" class="stlms-snackbar error-snackbar">
+			<svg width="30" height="30">
+				<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross-error"></use>
+			</svg>
+			<?php esc_html_e( 'Oops, something went wrong. Please try again later.', 'skilltriks' ); ?>
+			<button id="hideSnackbar" class="hideSnackbar">
+				<svg width="24" height="24">
+					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
+				</svg>
+			</button>
+		</div>
+	</div>
 </div>

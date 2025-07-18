@@ -24,12 +24,24 @@ define( 'STLMS_ADDONS_ABSURL', plugins_url( '/', STLMS_ADDONS_BASEFILE ) );
 define( 'STLMS_ADDONS_ABSPATH', dirname( STLMS_ADDONS_BASEFILE ) );
 define( 'STLMS_ADDONS_TEMPLATEPATH', STLMS_ADDONS_ABSPATH . '/templates' );
 define( 'STLMS_ADDONS_ASSETS', STLMS_ADDONS_ABSURL . 'assets' );
+define( 'STLMS_REQUIRED_PLUGIN_FILE', 'skilltriks/skilltriks.php' );
+
+// Ensure plugin functions are available.
+if ( ! function_exists( 'is_plugin_active' ) ) {
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
+
+if ( ! function_exists( 'get_plugins' ) ) {
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
 
 /**
- * Plugin activation.
+ * Plugin activation hook.
  */
 function stlms_layout_activation() {
-	// Activation code here.
+	if ( ! is_plugin_active( STLMS_REQUIRED_PLUGIN_FILE ) ) {
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+	}
 }
 register_activation_hook( __FILE__, 'stlms_layout_activation' );
 
@@ -42,6 +54,122 @@ function stlms_layout_deactivation() {
 register_deactivation_hook( __FILE__, 'stlms_layout_deactivation' );
 
 /**
+ * Show admin notice with banner and plugin thumbnail if Skilltriks is missing or inactive.
+ */
+function stlms_addons_dependency_notice() {
+	if ( is_plugin_active( STLMS_REQUIRED_PLUGIN_FILE ) ) {
+		return;
+	}
+
+	$plugin_slug       = 'skilltriks';
+	$plugin_file       = STLMS_REQUIRED_PLUGIN_FILE;
+	$installed_plugins = get_plugins();
+	$is_installed      = isset( $installed_plugins[ $plugin_file ] );
+	$is_active         = is_plugin_active( $plugin_file );
+
+	$install_url = wp_nonce_url(
+		self_admin_url( 'update.php?action=install-plugin&plugin=' . $plugin_slug ),
+		'install-plugin_' . $plugin_slug
+	);
+
+	$activate_url = wp_nonce_url(
+		self_admin_url( 'plugins.php?action=activate&plugin=' . $plugin_file ),
+		'activate-plugin_' . $plugin_file
+	);
+
+	$plugin_icon_url   = 'https://ps.w.org/skilltriks/assets/icon-128x128.png';
+	$plugin_banner_url = 'https://ps.w.org/skilltriks/assets/banner-1544x500.png';
+	?>
+	<div class="notice stlms-addon-notice">
+		<div class="stlms-addon-notice__banner">
+			<img src="<?php echo esc_url( $plugin_banner_url ); ?>" alt="Skilltriks Banner" />
+		</div>
+		<div class="stlms-addon-notice__body">
+			<div class="stlms-addon-notice__icon">
+				<img src="<?php echo esc_url( $plugin_icon_url ); ?>" alt="Skilltriks Icon" />
+			</div>
+			<div class="stlms-addon-notice__content">
+				<p>
+					<?php
+					echo wp_sprintf(
+						// translators: %1$s: SkillTriks LMS Theme Add-on, %2$s: SkillTriks plugin.
+						esc_html__( '%1$s requires the %2$s plugin to be installed and activated.', 'stlms-addon' ),
+						'<strong>' . esc_html__( 'SkillTriks LMS Theme Add-on', 'stlms-addon' ) . '</strong>',
+						'<strong>' . esc_html__( 'SkillTriks', 'stlms-addon' ) . '</strong>'
+					);
+					?>
+				</p>
+				<p>
+					<?php if ( ! $is_installed ) : ?>
+						<a href="<?php echo esc_url( $install_url ); ?>" class="button button-primary">
+							<?php esc_html_e( 'Install SkillTriks', 'stlms-addon' ); ?>
+						</a>
+					<?php elseif ( ! $is_active ) : ?>
+						<a href="<?php echo esc_url( $activate_url ); ?>" class="button button-primary">
+							<?php esc_html_e( 'Activate SkillTriks', 'stlms-addon' ); ?>
+						</a>
+					<?php endif; ?>
+					<a href="https://wordpress.org/plugins/skilltriks/" target="_blank" class="button">
+						<?php esc_html_e( 'View Plugin', 'stlms-addon' ); ?>
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<?php
+}
+add_action( 'admin_notices', 'stlms_addons_dependency_notice' );
+
+/**
+ * Enqueues custom inline styles for the admin notice that displays
+ * when the required Skilltriks plugin is not installed or activated.
+ */
+function stlms_admin_enqueue_notice_styles() {
+	if ( ! is_admin() ) {
+		return;
+	}
+
+	wp_register_style( 'stlms-admin-notice', false, array(), STLMS_ADDONS_VERSION );
+	wp_enqueue_style( 'stlms-admin-notice' );
+
+	$custom_css = '
+		.stlms-addon-notice {
+			border-left: 4px solid #c53030;
+			background: #fff;
+			margin: 20px 0;
+			box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+		}
+		.stlms-addon-notice__banner img {
+			width: 100%;
+			height: auto;
+			display: block;
+			border-bottom: 1px solid #ddd;
+		}
+		.stlms-addon-notice__body {
+			display: flex;
+			align-items: flex-start;
+			padding: 20px;
+		}
+		.stlms-addon-notice__icon img {
+			width: 64px;
+			height: 64px;
+			border-radius: 8px;
+			margin-right: 20px;
+		}
+		.stlms-addon-notice__content p {
+			margin: 0 0 10px;
+			font-size: 14px;
+		}
+		.stlms-addon-notice__content .button {
+			margin-right: 10px;
+		}
+	';
+
+	wp_add_inline_style( 'stlms-admin-notice', $custom_css );
+}
+add_action( 'admin_enqueue_scripts', 'stlms_admin_enqueue_notice_styles' );
+
+/**
  * Add on template path.
  */
 function stlms_addons_template() {
@@ -52,7 +180,7 @@ function stlms_addons_template() {
 }
 
 /**
- * Enqueue scripts
+ * Enqueue scripts.
  */
 function stlms_addons_styles() {
 	$layout = stlms_addons_template();

@@ -75,11 +75,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#learning"></use>
 								</svg>
 								<?php esc_html_e( 'My Learnings', 'skilltriks' ); ?>
-								<span>
-									<svg width="16" height="16">
-										<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#CaretRight"></use>
-									</svg>
-								</span>
 							</a>
 							<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'assign_course_to_me' ) ); ?>" class="stlms-profile-link">
 								<svg width="24" height="24">

@@ -25,6 +25,7 @@ foreach ( $course_assigned_by_me as $key => $completion_date ) :
 endforeach;
 
 $stlms_users = array_unique( $stlms_users );
+$layout      = stlms_addons_template();
 ?>
 <div class="stlms-wrap alignfull">
 	<?php require_once STLMS_TEMPLATEPATH . '/frontend/sub-header.php'; ?>
@@ -35,42 +36,38 @@ $stlms_users = array_unique( $stlms_users );
 			</div>
 		</div>
 	</div>
+	<div class="stlms-filter-toggle-wrap">
+		<div class="stlms-container">
+			<button class="stlms-filter-toggle">
+				<svg width="24" height="24">
+					<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#filters"></use>
+				</svg>
+			</button>
+		</div>
+	</div>
+	<?php if ( ! empty( $_GET['status'] ) && 'success' === wp_unslash( sanitize_key( $_GET['status'] ) ) ) : ?>
 	<div class="stlms-snackbar-wrap">
 		<div class="stlms-container">
 			<div id="snackbar-success" class="stlms-snackbar">
 				<svg width="30" height="30">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#tick"></use>
+					<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#tick"></use>
 				</svg>
 				<?php esc_html_e( 'Course Assigned Successfully!', 'skilltriks' ); ?>
-				<button id="hideSnackbar">
+				<button id="hideSnackbar" class="hideSnackbar">
 					<svg width="24" height="24">
-						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
+						<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 					</svg>
 				</button>
 			</div>
 		</div>
 	</div>
-	<div class="stlms-snackbar-wrap">
-		<div class="stlms-container">
-			<div id="snackbar-error" class="stlms-snackbar error-snackbar">
-				<svg width="30" height="30">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross-error"></use>
-				</svg>
-				<?php esc_html_e( 'Oops, something went wrong. Please try again later.', 'skilltriks' ); ?>
-				<button id="hideSnackbar">
-					<svg width="24" height="24">
-						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
-					</svg>
-				</button>
-			</div>
-		</div>
-	</div>
+	<?php endif; ?>
 	<div class="stlms-course-list-wrap">
 		<div class="stlms-container">
 			<div class="stlms-course-filter">
 				<button class="stlms-filter-toggle stlms-filter-close">
 					<svg width="24" height="24">
-						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
+						<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 					</svg>
 				</button>
 				<?php if ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) : //phpcs:ignore WordPress.WP.Capabilities.Unknown ?>
@@ -97,7 +94,7 @@ $stlms_users = array_unique( $stlms_users );
 					</div>
 					<label class="stlms-select-search" for="select-employee">
 						<?php esc_html_e( 'Select Employee Name', 'skilltriks' ); ?>
-						<select data-placeholder="Select one" class="stlms-select2 js-states form-control" id="select-employee">
+						<select data-placeholder="Choose" class="stlms-select2 js-states form-control" id="select-employee">
 							<option value=""><?php esc_html_e( 'Choose', 'skilltriks' ); ?></option>
 							<?php foreach ( $stlms_users as $users ) : ?>
 							<option value="<?php echo esc_html( $users ); ?>"><?php echo esc_html( $users ); ?></option>
@@ -181,12 +178,12 @@ $stlms_users = array_unique( $stlms_users );
 													$formatted_timestamp = strtotime( $formatted_date );
 												?>
 												<?php if ( $today_timestamp >= $due_date && $today_timestamp <= $formatted_timestamp ) : ?>	
-													<span class="due-soon-tag">
+													<span class="stlms-tag due-soon-tag">
 														<?php esc_html_e( 'Due Soon', 'skilltriks' ); ?>
 													</span>
 												<?php endif; ?>
 												<?php if ( $today_timestamp > $formatted_timestamp ) : ?>	
-													<span class="due-tag">
+													<span class="stlms-tag due-tag">
 														<?php esc_html_e( 'Due', 'skilltriks' ); ?>
 													</span>
 													<?php
@@ -208,14 +205,14 @@ $stlms_users = array_unique( $stlms_users );
 											<?php if ( '100%' !== $course_progress ) : ?>
 											<button class="stlms-assigned-course__button edit"
 												data-fancybox data-src="#edit-course">
-												<svg width="19" height="17">
-													<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#edit-assigned-course"></use>
+												<svg width="30" height="30">
+													<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#edit-assigned-course"></use>
 												</svg>
 											</button>
 											<?php endif; ?>
 											<button class="stlms-assigned-course__button delete" data-fancybox data-src="#delete-course">
-												<svg width="14" height="17">
-													<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#delete-assigned-course"></use>
+												<svg width="30" height="30">
+													<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#delete-assigned-course"></use>
 												</svg>
 											</button>
 										</div>
@@ -243,7 +240,7 @@ $stlms_users = array_unique( $stlms_users );
 			</div>
 			<button class="stlms-dialog__close" data-fancybox-close>
 				<svg width="30" height="30">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
+					<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 				</svg>
 			</button>
 		</div>
@@ -254,7 +251,7 @@ $stlms_users = array_unique( $stlms_users );
 		</div>
 		<div class="stlms-dialog__footer">
 			<div class="stlms-dialog__cta">
-				<button class="stlms-btn stlms-btn-outline" data-fancybox-close><?php esc_html_e( 'Cancel', 'skilltriks' ); ?></button>
+				<button class="stlms-btn outline" data-fancybox-close><?php esc_html_e( 'Cancel', 'skilltriks' ); ?></button>
 				<button class="stlms-btn delete" data-fancybox-close><?php esc_html_e( 'Delete', 'skilltriks' ); ?></button>
 			</div>
 		</div>
@@ -279,7 +276,7 @@ $courses     = get_posts( $course_args );
 			</div>
 			<button class="stlms-dialog__close" data-fancybox-close>
 				<svg width="30" height="30">
-					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>
+					<use xlink:href="<?php echo esc_url( STLMS_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#cross"></use>
 				</svg>
 			</button>
 		</div>
@@ -309,7 +306,7 @@ $courses     = get_posts( $course_args );
 		</div>
 		<div class="stlms-dialog__footer">
 			<div class="stlms-dialog__cta">
-				<button class="stlms-btn stlms-btn-outline" data-fancybox-close><?php esc_html_e( 'Cancel', 'skilltriks' ); ?></button>
+				<button class="stlms-btn outline" data-fancybox-close><?php esc_html_e( 'Cancel', 'skilltriks' ); ?></button>
 				<button class="stlms-btn update" data-fancybox-close><?php esc_html_e( 'Update', 'skilltriks' ); ?></button>
 			</div>
 		</div>
