@@ -1,4 +1,12 @@
+import Select2 from 'select2';
+
 jQuery(document).ready(function ($) {
+
+  $('.stlms-select2').select2();
+  $('.stlms-select2-multi').select2({
+      dropdownParent: $('#assign-course')
+  });
+
 
   // List-Grid View Toggle
   $(document).on("click", ".stlms-list-view, .stlms-grid-view", function () {

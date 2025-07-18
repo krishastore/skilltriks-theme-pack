@@ -1,0 +1,65 @@
+diff --git a/assets/layout-2/scss/course-list.scss b/assets/layout-2/scss/course-list.scss
+index 2a86a45..6b00578 100644
+--- a/assets/layout-2/scss/course-list.scss
++++ b/assets/layout-2/scss/course-list.scss
+@@ -28,7 +28,7 @@
+         top: 0;
+         height: 100%;
+         background-color: var(--stlms-background-light-color);
+-        z-index: 9999;
++        z-index: 999;
+         padding: 80px 20px 20px;
+         border-left: 1px solid var(--stlms-border-color);
+         overflow: auto;
+diff --git a/assets/layout-2/scss/landing-page.scss b/assets/layout-2/scss/landing-page.scss
+index 1b0e7e6..e37277a 100644
+--- a/assets/layout-2/scss/landing-page.scss
++++ b/assets/layout-2/scss/landing-page.scss
+@@ -282,6 +282,8 @@
+     right: auto !important;
+     transform: translate(0) !important;
+     min-width: 300px;
++    max-height: 350px;
++    overflow-y: auto !important;
+ 
+     a {
+       padding: 8px 20px;
+diff --git a/phpstan.neon b/phpstan.neon
+index 3279a51..3008314 100644
+--- a/phpstan.neon
++++ b/phpstan.neon
+@@ -1,6 +1,8 @@
+ parameters:
+     level: 5
+     reportUnmatchedIgnoredErrors: false
++    paths: 
++        - %currentWorkingDirectory%/templates
+     dynamicConstantNames:
+         - STLMS_VERSION
+         - STLMS_LOCAL_DEBUG
+diff --git a/stlms-addon.php b/stlms-addon.php
+index cb33f82..a3c7b3d 100644
+--- a/stlms-addon.php
++++ b/stlms-addon.php
+@@ -82,11 +82,11 @@ function stlms_addons_dependency_notice() {
+ 	?>
+ 	<div class="notice stlms-addon-notice">
+ 		<div class="stlms-addon-notice__banner">
+-			<img src="<?php echo esc_url( $plugin_banner_url ); ?>" alt="Skilltriks Banner" />
++			<img src="<?php echo esc_url( $plugin_banner_url ); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" alt="Skilltriks Banner" />
+ 		</div>
+ 		<div class="stlms-addon-notice__body">
+ 			<div class="stlms-addon-notice__icon">
+-				<img src="<?php echo esc_url( $plugin_icon_url ); ?>" alt="Skilltriks Icon" />
++				<img src="<?php echo esc_url( $plugin_icon_url ); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" alt="Skilltriks Icon" />
+ 			</div>
+ 			<div class="stlms-addon-notice__content">
+ 				<p>
+@@ -144,6 +144,7 @@ function stlms_admin_enqueue_notice_styles() {
+ 			height: auto;
+ 			display: block;
+ 			border-bottom: 1px solid #ddd;
++			background-size: cover;
+ 		}
+ 		.stlms-addon-notice__body {
+ 			display: flex;

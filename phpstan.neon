@@ -1,6 +1,8 @@
 parameters:
     level: 5
     reportUnmatchedIgnoredErrors: false
+    paths: 
+        - %currentWorkingDirectory%/templates
     dynamicConstantNames:
         - STLMS_VERSION
         - STLMS_LOCAL_DEBUG

@@ -282,6 +282,8 @@
     right: auto !important;
     transform: translate(0) !important;
     min-width: 300px;
+    max-height: 350px;
+    overflow-y: auto !important;
 
     a {
       padding: 8px 20px;
