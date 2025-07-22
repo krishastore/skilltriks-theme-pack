@@ -1,12 +1,4 @@
-import Select2 from 'select2';
-
-jQuery(document).ready(function ($) {
-
-  $('.stlms-select2').select2();
-  $('.stlms-select2-multi').select2({
-      dropdownParent: $('#assign-course')
-  });
-
+jQuery(function($) {
 
   // List-Grid View Toggle
   $(document).on("click", ".stlms-list-view, .stlms-grid-view", function () {
@@ -49,13 +41,12 @@ function openTab(evt, tabName) {
 
 document.addEventListener("DOMContentLoaded", function () {
   // Get all tabs and their corresponding content
-  const tablinks = document.querySelectorAll(".nav-link.goto-section");
-  const tabcontents = document.querySelectorAll(".tab-pane");
+  const tablinks = document.querySelectorAll(".nav-link");
 
   let firstAvailableTab = null;
 
   // Iterate through tabs to find the first tab with corresponding content
-  tablinks.forEach((tab, index) => {
+  tablinks.forEach((tab) => {
     const tabId = tab.getAttribute("aria-controls");
     const content = document.getElementById(tabId);
 

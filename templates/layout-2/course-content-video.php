@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					type="video/<?php echo esc_attr( $fileformat ); ?>" size="<?php echo (int) $filesize; ?>">
 
 				<a href="<?php echo esc_url( $media_url ); ?>"
-					download><?php esc_html_e( 'Download', 'skilltriks' ); ?></a>
+					download><?php esc_html_e( 'Download', 'skilltriks-theme-pack' ); ?></a>
 			</video>
 			<?php
 		elseif ( ! empty( $args['curriculum']['media']['embed_video_url'] ) ) :
@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				?>
 				<div id="player" class="lesson-video" data-plyr-provider="vimeo" data-plyr-embed-id="<?php echo esc_html( str_replace( '/video/', '', $video_id ) ); ?>"></div>
 			<?php else : ?>
-				<iframe src="<?php echo esc_url( $args['curriculum']['media']['embed_video_url'] ); ?>" frameborder="0" title="<?php esc_html_e( 'Lesson video', 'skilltriks' ); ?>"></iframe>
+				<iframe src="<?php echo esc_url( $args['curriculum']['media']['embed_video_url'] ); ?>" frameborder="0" title="<?php esc_html_e( 'Lesson video', 'skilltriks-theme-pack' ); ?>"></iframe>
 			<?php endif; ?>
 		<?php endif; ?>
 	</div>
