@@ -15,20 +15,20 @@ $error_code = ! empty( $_GET['message'] ) ? (int) $_GET['message'] : 0;
 $email   = ! empty( $_GET['email'] ) && is_email( wp_unslash( $_GET['email'] ) ) ? sanitize_email( wp_unslash( $_GET['email'] ) ) : '';
 $message = '';
 if ( 1 === $error_code ) {
-	$message = __( 'something went wrong, Please try again', 'skilltriks' );
+	$message = __( 'something went wrong, Please try again', 'skilltriks-theme-pack' );
 } elseif ( 2 === $error_code ) {
-	$message = __( 'Your account role is different, please contact to administration.', 'skilltriks' );
+	$message = __( 'Your account role is different, please contact to administration.', 'skilltriks-theme-pack' );
 } elseif ( 3 === $error_code ) {
 	// phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
-	$message = sprintf( __( 'User %s not registered in system.', 'skilltriks' ), $email );
+	$message = sprintf( __( 'User %s not registered in system.', 'skilltriks-theme-pack' ), $email );
 }
 ?>
 <div class="stlms-wrap alignfull">
 	<div class="stlms-login-wrap">
 		<div class="stlms-login">
 			<div class="stlms-login__header">
-				<div class="stlms-login__title stlms-h2"><?php esc_html_e( 'Login to Skilltriks', 'skilltriks' ); ?></div>
-				<div class="stlms-login__text"><?php esc_html_e( 'Hey, Welcome back!', 'skilltriks' ); ?><br> <?php esc_html_e( 'Please sign in to grow yourself', 'skilltriks' ); ?></div>
+				<div class="stlms-login__title stlms-h2"><?php esc_html_e( 'Login to Skilltriks', 'skilltriks-theme-pack' ); ?></div>
+				<div class="stlms-login__text"><?php esc_html_e( 'Hey, Welcome back!', 'skilltriks-theme-pack' ); ?><br> <?php esc_html_e( 'Please sign in to grow yourself', 'skilltriks-theme-pack' ); ?></div>
 			</div>
 			<div class="stlms-login__body">
 				<?php if ( is_admin() || ! is_user_logged_in() ) : ?>
@@ -36,11 +36,11 @@ if ( 1 === $error_code ) {
 						<?php wp_nonce_field( \ST\Lms\STLMS_LOGIN_NONCE, '_stlms_nonce' ); ?>
 						<input type="hidden" name="action" value="stlms_login">
 						<div class="stlms-form-group">
-							<label class="stlms-form-label"><?php esc_html_e( 'Username', 'skilltriks' ); ?></label>
-							<input type="text" name="username" class="stlms-form-control" placeholder="<?php esc_attr_e( 'Username', 'skilltriks' ); ?>" required>
+							<label class="stlms-form-label"><?php esc_html_e( 'Username', 'skilltriks-theme-pack' ); ?></label>
+							<input type="text" name="username" class="stlms-form-control" placeholder="<?php esc_attr_e( 'Username', 'skilltriks-theme-pack' ); ?>" required>
 						</div>
 						<div class="stlms-form-group">
-							<label class="stlms-form-label"><?php esc_html_e( 'Password', 'skilltriks' ); ?></label>
+							<label class="stlms-form-label"><?php esc_html_e( 'Password', 'skilltriks-theme-pack' ); ?></label>
 							<div class="stlms-password-field">
 								<input type="password" name="password" class="stlms-form-control" placeholder="********" id="password-field" required>
 								<div class="stlms-password-toggle" toggle="#password-field">
@@ -56,10 +56,10 @@ if ( 1 === $error_code ) {
 						<div class="stlms-keep-login stlms-form-group">
 							<div class="stlms-check-wrap">
 								<input type="checkbox" name="remember" class="stlms-check" id="remember">
-								<label for="remember" class="stlms-check-label text-sm"><?php esc_html_e( 'Keep me logged In', 'skilltriks' ); ?></label>
+								<label for="remember" class="stlms-check-label text-sm"><?php esc_html_e( 'Keep me logged In', 'skilltriks-theme-pack' ); ?></label>
 							</div>
 							<div class="stlms-forgot-link">
-								<a class="stlms-link-text" href="<?php echo esc_url( wp_lostpassword_url( \ST\Lms\get_page_url( 'login' ) ) ); ?>" target="_blank"><?php esc_html_e( 'Forgot Password?', 'skilltriks' ); ?></a>
+								<a class="stlms-link-text" href="<?php echo esc_url( wp_lostpassword_url( \ST\Lms\get_page_url( 'login' ) ) ); ?>" target="_blank"><?php esc_html_e( 'Forgot Password?', 'skilltriks-theme-pack' ); ?></a>
 							</div>
 						</div>
 						<div class="stlms-error-message<?php echo empty( $message ) ? ' hidden' : ''; ?>">
@@ -69,11 +69,11 @@ if ( 1 === $error_code ) {
 						$auth_url = \ST\Lms\Login\GoogleLogin::instance()->get_auth_url();
 						?>
 							<div class="stlms-form-footer">
-								<button type="submit" class="stlms-btn stlms-btn-block"><?php esc_html_e( 'Log In', 'skilltriks' ); ?><span class="stlms-loader"></span></button>
+								<button type="submit" class="stlms-btn stlms-btn-block"><?php esc_html_e( 'Log In', 'skilltriks-theme-pack' ); ?><span class="stlms-loader"></span></button>
 								<?php if ( $auth_url ) : ?>
 								<div class="stlms-login-with">
 									<div class="stlms-hr"></div>
-										<div class="stlms-or-text"><?php esc_html_e( 'or Log-in with', 'skilltriks' ); ?></div>
+										<div class="stlms-or-text"><?php esc_html_e( 'or Log-in with', 'skilltriks-theme-pack' ); ?></div>
 									<div class="stlms-hr"></div>
 								</div>
 								<div class="stlms-login-with-cta">
@@ -88,7 +88,7 @@ if ( 1 === $error_code ) {
 										12.9295 5.70102 12.2549C6.09248 11.5803 6.6172 11.0472 7.27518 10.6557C7.93317 10.2643 8.65362 10.0686 9.43653 10.0686C10.5359 10.0686 11.4605 10.4267 
 										12.2101 11.143L14.109 9.34395C12.8097 8.12793 11.2522 7.51992 9.43653 7.51992ZM20.3557 11.4928V13.4667H18.3818V15.4657H20.3557V17.4396H22.3546V15.4657H24.3536V13.4667H22.3546V11.4928H20.3557Z" fill="white"/>
 									</svg>
-										<?php esc_html_e( 'Google', 'skilltriks' ); ?>
+										<?php esc_html_e( 'Google', 'skilltriks-theme-pack' ); ?>
 									</a>
 								</div>
 								<?php endif; ?>

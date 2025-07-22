@@ -30,7 +30,7 @@ $stlms_users = get_users(
 
 ?>
 <div class="stlms-wrap alignfull">
-	<?php require_once STLMS_TEMPLATEPATH . '/frontend/sub-header.php'; ?>
+	<?php require_once STLMSTP_ADDONS_TEMPLATEPATH . '/layout-2/sub-header.php'; ?>
 	<div class="stlms-title-banner">
 		<div class="stlms-container">
 			<div class="stlms-page-title">
@@ -46,10 +46,10 @@ $stlms_users = get_users(
 						<form>
 							<div class="stlms-assign-course__box">
 								<div class="stlms-course-view__title">
-									<h4><?php esc_html_e( 'Step 1: Choose Course', 'skilltriks' ); ?></h4>
+									<h4><?php esc_html_e( 'Step 1: Choose Course', 'skilltriks-theme-pack' ); ?></h4>
 								</div>
 								<div class="stlms-form-group">
-									<label for="search-course"><?php esc_html_e( 'Search Course', 'skilltriks' ); ?></label>
+									<label for="search-course"><?php esc_html_e( 'Search Course', 'skilltriks-theme-pack' ); ?></label>
 									<input type="text" id="search-course" data-list="#course-list" placeholder="Type here to search course" />
 								</div>
 								<div class="stlms-search-list">
@@ -62,18 +62,18 @@ $stlms_users = get_users(
 										</li>
 										<?php endforeach; ?>
 									</ul>
-									<div class="no-results" id="course-no-results" style="display: none;"><?php esc_html_e( 'No results found', 'skilltriks' ); ?></div>
+									<div class="no-results" id="course-no-results" style="display: none;"><?php esc_html_e( 'No results found', 'skilltriks-theme-pack' ); ?></div>
 								</div>
 							</div>
 							<div class="stlms-assign-course__box">
 								<div class="stlms-course-view__title">
 									<h4>
-										<?php esc_html_e( 'Step 2: Choose Employee(s)', 'skilltriks' ); ?>
+										<?php esc_html_e( 'Step 2: Choose Employee(s)', 'skilltriks-theme-pack' ); ?>
 									</h4>
 									<span id="employee_cnt"></span>
 								</div>
 								<div class="stlms-form-group">
-									<label for="search-employee"><?php esc_html_e( 'Search Employee', 'skilltriks' ); ?></label>
+									<label for="search-employee"><?php esc_html_e( 'Search Employee', 'skilltriks-theme-pack' ); ?></label>
 									<input type="text" id="search-employee" data-list="#employee-list" placeholder="Type here to search employee" />
 								</div>
 								<div class="stlms-search-list">
@@ -88,25 +88,25 @@ $stlms_users = get_users(
 										</li>
 										<?php endforeach; ?>
 									</ul>
-									<div class="no-results" id="employee-no-results" style="display: none;"><?php esc_html_e( 'No results found', 'skilltriks' ); ?></div>
+									<div class="no-results" id="employee-no-results" style="display: none;"><?php esc_html_e( 'No results found', 'skilltriks-theme-pack' ); ?></div>
 								</div>
 							</div>
 							<div class="stlms-assign-course__box">
 								<div class="stlms-course-view__title">
 									<h4>
-										<?php esc_html_e( 'Step 3: Choose Completion Date', 'skilltriks' ); ?>
+										<?php esc_html_e( 'Step 3: Choose Completion Date', 'skilltriks-theme-pack' ); ?>
 									</h4>
 								</div>
-								<p class="stlms-assign-course__box-text"><?php esc_html_e( 'Keep field blank for no completion date', 'skilltriks' ); ?></p>
+								<p class="stlms-assign-course__box-text"><?php esc_html_e( 'Keep field blank for no completion date', 'skilltriks-theme-pack' ); ?></p>
 								<div class="stlms-switch-wrap">
-									<?php esc_html_e( 'Common completion date for all?', 'skilltriks' ); ?>
+									<?php esc_html_e( 'Common completion date for all?', 'skilltriks-theme-pack' ); ?>
 									<label class="switch">
 										<input type="checkbox" class="stlms-check">
 										<span class="slider round"></span>
 									</label>
 								</div>
 								<div class="stlms-form-group" id="common-date">
-									<label for="completion-date"><?php esc_html_e( 'Completion Date', 'skilltriks' ); ?></label>
+									<label for="completion-date"><?php esc_html_e( 'Completion Date', 'skilltriks-theme-pack' ); ?></label>
 									<input type="date" id="completion-date" min="<?php echo esc_attr( wp_date( 'Y-m-d' ) ); ?>" />
 								</div>
 								<div class="stlms-form-row" id="unique-date">
@@ -119,7 +119,7 @@ $stlms_users = get_users(
 								</div>
 							</div>
 							<div class="stlms-assign-course__submit">
-								<button class="stlms-btn" id="showSnackbar"><?php esc_html_e( 'Assign Course', 'skilltriks' ); ?></button>
+								<button class="stlms-btn" id="showSnackbar"><?php esc_html_e( 'Assign Course', 'skilltriks-theme-pack' ); ?></button>
 							</div>
 						</form>
 					</div>
@@ -133,7 +133,7 @@ $stlms_users = get_users(
 				<svg width="30" height="30">
 					<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross-error"></use>
 				</svg>
-				<?php esc_html_e( 'Oops, something went wrong. Please try again later.', 'skilltriks' ); ?>
+				<?php esc_html_e( 'Oops, something went wrong. Please try again later.', 'skilltriks-theme-pack' ); ?>
 				<button id="hideSnackbar" class="hideSnackbar">
 					<svg width="24" height="24">
 						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#cross"></use>

@@ -1,7 +1,6 @@
 {
     "name": "krishaweb/stlms-addon",
-    "type": "project",
-    "license": "GPL-2.0+",
+    "license": "GPL-3.0+",
     "authors": [
         {
             "name": "krishaweb",
@@ -17,9 +16,7 @@
     "require-dev": {
         "wp-coding-standards/wpcs": "^3.0",
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
-        "phpcompatibility/phpcompatibility-wp": "*",
-        "phpstan/phpstan": "^1.11",
-        "szepeviktor/phpstan-wordpress": "^1.3"
+        "phpcompatibility/phpcompatibility-wp": "*"
     },
     "config": {
         "allow-plugins": {
@@ -28,7 +25,6 @@
     },
     "scripts": {
         "format": "phpcbf --standard=phpcs.xml --report-summary --report-source",
-        "lint": "phpcs --standard=phpcs.xml --report-full --report-checkstyle=./phpcs-report.xml",
-        "phpstan": "./vendor/bin/phpstan analyse --memory-limit=2G --configuration=phpstan.neon"
+        "lint": "phpcs --standard=phpcs.xml --report-full --report-checkstyle=./phpcs-report.xml"
     }
 }

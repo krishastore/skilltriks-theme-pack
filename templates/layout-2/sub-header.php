@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="stlms-browse-wrap">
 			<div class="stlms-browse-popup stlms-dd-wrap">
 				<button class="stlms-dd-btn" data-dropdown="browseContent">
-					<?php esc_html_e( 'Browse', 'skilltriks' ); ?>
+					<?php esc_html_e( 'Browse', 'skilltriks-theme-pack' ); ?>
 					<svg width="16" height="16">
 						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#ChevronDown"></use>
 					</svg>
@@ -40,18 +40,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#search"></use>
 						</svg>
 					</span>
-					<input type="text" name="_s" class="stlms-form-control" placeholder="<?php esc_attr_e( 'Search', 'skilltriks' ); ?>" value="<?php echo esc_attr( $search_keyword ); ?>">
+					<input type="text" name="_s" class="stlms-form-control" placeholder="<?php esc_attr_e( 'Search', 'skilltriks-theme-pack' ); ?>" value="<?php echo esc_attr( $search_keyword ); ?>">
 				</div>
 			</form>
 		</div>
 		<div class="stlms-profile-wrap">
-			<div class="stlms-notification-popup">
-				<a href="">
-					<svg width="24" height="24">
-						<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#Bell"></use>
-					</svg>
-				</a>
-			</div>
 			<?php $userinfo = wp_get_current_user(); ?>
 			<div class="stlms-profile-popup stlms-dd-wrap">
 				<button class="stlms-dd-btn" data-dropdown="profile">
@@ -74,19 +67,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 								<svg width="24" height="24">
 									<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#learning"></use>
 								</svg>
-								<?php esc_html_e( 'My Learnings', 'skilltriks' ); ?>
+								<?php esc_html_e( 'My Learnings', 'skilltriks-theme-pack' ); ?>
 							</a>
 							<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'assign_course_to_me' ) ); ?>" class="stlms-profile-link">
 								<svg width="24" height="24">
 									<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#learning"></use>
 								</svg>
-								<?php esc_html_e( 'Assigned Course', 'skilltriks' ); ?>
+								<?php esc_html_e( 'Assigned Course', 'skilltriks-theme-pack' ); ?>
 							</a>
 							<a href="<?php echo esc_url( wp_logout_url( \ST\Lms\get_page_url( 'login' ) ) ); ?>" class="stlms-profile-link sign-out">
 								<svg width="24" height="24">
 									<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#signout"></use>
 								</svg>
-								<?php esc_html_e( 'Sign Out', 'skilltriks' ); ?>
+								<?php esc_html_e( 'Sign Out', 'skilltriks-theme-pack' ); ?>
 							</a>
 						</div>
 					</div>

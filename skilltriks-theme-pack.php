@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name:     SkillTriks LMS Add on
+ * Plugin Name:     SkillTriks Theme Pack
  * Plugin URI:
  * Description:     A Comprehensive Solution For Training Management. Contact Us For More Details On Training Management System.
  * Author:          KrishaWeb
  * Author URI:      https://www.skilltriks.com/
- * Text Domain:     skilltriks
- * License:         GPL v2 or later
- * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:     skilltriks-theme-pack
+ * License:         GPL v3 or later
+ * License URI:     https://www.gnu.org/licenses/gpl-3.0.html
  * Domain Path:     /languages
  * Version:         1.0.0
  *
@@ -18,12 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'STLMS_ADDONS_BASEFILE', __FILE__ );
-define( 'STLMS_ADDONS_VERSION', '1.0.0' );
-define( 'STLMS_ADDONS_ABSURL', plugins_url( '/', STLMS_ADDONS_BASEFILE ) );
-define( 'STLMS_ADDONS_ABSPATH', dirname( STLMS_ADDONS_BASEFILE ) );
-define( 'STLMS_ADDONS_TEMPLATEPATH', STLMS_ADDONS_ABSPATH . '/templates' );
-define( 'STLMS_ADDONS_ASSETS', STLMS_ADDONS_ABSURL . 'assets' );
+define( 'STLMSTP_ADDONS_BASEFILE', __FILE__ );
+define( 'STLMSTP_ADDONS_VERSION', '1.0.0' );
+define( 'STLMSTP_ADDONS_ABSURL', plugins_url( '/', STLMSTP_ADDONS_BASEFILE ) );
+define( 'STLMSTP_ADDONS_ABSPATH', dirname( STLMSTP_ADDONS_BASEFILE ) );
+define( 'STLMSTP_ADDONS_TEMPLATEPATH', STLMSTP_ADDONS_ABSPATH . '/templates' );
+define( 'STLMSTP_ADDONS_ASSETS', STLMSTP_ADDONS_ABSURL . 'assets' );
 define( 'STLMS_REQUIRED_PLUGIN_FILE', 'skilltriks/skilltriks.php' );
 
 // Ensure plugin functions are available.
@@ -38,25 +38,25 @@ if ( ! function_exists( 'get_plugins' ) ) {
 /**
  * Plugin activation hook.
  */
-function stlms_layout_activation() {
+function stlmstp_layout_activation() {
 	if ( ! is_plugin_active( STLMS_REQUIRED_PLUGIN_FILE ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 	}
 }
-register_activation_hook( __FILE__, 'stlms_layout_activation' );
+register_activation_hook( __FILE__, 'stlmstp_layout_activation' );
 
 /**
  * Plugin deactivation.
  */
-function stlms_layout_deactivation() {
+function stlmstp_layout_deactivation() {
 	// Deactivation code here.
 }
-register_deactivation_hook( __FILE__, 'stlms_layout_deactivation' );
+register_deactivation_hook( __FILE__, 'stlmstp_layout_deactivation' );
 
 /**
  * Show admin notice with banner and plugin thumbnail if Skilltriks is missing or inactive.
  */
-function stlms_addons_dependency_notice() {
+function stlmstp_addons_dependency_notice() {
 	if ( is_plugin_active( STLMS_REQUIRED_PLUGIN_FILE ) ) {
 		return;
 	}
@@ -93,24 +93,24 @@ function stlms_addons_dependency_notice() {
 					<?php
 					echo wp_sprintf(
 						// translators: %1$s: SkillTriks LMS Theme Add-on, %2$s: SkillTriks plugin.
-						esc_html__( '%1$s requires the %2$s plugin to be installed and activated.', 'stlms-addon' ),
-						'<strong>' . esc_html__( 'SkillTriks LMS Theme Add-on', 'stlms-addon' ) . '</strong>',
-						'<strong>' . esc_html__( 'SkillTriks', 'stlms-addon' ) . '</strong>'
+						esc_html__( '%1$s requires the %2$s plugin to be installed and activated.', 'skilltriks-theme-pack' ),
+						'<strong>' . esc_html__( 'SkillTriks LMS Theme Add-on', 'skilltriks-theme-pack' ) . '</strong>',
+						'<strong>' . esc_html__( 'SkillTriks', 'skilltriks-theme-pack' ) . '</strong>'
 					);
 					?>
 				</p>
 				<p>
 					<?php if ( ! $is_installed ) : ?>
 						<a href="<?php echo esc_url( $install_url ); ?>" class="button button-primary">
-							<?php esc_html_e( 'Install SkillTriks', 'stlms-addon' ); ?>
+							<?php esc_html_e( 'Install SkillTriks', 'skilltriks-theme-pack' ); ?>
 						</a>
 					<?php elseif ( ! $is_active ) : ?>
 						<a href="<?php echo esc_url( $activate_url ); ?>" class="button button-primary">
-							<?php esc_html_e( 'Activate SkillTriks', 'stlms-addon' ); ?>
+							<?php esc_html_e( 'Activate SkillTriks', 'skilltriks-theme-pack' ); ?>
 						</a>
 					<?php endif; ?>
 					<a href="https://wordpress.org/plugins/skilltriks/" target="_blank" class="button">
-						<?php esc_html_e( 'View Plugin', 'stlms-addon' ); ?>
+						<?php esc_html_e( 'View Plugin', 'skilltriks-theme-pack' ); ?>
 					</a>
 				</p>
 			</div>
@@ -118,18 +118,18 @@ function stlms_addons_dependency_notice() {
 	</div>
 	<?php
 }
-add_action( 'admin_notices', 'stlms_addons_dependency_notice' );
+add_action( 'admin_notices', 'stlmstp_addons_dependency_notice' );
 
 /**
  * Enqueues custom inline styles for the admin notice that displays
  * when the required Skilltriks plugin is not installed or activated.
  */
-function stlms_admin_enqueue_notice_styles() {
+function stlmstp_admin_enqueue_notice_styles() {
 	if ( ! is_admin() ) {
 		return;
 	}
 
-	wp_register_style( 'stlms-admin-notice', false, array(), STLMS_ADDONS_VERSION );
+	wp_register_style( 'stlms-admin-notice', false, array(), STLMSTP_ADDONS_VERSION );
 	wp_enqueue_style( 'stlms-admin-notice' );
 
 	$custom_css = '
@@ -168,12 +168,12 @@ function stlms_admin_enqueue_notice_styles() {
 
 	wp_add_inline_style( 'stlms-admin-notice', $custom_css );
 }
-add_action( 'admin_enqueue_scripts', 'stlms_admin_enqueue_notice_styles' );
+add_action( 'admin_enqueue_scripts', 'stlmstp_admin_enqueue_notice_styles' );
 
 /**
  * Add on template path.
  */
-function stlms_addons_template() {
+function stlmstp_addons_template() {
 	$layout = 'default';
 	$option = get_option( 'stlms_settings', array() );
 	$layout = isset( $option['theme'] ) ? $option['theme'] : $layout;
@@ -183,26 +183,37 @@ function stlms_addons_template() {
 /**
  * Enqueue scripts.
  */
-function stlms_addons_styles() {
-	$layout = stlms_addons_template();
+function stlmstp_addons_styles() {
+	$layout = stlmstp_addons_template();
 	if ( 'layout-default' === $layout ) {
-		wp_register_style( 'stlms-frontend', STLMS_ASSETS . '/css/frontend.css', array(), STLMS_ADDONS_VERSION );
+		wp_register_style( 'stlms-frontend', STLMS_ASSETS . '/css/frontend.css', array(), STLMSTP_ADDONS_VERSION );
 	} else {
 		if ( 'layout-2' === $layout ) {
-			wp_enqueue_style( 'lato-font-family', 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', array(), STLMS_ADDONS_VERSION );
+			wp_enqueue_style( 'lato-font-family', 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', array(), STLMSTP_ADDONS_VERSION );
 		}
-		wp_register_style( 'stlms-frontend', STLMS_ADDONS_ASSETS . '/' . $layout . '/css/stlms-style.css', array(), STLMS_ADDONS_VERSION );
-		wp_register_script( 'stlms-addons-frontend', STLMS_ADDONS_ASSETS . '/' . $layout . '/js/stlms-setting.js', array( 'jquery' ), STLMS_ADDONS_VERSION, true );
+		wp_register_style( 'stlms-frontend', STLMSTP_ADDONS_ASSETS . '/' . $layout . '/css/stlms-style.css', array(), STLMSTP_ADDONS_VERSION );
+		wp_register_script( 'stlms-addons-frontend', STLMSTP_ADDONS_ASSETS . '/' . $layout . '/js/stlms-setting.js', array( 'jquery' ), STLMSTP_ADDONS_VERSION, true );
 		wp_enqueue_script( 'stlms-addons-frontend' );
-		wp_dequeue_style( 'stlms-frontend-assigncourse' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'stlms_addons_styles' );
+add_action( 'wp_enqueue_scripts', 'stlmstp_addons_styles' );
+
+/**
+ * Dequeue default style.
+ */
+function stlmstp_dequeue_default_style() {
+	$layout = stlmstp_addons_template();
+	if ( 'layout-2' === $layout ) {
+		wp_dequeue_style( 'stlms-frontend-assigncourse' );
+		wp_deregister_style( 'stlms-frontend-assigncourse' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'stlmstp_dequeue_default_style', 11 );
 
 /**
  * Customise css.
  */
-function customise_css() {
+function stlmstp_customise_css() {
 	$option               = get_option( 'stlms_settings', array() );
 	$layout               = isset( $option['theme'] ) ? $option['theme'] : 'layout-default';
 	$customise_css        = isset( $option[ $layout ] ) ? $option[ $layout ] : array();
@@ -233,4 +244,4 @@ function customise_css() {
 		</style>
 	<?php
 }
-add_action( 'wp_head', 'customise_css' );
+add_action( 'wp_head', 'stlmstp_customise_css' );
