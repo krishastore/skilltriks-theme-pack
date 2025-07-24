@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name:     SkillTriks Theme Pack
+ * Requires Plugins:  skilltriks
  * Plugin URI:
  * Description:     A Comprehensive Solution For Training Management. Contact Us For More Details On Training Management System.
  * Author:          KrishaWeb
