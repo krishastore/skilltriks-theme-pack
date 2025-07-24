@@ -7,13 +7,6 @@ Each theme in the pack is fully responsive, easy to apply, and comes with custom
 
 New themes and customization features will be added regularly!
 
-# Setup Guide
-
-This document describes how to set up your development environment, so that it is ready to run, develop and test this WordPress Plugin or Theme.
-
-Suggestions are provided for the LAMP/LEMP stack and Git client are for those who prefer the UI over a command line and/or are less familiar with
-WordPress, PHP, MySQL and Git - but you're free to use your preferred software.
-
 ## Setup
 
 ### LAMP/LEMP stack
