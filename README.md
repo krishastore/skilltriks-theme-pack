@@ -57,11 +57,8 @@ In the cloned repository's directory, at the command line, run `composer install
 This will install the development dependencies. If you want to install just the production dependencies, run `composer install --no-dev`.
 
 The development dependencies include:
-- PHPStan
-- PHPUnit
 - PHP_CodeSniffer
 - WordPress Coding Standards
-- WordPress PHPUnit Polyfills
 
 For the JS dependencies, run `npm ci` OR `npm install`. `npm ci` is recommended
 To watch for changes in the JS files, run `npm run dev` or `npm run build` if present or `npm run dist` to build a new version.
@@ -70,14 +67,6 @@ To watch for changes in the JS files, run `npm run dev` or `npm run build` if pr
 
 To run PHP_CodeSniffer, run `composer lint`. This will run the WordPress Coding Standards checks.
 To fix automatically fixable issues, run `composer format`.
-
-### PHPStan
-
-To run PHPStan, run `composer phpstan`
-
-### PHPUnit
-
-To run PHPUnit, run `phpunit` or `./vendor/bin/phpunit` if it is not configured globally.
 
 
 ### Next Steps
