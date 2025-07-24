@@ -44,6 +44,8 @@ If you're new to this, use [GitHub Desktop](https://desktop.github.com/) or [Tow
 
 For Plugins the cloned folder should be under `wp-content/plugins/` and for Themes under `wp-content/themes/`.
 
+You must have skilltrick in your local machine to install the skilltricks theme pack.
+
 ### Install Dependencies for PHP and JS
 
 In the cloned repository's directory, at the command line, run `composer install`.
