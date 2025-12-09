@@ -225,20 +225,20 @@ function stlmstp_customise_css() {
 			:root {
 				<?php
 				foreach ( $customise_color as $color => $value ) {
-					echo '--stlms-' . str_replace( '_', '-', $color ) . ': ' . $value . ';'; //phpcs:ignore.
+					echo '--stlms-' . esc_attr( str_replace( '_', '-', $color ) ) . ': ' . esc_attr( $value ) . ';'; //phpcs:ignore.
 				}
 				foreach ( $customise_typography as $typography => $value ) {
 					if ( is_array( $value ) ) {
 						foreach ( $value as $key => $v ) {
-							echo '--stlms-' . str_replace( '_', '-', $typography ) . '-' . str_replace( '_', '-', $key ) . ': ' . $v . ';'; //phpcs:ignore.
+							echo '--stlms-' . esc_attr( str_replace( '_', '-', $typography ) ) . '-' . esc_attr( str_replace( '_', '-', $key ) ) . ': ' . esc_attr( $v ) . ';'; //phpcs:ignore.
 						}
 					}
 				}
 				if ( isset( $customise_typography['global']['font_family'] ) ) {
-					echo '--stlms-heading-font-family: ' . $customise_typography['global']['font_family']; //phpcs:ignore.
+					echo '--stlms-heading-font-family: ' . esc_attr( $customise_typography['global']['font_family'] ); //phpcs:ignore.
 				}
 				if ( isset( $customise_typography['body']['font_family'] ) ) {
-					echo '--stlms-body-font-family: ' . $customise_typography['body']['font_family']; //phpcs:ignore.
+					echo '--stlms-body-font-family: ' . esc_attr( $customise_typography['body']['font_family'] ); //phpcs:ignore.
 				}
 				?>
 			}
