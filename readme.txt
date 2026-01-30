@@ -1,12 +1,12 @@
 === SkillTriks Theme Pack===
 Author: KrishaWeb
 Author URI: https://profiles.wordpress.org/krishaweb/
-Contributors: krishaweb, dilipbheda, Dhruvang21, parthvataliya
+Contributors: krishaweb, pandyanisarg, Dhruvang21, parthvataliya
 Tags: learnpress, themes, e-learning, education, courses
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0
 Copyright: (c) 2012-2026 KrishaWeb Technologies PVT LTD (info@krishaweb.com)
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
