@@ -52,3 +52,9 @@ wp-config.php
 .DS_Store*
 ehthumbs.db
 phpcs-report.xml
+
+# SonarQube / PHPCS generated reports (CI artifacts)
+reports/
+pr-output.txt
+slack-output.txt
+.scannerwork/
