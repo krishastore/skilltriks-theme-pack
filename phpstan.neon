@@ -1,0 +1,53 @@
+parameters:
+    level: 5
+    reportUnmatchedIgnoredErrors: false
+    # This repo has no src/: the analysable PHP is the theme templates plus the
+    # two root files.
+    paths:
+        - %currentWorkingDirectory%/templates
+        - %currentWorkingDirectory%/skilltriks-theme-pack.php
+        - %currentWorkingDirectory%/uninstall.php
+    bootstrapFiles:
+        - %currentWorkingDirectory%/tests/php/phpstan/bootstrap.php
+    dynamicConstantNames:
+        - STLMSTP_ADDONS_VERSION
+        - STLMSTP_ADDONS_ABSURL
+        - STLMSTP_ADDONS_ABSPATH
+        - STLMSTP_ADDONS_ASSETS
+        - STLMSTP_ADDONS_TEMPLATEPATH
+        - STLMS_ASSETS
+        - COOKIEHASH
+        - WPINC
+        - COOKIE_DOMAIN
+    ignoreErrors:
+        # ── Parent plugin API (`Requires Plugins: skilltriks`) ──────────────
+        # These namespaced functions/constants/classes live in the skilltriks
+        # plugin, which is a runtime dependency and is NOT installed in this
+        # repo, so PHPStan cannot see them. Ignoring them keeps the signal on
+        # THIS repo's own code. To type-check against the real API instead,
+        # check the parent plugin out in CI and add it to scanDirectories:
+        #
+        #   scanDirectories:
+        #       - %currentWorkingDirectory%/../skilltriks/src
+        #
+        # The `i` flag is deliberate: the templates use BOTH `\ST\Lms\` and
+        # `\ST\LMS\` casing, and PHP namespaces are case-insensitive.
+        - '#^(Used )?(Function|Constant|Class|Interface|Trait) ST\\Lms\\[A-Za-z0-9_\\]+ not found\.$#i'
+        - '#^Instantiated class ST\\Lms\\[A-Za-z0-9_\\]+ not found\.$#i'
+        - '#on an unknown class ST\\Lms\\[A-Za-z0-9_\\]+\.$#i'
+        - '#^Call to (static )?method [A-Za-z0-9_]+\(\) on an unknown class ST\\Lms\\#i'
+
+        # ── WordPress quirks (kept in sync with the parent repo) ────────────
+        - '#^Variable \$this might not be defined.#'
+        - '#^Function apply_filters(_ref_array)? invoked with [34567] parameters, 2 required\.$#'
+        - '#Parameter \#2 \$default of function get_theme_mod expects#'
+        - '#Parameter \#2 \$callback of function add_action expects callable\(\): mixed, non-empty-string given#'
+        - '#^Property WP_Term\:\:\$taxonomy \(string\) in isset\(\) is not nullable\.$#'
+        - '#^Property WP_Term\:\:\$slug \(string\) in isset\(\) is not nullable\.$#'
+    scanDirectories:
+        - %currentWorkingDirectory%/templates
+    scanFiles:
+        - skilltriks-theme-pack.php
+        - uninstall.php
+includes:
+    - %currentWorkingDirectory%/vendor/szepeviktor/phpstan-wordpress/extension.neon
