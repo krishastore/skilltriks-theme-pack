@@ -83,10 +83,7 @@ $layout      = stlmstp_addons_template();
 					<h1><?php esc_html_e( 'Find the right course for you', 'skilltriks-theme-pack' ); ?></h1>
 					<p>
 						<?php
-						esc_html_e(
-							'Find the right course tailored to your role and career growth. Our LMS curates industry-specific training, helping you upskill efficiently. Learn at your own pace and stay ahead!',
-							'skilltriks-theme-pack'
-						);
+						esc_html_e( 'Find the right course tailored to your role and career growth. Our LMS curates industry-specific training, helping you upskill efficiently. Learn at your own pace and stay ahead!', 'skilltriks-theme-pack' );
 						?>
 					</p>
 				</div>
