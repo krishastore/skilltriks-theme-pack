@@ -21,10 +21,12 @@ jQuery(function($) {
 });
 
 function openTab(evt, tabName) {
+
   // Hide all tab panes
   const tabcontent = document.getElementsByClassName("tab-pane");
-  for (const pane of tabcontent) {
-    pane.classList.remove("active");
+
+  for (const tab of tabcontent) {
+    tab.classList.remove("active");
   }
 
   // Remove active class from all nav links
@@ -33,8 +35,13 @@ function openTab(evt, tabName) {
     link.classList.remove("active");
   }
 
-  // Show current tab pane and mark as active
-  document.getElementById(tabName).classList.add("active");
+  // Show current tab pane and mark link as active
+  const currentTab = document.getElementById(tabName);
+
+  if (currentTab) {
+    currentTab.classList.add("active");
+  }
+
   evt.currentTarget.classList.add("active");
 }
 
