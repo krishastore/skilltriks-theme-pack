@@ -40,7 +40,6 @@
 
   &__header {
     display: flex;
-    // height: 60px;
     justify-content: space-between;
     align-items: center;
     position: relative;
@@ -61,7 +60,6 @@
     }
 
     @include breakpoint(max, 500) {
-      // flex-wrap: wrap;
       height: 100%;
     }
   }
@@ -126,11 +124,6 @@
         height: 19px;
       }
 
-      @include breakpoint(max, $sm) {
-        // font-size: 0;
-        // gap: 0;
-        // padding: 8px;
-      }
     }
   }
 
@@ -430,6 +423,9 @@
 
         &.completed {
           color: var(--stlms-paragraph-light-color);
+          a.stlms-lesson-class {
+            color: var(--stlms-paragraph-light-color);
+          }
         }
 
         .stlms-check {
@@ -455,18 +451,11 @@
           color: var(--stlms-paragraph-color);
         }
 
-        &.completed {
-          a.stlms-lesson-class {
-            color: var(--stlms-paragraph-light-color);
-          }
-        }
-
         .stlms-lesson-class {
           width: 100%;
           display: flex;
           flex-direction: column;
           gap: 5px;
-          // color: var(--stlms-paragraph-color);
           text-decoration: none;
 
           .class-name {
@@ -481,7 +470,6 @@
 
             span {
               flex-shrink: 0;
-              // width: 32px;
             }
           }
 
@@ -505,15 +493,6 @@
             }
           }
         }
-
-        // &:has(.stlms-check[readonly]),
-        // &:has(.stlms-check[disable]),
-        // &:has(.stlms-check[disabled]) {
-        //   pointer-events: none;
-        //   .stlms-check {
-        //     border-color: var(--stlms-icon-color);
-        //   }
-        // }
       }
     }
   }
@@ -603,13 +582,11 @@
     textarea {
       &.valid {
         border-color: var(--stlms-success-color);
-        // background: rgba(37, 175, 61, 0.05);
         cursor: not-allowed;
       }
 
       &.invalid {
         border-color: var(--stlms-error-color);
-        // background: rgba(197, 52, 52, 0.05);
         cursor: not-allowed;
       }
     }

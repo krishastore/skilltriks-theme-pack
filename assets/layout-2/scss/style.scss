@@ -402,7 +402,6 @@ body {
   
   &.due-soon-tag,
   &.due-tag {
-    // display: inline-flex;
     padding: 5px 6px;
     border-radius: 4px;
     background-color: var(--stlms-warning-color);
@@ -410,7 +409,6 @@ body {
     font-size: $font_size_xxs;
     line-height: 12px;
     color: var(--stlms-white-color);
-    // width: max-content;
   }
   &.due-tag {
     background-color: var(--stlms-error-color);
@@ -418,7 +416,6 @@ body {
 }
 
 .stlms-header-wrap {
-  // height: 80px;
   position: relative;
 
   header {
