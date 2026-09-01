@@ -10,7 +10,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-if ( ! ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) ) { //phpcs:ignore WordPress.WP.Capabilities.Unknown 
+if ( ! ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) ) { //phpcs:ignore WordPress.WP.Capabilities.Unknown
 	exit;
 }
 $course_args = array(
@@ -57,12 +57,14 @@ $stlms_users = get_users(
 										<?php foreach ( $courses as $course_id ) : ?>
 										<li>
 											<label>
-												<input type="radio" class="stlms-check" name="course" value="<?php echo esc_html( $course_id ); ?>"> <?php echo esc_html( get_the_title( $course_id ) ); ?>
+												<input type="radio" class="stlms-check" name="course" value="<?php echo esc_html( $course_id ); ?>">
+												<?php echo esc_html( get_the_title( $course_id ) ); ?>
 											</label>
 										</li>
 										<?php endforeach; ?>
 									</ul>
-									<div class="no-results" id="course-no-results" style="display: none;"><?php esc_html_e( 'No results found', 'skilltriks-theme-pack' ); ?></div>
+									<div class="no-results" id="course-no-results" style="display: none;">
+										<?php esc_html_e( 'No results found', 'skilltriks-theme-pack' ); ?></div>
 								</div>
 							</div>
 							<div class="stlms-assign-course__box">
@@ -83,12 +85,16 @@ $stlms_users = get_users(
 											?>
 										<li>
 											<label>
-												<input type="checkbox" class="stlms-check stlms-employee" value="<?php echo esc_html( base64_encode( $users->ID ) ); ?>"> <?php echo esc_html( $users->display_name ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode ?> 
+												<input type="checkbox" class="stlms-check stlms-employee"
+													<?php // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode ?>
+													value="<?php echo esc_html( base64_encode( $users->ID ) ); ?>">
+												<?php echo esc_html( $users->display_name ); ?>
 											</label>
 										</li>
 										<?php endforeach; ?>
 									</ul>
-									<div class="no-results" id="employee-no-results" style="display: none;"><?php esc_html_e( 'No results found', 'skilltriks-theme-pack' ); ?></div>
+									<div class="no-results" id="employee-no-results" style="display: none;">
+										<?php esc_html_e( 'No results found', 'skilltriks-theme-pack' ); ?></div>
 								</div>
 							</div>
 							<div class="stlms-assign-course__box">

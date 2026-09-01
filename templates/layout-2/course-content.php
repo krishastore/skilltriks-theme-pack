@@ -99,15 +99,23 @@ load_template(
 									$course_link = get_permalink() . $item_key . '/' . rtrim( $curriculum_type, '_id' ) . '/' . $item_id;
 									?>
 								<li class="<?php echo $inactive ? esc_attr( 'active' ) : ''; ?>">
-									<div class="<?php echo esc_attr( $inactive ? esc_attr( 'in-progress ' ) : '' ) . esc_attr( $completed ? 'completed ' : '' ); ?>course-progress">
+									<div
+										class="<?php echo esc_attr( $inactive ? esc_attr( 'in-progress ' ) : '' ) . esc_attr( $completed ? 'completed ' : '' ); ?>course-progress">
 										<?php if ( $inactive ) : ?>
-											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" class="stlms-check curriculum-progress-box" value="<?php echo esc_attr( $item_id ); ?>" aria-label="<?php esc_attr_e( 'Course progress', 'skilltriks-theme-pack' ); ?>" checked='checked' disabled>
+											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]"
+												class="stlms-check curriculum-progress-box" value="<?php echo esc_attr( $item_id ); ?>"
+												aria-label="<?php esc_attr_e( 'Course progress', 'skilltriks-theme-pack' ); ?>" checked='checked' disabled>
 										<?php else : ?>
-											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" value="<?php echo esc_attr( $item_id ); ?>" class="stlms-check curriculum-progress-box"<?php echo $inactive ? ' readonly' : ''; ?><?php checked( true, in_array( $needle, $haystack, true ) ); ?> disabled aria-label="<?php esc_attr_e( 'Course progress', 'skilltriks-theme-pack' ); ?>">
+											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" value="<?php echo esc_attr( $item_id ); ?>"
+												class="stlms-check curriculum-progress-box"<?php echo $inactive ? ' readonly' : ''; ?>
+												<?php checked( true, in_array( $needle, $haystack, true ) ); ?>
+												disabled aria-label="<?php esc_attr_e( 'Course progress', 'skilltriks-theme-pack' ); ?>">
 										<?php endif; ?>
 
-										<a href="<?php echo in_array( $needle, $haystack, true ) ? esc_url( $course_link ) : 'javascript:;'; ?>" data-key="<?php echo esc_html( wp_hash( $course_link ) ); ?>" class="stlms-lesson-class">
-											<span class="class-name"><span><?php echo esc_html( sprintf( '%d.%d.', $item_key, $key ) ); ?></span> <?php echo esc_html( get_the_title( $item_id ) ); ?></span>
+										<a href="<?php echo in_array( $needle, $haystack, true ) ? esc_url( $course_link ) : 'javascript:;'; ?>"
+											data-key="<?php echo esc_html( wp_hash( $course_link ) ); ?>" class="stlms-lesson-class">
+											<span class="class-name"><span><?php echo esc_html( sprintf( '%d.%d.', $item_key, $key ) ); ?></span>
+												<?php echo esc_html( get_the_title( $item_id ) ); ?></span>
 											<span class="class-time">
 												<svg class="icon" width="16" height="16">
 													<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#<?php echo esc_html( $media_type ); ?>">

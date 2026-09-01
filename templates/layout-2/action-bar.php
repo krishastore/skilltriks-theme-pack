@@ -49,20 +49,29 @@ $layout          = stlmstp_addons_template();
 	</div>
 	<div class="stlms-lesson-view__pagination">
 		<?php if ( $prev_key >= 0 && isset( $curriculums_keys[ $prev_key ] ) ) : ?>
-			<a href="<?php echo esc_url( \ST\Lms\get_curriculum_link( $curriculums_keys[ $prev_key ] ) ); ?>" class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-prev-btn">
+			<a
+				href="<?php echo esc_url( \ST\Lms\get_curriculum_link( $curriculums_keys[ $prev_key ] ) ); ?>"
+				class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-prev-btn"
+			>
 				<svg class="icon" width="11" height="19">
 					<use xlink:href="<?php echo esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#nav-left"></use>
 				</svg>
 			</a>
 		<?php endif; ?>
 		<?php if ( $next_key >= 1 && isset( $curriculums_keys[ $next_key ] ) ) : ?>
-			<a href="<?php echo esc_url( \ST\Lms\get_curriculum_link( $curriculums_keys[ $next_key ] ) ); ?>" class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-next-btn<?php echo $is_quiz ? ' hidden' : ''; ?>">
+			<a
+				href="<?php echo esc_url( \ST\Lms\get_curriculum_link( $curriculums_keys[ $next_key ] ) ); ?>"
+				class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-next-btn<?php echo $is_quiz ? ' hidden' : ''; ?>"
+			>
 				<svg class="icon" width="11" height="19">
 					<use xlink:href="<?php echo esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#nav-right"></use>
 				</svg>
 			</a>
 		<?php else : ?>
-			<a href="<?php echo esc_url( $result_page_url ); ?>" class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-next-btn<?php echo 'video' === $curriculum_type || $is_quiz ? ' hidden' : ''; ?>">
+			<a
+				href="<?php echo esc_url( $result_page_url ); ?>"
+				class="stlms-btn stlms-btn-icon stlms-btn-flate stlms-next-btn<?php echo 'video' === $curriculum_type || $is_quiz ? ' hidden' : ''; ?>"
+			>
 				<svg class="icon" width="16" height="16">
 					<use xlink:href="<?php echo esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#nav-right"></use>
 				</svg>

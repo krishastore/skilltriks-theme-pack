@@ -55,7 +55,9 @@ list( $passing_grade, $grade_percentage, $completed_on ) = $completed_results;
 				<?php endif; ?>
 				<div class="stlms-quiz-result-list stlms-result-view">
 					<div class="stlms-quiz-result-item">
-						<p class="stlms-text-<?php echo $grade_percentage >= $passing_grade ? 'green' : 'red'; ?> stlms-h3"><?php echo esc_html( $grade_percentage ); ?>%</p>
+						<p
+							class="stlms-text-<?php echo $grade_percentage >= $passing_grade ? 'green' : 'red'; ?> stlms-h3"
+						><?php echo esc_html( $grade_percentage ); ?>%</p>
 						<span class="stlms-p-large"><?php esc_html_e( 'Your total Grade', 'skilltriks-theme-pack' ); ?></span>
 					</div>
 				</div>
@@ -68,7 +70,12 @@ list( $passing_grade, $grade_percentage, $completed_on ) = $completed_results;
 							?>
 						</span>
 						<?php if ( $has_certificate ) : ?>
-							<a href="javascript:;" class="stlms-link-text" id="download-certificate" data-course="<?php echo esc_attr( $course_id ); ?>"><?php esc_html_e( 'Get your Certificate', 'skilltriks-theme-pack' ); ?></a><i class="stlms-loader"></i>
+							<a
+								href="javascript:;"
+								class="stlms-link-text"
+								id="download-certificate"
+								data-course="<?php echo esc_attr( $course_id ); ?>"
+							><?php esc_html_e( 'Get your Certificate', 'skilltriks-theme-pack' ); ?></a><i class="stlms-loader"></i>
 							<?php
 						endif;
 					else :
@@ -100,7 +107,10 @@ list( $passing_grade, $grade_percentage, $completed_on ) = $completed_results;
 					</div>
 				</div>
 				<div class="cta">
-					<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'courses' ) ); ?>" class="stlms-btn stlms-btn-flate"><?php esc_html_e( 'Find More Courses', 'skilltriks-theme-pack' ); ?></a>
+					<a
+						href="<?php echo esc_url( \ST\Lms\get_page_url( 'courses' ) ); ?>"
+						class="stlms-btn stlms-btn-flate"
+					><?php esc_html_e( 'Find More Courses', 'skilltriks-theme-pack' ); ?></a>
 				</div>
 			</div>
 		</div>

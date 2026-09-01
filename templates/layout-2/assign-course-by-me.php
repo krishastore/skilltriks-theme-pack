@@ -10,11 +10,19 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-if ( ! ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) ) { //phpcs:ignore WordPress.WP.Capabilities.Unknown 
+if ( ! ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) ) { //phpcs:ignore WordPress.WP.Capabilities.Unknown
 	exit;
 }
 
-$course_assigned_by_me = get_user_meta( get_current_user_id(), \ST\Lms\STLMS_COURSE_ASSIGN_BY_ME, true ) ? get_user_meta( get_current_user_id(), \ST\Lms\STLMS_COURSE_ASSIGN_BY_ME, true ) : array();
+$course_assigned_by_me = get_user_meta(
+	get_current_user_id(),
+	\ST\Lms\STLMS_COURSE_ASSIGN_BY_ME,
+	true
+) ? get_user_meta(
+	get_current_user_id(),
+	\ST\Lms\STLMS_COURSE_ASSIGN_BY_ME,
+	true
+) : array();
 $due_soon              = get_option( 'stlms_settings' );
 $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'] : '';
 $stlms_users           = array();
@@ -84,7 +92,7 @@ $layout      = stlmstp_addons_template();
 							<option value=""><?php esc_html_e( 'Choose', 'skilltriks-theme-pack' ); ?></option>
 							<option value="not-started"><?php esc_html_e( 'Not Started', 'skilltriks-theme-pack' ); ?></option>
 							<option value="in-progress"><?php esc_html_e( 'In Progress', 'skilltriks-theme-pack' ); ?></option>
-							<option value="completed"><?php esc_html_e( 'Completed', 'skilltriks-theme-pack' ); ?></option>	
+							<option value="completed"><?php esc_html_e( 'Completed', 'skilltriks-theme-pack' ); ?></option>
 						</select>
 					</label>
 				</div>
@@ -147,7 +155,9 @@ $layout      = stlmstp_addons_template();
 									$curriculums          = get_post_meta( $course_id, \ST\Lms\META_KEY_COURSE_CURRICULUM, true );
 									$curriculums          = \ST\Lms\merge_curriculum_items( $curriculums );
 									$curriculums          = array_keys( $curriculums );
-									$course_progress      = ! empty( $current_status ) ? \ST\Lms\calculate_course_progress( $course_id, $curriculums, $current_status ) . '%' : '0%';
+									$course_progress      = ! empty( $current_status )
+										? \ST\Lms\calculate_course_progress( $course_id, $curriculums, $current_status ) . '%'
+										: '0%';
 									$course_completed_key = sprintf( \ST\Lms\STLMS_COURSE_COMPLETED_ON, $course_id );
 									$completed_on         = get_user_meta( $_user_id, $course_completed_key, true );
 
@@ -177,12 +187,12 @@ $layout      = stlmstp_addons_template();
 													$today_timestamp     = (int) current_datetime()->format( 'U' );
 													$formatted_timestamp = strtotime( $formatted_date );
 												?>
-												<?php if ( $today_timestamp >= $due_date && $today_timestamp <= $formatted_timestamp ) : ?>	
+												<?php if ( $today_timestamp >= $due_date && $today_timestamp <= $formatted_timestamp ) : ?>
 													<span class="stlms-tag due-soon-tag">
 														<?php esc_html_e( 'Due Soon', 'skilltriks-theme-pack' ); ?>
 													</span>
 												<?php endif; ?>
-												<?php if ( $today_timestamp > $formatted_timestamp ) : ?>	
+												<?php if ( $today_timestamp > $formatted_timestamp ) : ?>
 													<span class="stlms-tag due-tag">
 														<?php esc_html_e( 'Due', 'skilltriks-theme-pack' ); ?>
 													</span>

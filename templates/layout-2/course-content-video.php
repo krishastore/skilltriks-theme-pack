@@ -36,14 +36,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 			if ( str_contains( $parse_url, 'youtube' ) ) :
 				$video_id = wp_parse_url( $embed_video_url, PHP_URL_PATH );
 				?>
-				<div id="player" class="lesson-video" data-plyr-provider="youtube" data-plyr-embed-id="<?php echo esc_html( str_replace( '/embed/', '', $video_id ) ); ?>"></div>
+				<div id="player" class="lesson-video" data-plyr-provider="youtube"
+					data-plyr-embed-id="<?php echo esc_html( str_replace( '/embed/', '', $video_id ) ); ?>"></div>
 				<?php
 			elseif ( str_contains( $parse_url, 'vimeo' ) ) :
 				$video_id = wp_parse_url( $embed_video_url, PHP_URL_PATH );
 				?>
-				<div id="player" class="lesson-video" data-plyr-provider="vimeo" data-plyr-embed-id="<?php echo esc_html( str_replace( '/video/', '', $video_id ) ); ?>"></div>
+				<div id="player" class="lesson-video" data-plyr-provider="vimeo"
+					data-plyr-embed-id="<?php echo esc_html( str_replace( '/video/', '', $video_id ) ); ?>"></div>
 			<?php else : ?>
-				<iframe src="<?php echo esc_url( $args['curriculum']['media']['embed_video_url'] ); ?>" frameborder="0" title="<?php esc_html_e( 'Lesson video', 'skilltriks-theme-pack' ); ?>"></iframe>
+				<iframe src="<?php echo esc_url( $args['curriculum']['media']['embed_video_url'] ); ?>" frameborder="0"
+					title="<?php esc_html_e( 'Lesson video', 'skilltriks-theme-pack' ); ?>"></iframe>
 			<?php endif; ?>
 		<?php endif; ?>
 	</div>
