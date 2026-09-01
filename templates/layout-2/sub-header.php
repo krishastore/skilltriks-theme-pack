@@ -27,7 +27,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				?>
 				<div class="stlms-dd-content" id="browseContent">
 					<?php foreach ( $terms_list as $key => $course_term ) : ?>
-						<a href="<?php echo esc_url( add_query_arg( 'category', $course_term['id'], $course_page ) ); ?>"><?php echo esc_html( $course_term['name'] ); ?></a>
+						<a
+							href="<?php echo esc_url( add_query_arg( 'category', $course_term['id'], $course_page ) ); ?>"
+						><?php echo esc_html( $course_term['name'] ); ?></a>
 					<?php endforeach; ?>
 				</div>
 			</div>
@@ -40,7 +42,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#search"></use>
 						</svg>
 					</span>
-					<input type="text" name="_s" class="stlms-form-control" placeholder="<?php esc_attr_e( 'Search', 'skilltriks-theme-pack' ); ?>" value="<?php echo esc_attr( $search_keyword ); ?>">
+					<input
+						type="text"
+						name="_s"
+						class="stlms-form-control"
+						placeholder="<?php esc_attr_e( 'Search', 'skilltriks-theme-pack' ); ?>"
+						value="<?php echo esc_attr( $search_keyword ); ?>"
+					>
 				</div>
 			</form>
 		</div>

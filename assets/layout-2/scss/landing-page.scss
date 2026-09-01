@@ -18,7 +18,6 @@
     display: flex;
     gap: 98px;
     align-items: center;
-    // position: fixed;
     left: 0;
     top: 0;
     width: 100%;
@@ -183,63 +182,6 @@
     }
   }
 }
-
-// stlms-browse-wrap (sub-header)
-// .stlms-browse-wrap {
-//   @include breakpoint(max, $sm) {
-//     order: 2;
-//   }
-//   .stlms-user-dd {
-//     padding: 11px 18px;
-//     border: 1px solid #e6e6e7;
-//     border-radius: 50px;
-//     min-width: 180px;
-
-//     .stlms-user-dd__toggle {
-//       display: flex;
-//       justify-content: space-between;
-//       gap: 16px;
-//       font-weight: 400;
-//       font-size: 16px;
-//       line-height: 24px;
-//       letter-spacing: 0%;
-//       color: #4e5566;
-
-//       svg {
-//         @include transition(all 0.3s ease-in-out);
-//       }
-
-//       &.active {
-//         color: #1d2026;
-
-//         svg {
-//           transform: rotate(180deg);
-//         }
-//       }
-//     }
-
-//     .stlms-user-dd__menu {
-//       top: calc(100% + 16px);
-//       border: 1px solid #e9eaf0;
-//       border-radius: 8px;
-//       padding: 12px 0;
-//       box-shadow: 0px 6px 16px 0px #0000000f;
-//       background-color: $white;
-
-//       .stlms-user-dd__link {
-//         padding: 8px 20px;
-//         font-size: 16px;
-//         color: #6e7485;
-//         border-bottom: 0;
-
-//         &:hover {
-//           background-color: #e3f0fc;
-//           color: #091bdd;
-//         }
-//       }
-//     }
-//   }
-// }
 
 // stlms-browse-wrap (sub-header)
 .stlms-browse-wrap {
@@ -415,6 +357,27 @@
       }
     }
   }
+  .stlms-container {
+    position: relative;
+    .stlms-swiper-nav {
+      position: absolute;
+      left: 0;
+      bottom: 25px;
+      display: flex;
+      gap: 24px;
+      width: auto;
+      top: auto;
+      right: auto;
+      transform: translateY(0);
+
+      @include breakpoint(max, $sm) {
+        left: auto;
+        right: 5px;
+        bottom: 5px;
+        gap: 6px;
+      }
+    }
+  }
 }
 
 .stlms-banner-content {
@@ -471,31 +434,6 @@
   }
 }
 
-// swiper-nav hero-banner
-.stlms-hero-banner {
-  .stlms-container {
-    position: relative;
-    .stlms-swiper-nav {
-      position: absolute;
-      left: 0;
-      bottom: 25px;
-      display: flex;
-      gap: 24px;
-      width: auto;
-      top: auto;
-      right: auto;
-      transform: translateY(0);
-
-      @include breakpoint(max, $sm) {
-        left: auto;
-        right: 5px;
-        bottom: 5px;
-        gap: 6px;
-      }
-    }
-  }
-}
-
 // swiper-nav
 .stlms-swiper-wrap {
   position: relative;
@@ -536,6 +474,18 @@
       &.swiper-button-next {
         background-image: url(../images/nav-next.svg);
       }
+    }
+  }
+  .stlms-course-item:hover {
+    transform: translate(0);
+    box-shadow: none;
+    .stlms-course-item__info {
+      background: linear-gradient(
+        180deg,
+        rgba(20, 20, 20, 0) 0%,
+        rgba(0, 0, 0, 0.485225) 48.52%,
+        #000000 100%
+      );
     }
   }
 }
@@ -637,7 +587,6 @@
       height: 50%;
       padding: 16px;
       border: 0;
-      gap: 16px;
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -751,21 +700,6 @@
   .stlms-category-nav-wrap {
     padding-bottom: 32px;
     overflow: hidden;
-  }
-}
-
-.stlms-swiper-wrap {
-  .stlms-course-item:hover {
-    transform: translate(0);
-    box-shadow: none;
-    .stlms-course-item__info {
-      background: linear-gradient(
-        180deg,
-        rgba(20, 20, 20, 0) 0%,
-        rgba(0, 0, 0, 0.485225) 48.52%,
-        #000000 100%
-      );
-    }
   }
 }
 

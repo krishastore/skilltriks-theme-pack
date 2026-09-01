@@ -11,7 +11,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$course_assigned_to_me = get_user_meta( get_current_user_id(), \ST\Lms\STLMS_COURSE_ASSIGN_TO_ME, true ) ? get_user_meta( get_current_user_id(), \ST\Lms\STLMS_COURSE_ASSIGN_TO_ME, true ) : array();
+$course_assigned_to_me = get_user_meta(
+	get_current_user_id(),
+	\ST\Lms\STLMS_COURSE_ASSIGN_TO_ME,
+	true
+) ? get_user_meta(
+	get_current_user_id(),
+	\ST\Lms\STLMS_COURSE_ASSIGN_TO_ME,
+	true
+) : array();
 $due_soon              = get_option( 'stlms_settings' );
 $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'] : '';
 $stlms_users           = array();
@@ -82,7 +90,7 @@ $layout      = stlmstp_addons_template();
 							<option value=""><?php esc_html_e( 'Choose', 'skilltriks-theme-pack' ); ?></option>
 							<option value="not-started"><?php esc_html_e( 'Not Started', 'skilltriks-theme-pack' ); ?></option>
 							<option value="in-progress"><?php esc_html_e( 'In Progress', 'skilltriks-theme-pack' ); ?></option>
-							<option value="completed"><?php esc_html_e( 'Completed', 'skilltriks-theme-pack' ); ?></option>	
+							<option value="completed"><?php esc_html_e( 'Completed', 'skilltriks-theme-pack' ); ?></option>
 						</select>
 					</label>
 				</div>
@@ -216,12 +224,12 @@ $layout      = stlmstp_addons_template();
 													$today_timestamp     = (int) current_datetime()->format( 'U' );
 													$formatted_timestamp = strtotime( $formatted_date );
 												?>
-												<?php if ( $today_timestamp >= $due_date && $today_timestamp <= $formatted_timestamp ) : ?>	
+												<?php if ( $today_timestamp >= $due_date && $today_timestamp <= $formatted_timestamp ) : ?>
 													<span class="stlms-tag due-soon-tag">
 														<?php esc_html_e( 'Due Soon', 'skilltriks-theme-pack' ); ?>
 													</span>
 												<?php endif; ?>
-												<?php if ( $today_timestamp > $formatted_timestamp ) : ?>	
+												<?php if ( $today_timestamp > $formatted_timestamp ) : ?>
 													<span class="stlms-tag due-tag">
 														<?php esc_html_e( 'Due', 'skilltriks-theme-pack' ); ?>
 													</span>
@@ -239,7 +247,12 @@ $layout      = stlmstp_addons_template();
 											</div>
 										</div>
 									</td>
-									<td><a href="<?php echo ! $is_enrol && is_user_logged_in() ? 'javascript:;' : esc_url( $course_link ); ?>" class="stlms-btn outline small" id="<?php echo ! $is_enrol && is_user_logged_in() ? 'enrol-now' : ''; ?>" data-course="<?php echo esc_html( $course_id ); ?>"><?php echo esc_html( $button_text ); ?><i class="stlms-loader"></i></a></td>
+									<td>
+										<a href="<?php echo ! $is_enrol && is_user_logged_in() ? 'javascript:;' : esc_url( $course_link ); ?>"
+											class="stlms-btn outline small"
+											id="<?php echo ! $is_enrol && is_user_logged_in() ? 'enrol-now' : ''; ?>"
+											data-course="<?php echo esc_html( $course_id ); ?>"><?php echo esc_html( $button_text ); ?><i class="stlms-loader"></i></a>
+									</td>
 								</tr>
 										<?php
 									endif;

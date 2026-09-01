@@ -67,9 +67,25 @@ if ( ! empty( $levels ) ) {
 		'operator' => 'IN',
 	);
 }
-$enrol_courses         = get_user_meta( get_current_user_id(), \ST\Lms\STLMS_ENROL_COURSES, true ) ? get_user_meta( get_current_user_id(), \ST\Lms\STLMS_ENROL_COURSES, true ) : array();
+$enrol_courses         = get_user_meta(
+	get_current_user_id(),
+	\ST\Lms\STLMS_ENROL_COURSES,
+	true
+) ? get_user_meta(
+	get_current_user_id(),
+	\ST\Lms\STLMS_ENROL_COURSES,
+	true
+) : array();
 $layout                = stlmstp_addons_template();
-$course_assigned_to_me = get_user_meta( get_current_user_id(), \ST\Lms\STLMS_COURSE_ASSIGN_TO_ME, true ) ? get_user_meta( get_current_user_id(), \ST\Lms\STLMS_COURSE_ASSIGN_TO_ME, true ) : array();
+$course_assigned_to_me = get_user_meta(
+	get_current_user_id(),
+	\ST\Lms\STLMS_COURSE_ASSIGN_TO_ME,
+	true
+) ? get_user_meta(
+	get_current_user_id(),
+	\ST\Lms\STLMS_COURSE_ASSIGN_TO_ME,
+	true
+) : array();
 $due_soon              = get_option( 'stlms_settings' );
 $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'] : '';
 ?>
@@ -98,7 +114,7 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 				<?php
 				echo esc_html(
 					sprintf(
-						// phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment 
+						// phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 						__( 'Showing %1$s course of %2$s courses', 'skilltriks-theme-pack' ),
 						$courses->post_count,
 						number_format_i18n( $total_course )
@@ -191,7 +207,8 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 								<select class="stlms-form-control category">
 									<option value=""><?php esc_html_e( 'Choose', 'skilltriks-theme-pack' ); ?></option>
 									<?php foreach ( $terms_list as $key => $term_level ) : ?>
-										<option value="<?php echo esc_attr( $key ); ?>" <?php selected( reset( $category ), $key ); ?>><?php echo esc_html( $term_level['name'] ); ?></option>
+										<option value="<?php echo esc_attr( $key ); ?>"
+											<?php selected( reset( $category ), $key ); ?>><?php echo esc_html( $term_level['name'] ); ?></option>
 									<?php endforeach; ?>
 								</select>
 							</div>
@@ -224,7 +241,10 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 								<?php foreach ( $levels_list as $level_id => $level_details ) : ?>
 									<li>
 										<div class="stlms-check-wrap">
-											<input type="checkbox" name="levels[]" class="stlms-check" id="st_course_level_<?php echo (int) $level_id; ?>" value="<?php echo esc_attr( $level_id ); ?>" <?php echo in_array( $level_id, $levels, true ) ? 'checked' : ''; ?>>
+											<input type="checkbox" name="levels[]" class="stlms-check"
+												id="st_course_level_<?php echo (int) $level_id; ?>"
+												value="<?php echo esc_attr( $level_id ); ?>"
+												<?php echo in_array( $level_id, $levels, true ) ? 'checked' : ''; ?>>
 											<label for="st_course_level_<?php echo (int) $level_id; ?>" class="stlms-check-label">
 												<?php echo esc_html( $level_details['name'] ); ?>
 												<span><?php echo esc_html( $level_details['count'] ); ?></span>
@@ -249,7 +269,10 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 										<li>
 											<div class="stlms-check-wrap radio">
 												<label for="st_course_progress_<?php echo (int) $_key; ?>" class="stlms-check-label">
-													<input type="radio" name="progress" class="stlms-check" id="st_course_progress_<?php echo (int) $_key; ?>" value="<?php echo esc_attr( $_key ); ?>" <?php echo $_key === $progress ? 'checked' : ''; ?>>
+													<input type="radio" name="progress" class="stlms-check"
+														id="st_course_progress_<?php echo (int) $_key; ?>"
+														value="<?php echo esc_attr( $_key ); ?>"
+														<?php echo $_key === $progress ? 'checked' : ''; ?>>
 													<?php echo esc_html( ucwords( str_replace( '_', ' ', $_key ) ) ); ?>
 													<span><?php echo esc_html( $value ); ?></span>
 												</label>
@@ -354,7 +377,15 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 										$button_text = apply_filters( 'stlms_course_view_button_text', $button_text );
 										$course_link = apply_filters( 'stlms_course_view_button_link', $course_link );
 
-										$existing_users = get_post_meta( $course_id, \ST\Lms\META_KEY_COURSE_ASSIGNED, true ) ? get_post_meta( $course_id, \ST\Lms\META_KEY_COURSE_ASSIGNED, true ) : array();
+										$existing_users = get_post_meta(
+											$course_id,
+											\ST\Lms\META_KEY_COURSE_ASSIGNED,
+											true
+										) ? get_post_meta(
+											$course_id,
+											\ST\Lms\META_KEY_COURSE_ASSIGNED,
+											true
+										) : array();
 										?>
 										<li>
 											<div class="stlms-course-item">
@@ -385,12 +416,12 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 																$today_timestamp     = (int) current_datetime()->format( 'U' );
 																$formatted_timestamp = strtotime( $formatted_date );
 															?>
-															<?php if ( $today_timestamp >= $due_date && $today_timestamp <= $formatted_timestamp ) : ?>	
+															<?php if ( $today_timestamp >= $due_date && $today_timestamp <= $formatted_timestamp ) : ?>
 																<span class="stlms-tag due-soon-tag">
 																	<?php esc_html_e( 'Due Soon', 'skilltriks-theme-pack' ); ?>
 																</span>
 															<?php endif; ?>
-															<?php if ( $today_timestamp > $formatted_timestamp ) : ?>	
+															<?php if ( $today_timestamp > $formatted_timestamp ) : ?>
 																<span class="stlms-tag due-tag">
 																	<?php esc_html_e( 'Due', 'skilltriks-theme-pack' ); ?>
 																</span>
@@ -404,7 +435,9 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 														<?php if ( has_post_thumbnail() ) : ?>
 															<?php the_post_thumbnail(); ?>
 														<?php else : ?>
-															<img fetchpriority="high" decoding="async" src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png" alt="<?php the_title(); ?>">
+															<img fetchpriority="high" decoding="async"
+																src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png"
+																alt="<?php the_title(); ?>">
 														<?php endif; ?>
 													</a>
 												</div>
@@ -486,14 +519,18 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 														</div>
 														<div class="stlms-btn-wrap">
 															<?php if ( $has_certificate && '100%' === $course_progress ) { ?>
-																<a href="javascript:;" id="download-certificate" data-course="<?php echo esc_attr( (string) $course_id ); ?>" class="stlms-btn stlms-btn-block secondary download-certificate"><?php esc_html_e( 'Download certificate', 'skilltriks-theme-pack' ); ?></a>
+																<a href="javascript:;" id="download-certificate"
+																data-course="<?php echo esc_attr( (string) $course_id ); ?>"
+																class="stlms-btn stlms-btn-block secondary download-certificate">
+																<?php esc_html_e( 'Download certificate', 'skilltriks-theme-pack' ); ?></a>
 															<?php } else { ?>
 																<div class="stlms-progress">
 																	<div class="stlms-progress__bar">
 																		<div class="stlms-progress__bar-inner" style="width: <?php echo esc_attr( $course_progress ); ?>"></div>
 																	</div>
 																</div>
-																<a href="<?php echo esc_url( $course_link ); ?>" class="stlms-btn stlms-btn-block <?php echo esc_attr( $extra_class ); ?>"><?php echo esc_html( $button_text ); ?></a>
+																<a href="<?php echo esc_url( $course_link ); ?>"
+																	class="stlms-btn stlms-btn-block <?php echo esc_attr( $extra_class ); ?>"><?php echo esc_html( $button_text ); ?></a>
 															<?php } ?>
 														</div>
 													</div>
@@ -507,9 +544,14 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 							</ul>
 						</div>
 					<?php elseif ( ! empty( $search_keyword ) ) : ?>
-						<div class="stlms-text-xl stlms-p-16 stlms-bg-gray stlms-text-center stlms-text-primary-dark"><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'skilltriks-theme-pack' ); ?> <a href="<?php echo esc_url( \ST\Lms\get_page_url( 'my_learning' ) ); ?>"><?php esc_html_e( 'Back to my learning', 'skilltriks-theme-pack' ); ?>.</a></div>
+						<div class="stlms-text-xl stlms-p-16 stlms-bg-gray stlms-text-center stlms-text-primary-dark">
+							<?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'skilltriks-theme-pack' ); ?>
+							<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'my_learning' ) ); ?>">
+								<?php esc_html_e( 'Back to my learning', 'skilltriks-theme-pack' ); ?>.</a>
+						</div>
 					<?php else : ?>
-						<div class="stlms-text-xl stlms-p-16 stlms-bg-gray stlms-text-center stlms-text-primary-dark"><?php esc_html_e( 'No courses were found.', 'skilltriks-theme-pack' ); ?></div>
+						<div class="stlms-text-xl stlms-p-16 stlms-bg-gray stlms-text-center stlms-text-primary-dark">
+							<?php esc_html_e( 'No courses were found.', 'skilltriks-theme-pack' ); ?></div>
 					<?php endif; ?>
 				</div>
 				<?php if ( isset( $args['pagination'] ) && 'yes' === $args['pagination'] ) : ?>
@@ -517,8 +559,12 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 						<div class="stlms-pagination">
 							<?php
 							$big            = 999999999;
-							$next           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-next' ) . '"></use></svg>';
-							$prev           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-prev' ) . '"></use></svg>';
+							$next           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' .
+								esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-next' ) .
+								'"></use></svg>';
+							$prev           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' .
+								esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-prev' ) .
+								'"></use></svg>';
 							$paginate_links = paginate_links(
 								array(
 									'base'      => str_replace( (string) $big, '%#%', get_pagenum_link( $big ) ),

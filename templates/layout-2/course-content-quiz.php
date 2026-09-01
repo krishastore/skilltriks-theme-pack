@@ -36,8 +36,10 @@ $layout          = stlmstp_addons_template();
 						a 45,45 0 1,0 -90,0
 					"></path>
 				</g>
-				</svg><span class="stlms-quiz-countdown base-timer__label" id="stlms_quiz_countdown" data-total_questions="<?php echo esc_attr( (string) $total_questions ); ?>" data-timestamp="<?php echo esc_attr( (string) $total_duration ); ?>"></span>
-			</div>	
+				</svg><span class="stlms-quiz-countdown base-timer__label" id="stlms_quiz_countdown"
+					data-total_questions="<?php echo esc_attr( (string) $total_questions ); ?>"
+					data-timestamp="<?php echo esc_attr( (string) $total_duration ); ?>"></span>
+			</div>
 		</div>
 	</div>
 	<div class="stlms-quiz-view">
@@ -98,7 +100,8 @@ $layout          = stlmstp_addons_template();
 								</span>
 								<span><?php echo esc_html( $duration_str ); ?></span>
 							</div>
-							<button class="stlms-btn stlms-next-wizard"<?php disabled( true, empty( $questions ) ); ?>><?php esc_html_e( 'Let’s Start', 'skilltriks-theme-pack' ); ?></button>
+							<button class="stlms-btn stlms-next-wizard"<?php disabled( true, empty( $questions ) ); ?>>
+								<?php esc_html_e( 'Let’s Start', 'skilltriks-theme-pack' ); ?></button>
 						</div>
 					</div>
 				</div>
@@ -110,10 +113,16 @@ $layout          = stlmstp_addons_template();
 						$question_type  = get_post_meta( $question, \ST\Lms\META_KEY_QUESTION_TYPE, true );
 						$questions_list = \ST\Lms\get_question_by_type( $question, $question_type );
 						?>
-				<div id="step-<?php echo esc_attr( (string) $question_index ); ?>" class="tab-pane" role="tabpanel" aria-labelledby="step-<?php echo esc_attr( (string) $question_index ); ?>">
+				<div id="step-<?php echo esc_attr( (string) $question_index ); ?>" class="tab-pane" role="tabpanel"
+					aria-labelledby="step-<?php echo esc_attr( (string) $question_index ); ?>">
 					<div class="stlms-quiz-view-content">
 						<div class="stlms-quiz-question">
-							<div class="qus-no"><?php echo esc_html( sprintf( __( 'Question %1$s/%2$s', 'skilltriks-theme-pack' ), $current_index + 1, $total_questions ) ); // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment ?></div>
+							<div class="qus-no">
+								<?php
+								// phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+								echo esc_html( sprintf( __( 'Question %1$s/%2$s', 'skilltriks-theme-pack' ), $current_index + 1, $total_questions ) );
+								?>
+							</div>
 							<h3 class="stlms-h4"><?php echo esc_html( get_the_title( $question ) ); ?></h3>
 							<?php
 							if ( ! empty( $questions_list[ $question_type ] ) && is_array( $questions_list[ $question_type ] ) ) :
@@ -126,9 +135,11 @@ $layout          = stlmstp_addons_template();
 											<li>
 												<label class="<?php echo in_array( $question_type, array( 'true_or_false' ), true ) ? 'boolean' : ''; ?>">
 													<?php if ( in_array( $question_type, array( 'true_or_false', 'single_choice' ), true ) ) : ?>
-														<input type="radio" name="stlms_answers[<?php echo esc_attr( (string) $question ); ?>]" class="stlms-check" value="<?php echo esc_attr( wp_hash( trim( $answer ) ) ); ?>">
+														<input type="radio" name="stlms_answers[<?php echo esc_attr( (string) $question ); ?>]"
+															class="stlms-check" value="<?php echo esc_attr( wp_hash( trim( $answer ) ) ); ?>">
 													<?php else : ?>
-														<input type="checkbox" name="stlms_answers[<?php echo esc_attr( (string) $question ); ?>][]" class="stlms-check"  value="<?php echo esc_attr( wp_hash( trim( $answer ) ) ); ?>">
+														<input type="checkbox" name="stlms_answers[<?php echo esc_attr( (string) $question ); ?>][]"
+															class="stlms-check"  value="<?php echo esc_attr( wp_hash( trim( $answer ) ) ); ?>">
 													<?php endif; ?>
 													<?php echo esc_html( trim( $answer ) ); ?>
 												</label>
@@ -140,7 +151,8 @@ $layout          = stlmstp_addons_template();
 								<div class="stlms-quiz-input-ans">
 									<div class="stlms-form-group">
 										<label class="stlms-form-label"><?php esc_html_e( 'Your Answer', 'skilltriks-theme-pack' ); ?></label>
-										<input type="text" name="stlms_written_answer[<?php echo esc_attr( (string) $question ); ?>]" class="stlms-form-control" placeholder="<?php esc_attr_e( 'Enter Your thoughts here...', 'skilltriks-theme-pack' ); ?>">
+										<input type="text" name="stlms_written_answer[<?php echo esc_attr( (string) $question ); ?>]"
+											class="stlms-form-control" placeholder="<?php esc_attr_e( 'Enter Your thoughts here...', 'skilltriks-theme-pack' ); ?>">
 									</div>
 								</div>
 							<?php endif; ?>
@@ -149,7 +161,8 @@ $layout          = stlmstp_addons_template();
 				</div>
 				<?php endforeach; ?>
 				<?php endif; ?>
-				<div id="step-<?php echo esc_attr( (string) ( $question_index + 1 ) ); ?>" class="tab-pane" role="tabpanel" aria-labelledby="step-<?php echo esc_attr( (string) ( $question_index + 1 ) ); ?>">
+				<div id="step-<?php echo esc_attr( (string) ( $question_index + 1 ) ); ?>" class="tab-pane" role="tabpanel"
+					aria-labelledby="step-<?php echo esc_attr( (string) ( $question_index + 1 ) ); ?>">
 					<div class="stlms-quiz-complete">
 						<div class="quiz-passed-text" style="display: none;">
 							<div class="quiz-complete-icon">

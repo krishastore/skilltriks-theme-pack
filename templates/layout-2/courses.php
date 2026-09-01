@@ -74,16 +74,22 @@ $layout      = stlmstp_addons_template();
 
 <div class="stlms-wrap alignfull">
 	<?php require_once STLMSTP_ADDONS_TEMPLATEPATH . '/layout-2/sub-header.php'; ?>
-	<div class="stlms-inner-banner" style="background-image: url(<?php echo esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout ); ?>/images/banner-image.webp);">
+	<div class="stlms-inner-banner"
+		style="background-image: url(<?php echo esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout ); ?>/images/banner-image.webp);">
 		<div class="stlms-inner-banner-overlay"></div>
 		<div class="stlms-container">
 			<div class="stlms-inner-banner-content">
 				<div class="stlms-banner-heading">
 					<h1><?php esc_html_e( 'Find the right course for you', 'skilltriks-theme-pack' ); ?></h1>
-					<p><?php esc_html_e( 'Find the right course tailored to your role and career growth. Our LMS curates industry-specific training, helping you upskill efficiently. Learn at your own pace and stay ahead!', 'skilltriks-theme-pack' ); ?></p>
+					<p>
+						<?php
+						esc_html_e( 'Find the right course tailored to your role and career growth. Our LMS curates industry-specific training, helping you upskill efficiently. Learn at your own pace and stay ahead!', 'skilltriks-theme-pack' );
+						?>
+					</p>
 				</div>
 				<div class="stlms-banner-cta">
-					<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'my_learning' ) ); ?>" class="stlms-btn"><?php esc_html_e( 'Show My Learning', 'skilltriks-theme-pack' ); ?></a>
+					<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'my_learning' ) ); ?>" class="stlms-btn">
+						<?php esc_html_e( 'Show My Learning', 'skilltriks-theme-pack' ); ?></a>
 				</div>
 			</div>
 		</div>
@@ -111,7 +117,8 @@ $layout      = stlmstp_addons_template();
 									<select class="stlms-form-control category">
 										<option value=""><?php esc_html_e( 'Choose', 'skilltriks-theme-pack' ); ?></option>
 										<?php foreach ( $terms_list as $key => $term_level ) : ?>
-											<option value="<?php echo esc_attr( $term_level['id'] ); ?>" <?php selected( reset( $category ), $term_level['id'] ); ?>><?php echo esc_html( $term_level['name'] ); ?></option>
+											<option value="<?php echo esc_attr( $term_level['id'] ); ?>"
+												<?php selected( reset( $category ), $term_level['id'] ); ?>><?php echo esc_html( $term_level['name'] ); ?></option>
 										<?php endforeach; ?>
 									</select>
 								</div>
@@ -129,7 +136,9 @@ $layout      = stlmstp_addons_template();
 									<?php foreach ( $levels_list as $key => $get_level ) : ?>
 										<li>
 											<div class="stlms-check-wrap">
-												<input type="checkbox" name="levels[]" class="stlms-check" id="st_course_level_<?php echo (int) $key; ?>" value="<?php echo esc_attr( $get_level['id'] ); ?>"<?php echo in_array( $get_level['id'], $levels, true ) ? ' checked' : ''; ?>>
+												<input type="checkbox" name="levels[]" class="stlms-check"
+													id="st_course_level_<?php echo (int) $key; ?>"
+													value="<?php echo esc_attr( $get_level['id'] ); ?>"<?php echo in_array( $get_level['id'], $levels, true ) ? ' checked' : ''; ?>>
 												<label for="st_course_level_<?php echo (int) $key; ?>" class="stlms-check-label">
 												<?php echo esc_html( $get_level['name'] ); ?>
 													<span><?php echo esc_html( $get_level['count'] ); ?></span>
@@ -196,7 +205,8 @@ $layout      = stlmstp_addons_template();
 								<select aria-label="<?php esc_attr_e( 'Sort by', 'skilltriks-theme-pack' ); ?>">
 									<option value=""><?php esc_html_e( 'Sort By', 'skilltriks-theme-pack' ); ?></option>
 									<option value="asc"<?php selected( $_orderby, 'asc' ); ?>><?php esc_html_e( 'Alphabetically (A To Z)', 'skilltriks-theme-pack' ); ?></option>
-									<option value="desc"<?php selected( $_orderby, 'desc' ); ?>><?php esc_html_e( 'Alphabetically (Z To A)', 'skilltriks-theme-pack' ); ?></option>
+									<option value="desc"<?php selected( $_orderby, 'desc' ); ?>>
+										<?php esc_html_e( 'Alphabetically (Z To A)', 'skilltriks-theme-pack' ); ?></option>
 									<option value="newest"<?php selected( $_orderby, 'newest' ); ?>><?php esc_html_e( 'Newest', 'skilltriks-theme-pack' ); ?></option>
 								</select>
 							</form>
@@ -287,7 +297,9 @@ $layout      = stlmstp_addons_template();
 												<?php if ( has_post_thumbnail() ) : ?>
 													<?php the_post_thumbnail(); ?>
 												<?php else : ?>
-													<img fetchpriority="high" decoding="async" src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png" alt="<?php the_title(); ?>">
+													<img fetchpriority="high" decoding="async"
+														src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png"
+														alt="<?php the_title(); ?>">
 												<?php endif; ?>
 											</a>
 										</div>
@@ -355,7 +367,10 @@ $layout      = stlmstp_addons_template();
 													<a href="<?php echo esc_url( $author_url ); ?>" class="stlms-link-text"><?php echo esc_html( $author ); ?></a>
 												</div>
 												<div class="stlms-btn-wrap">
-													<a href="<?php echo ! $is_enrol && is_user_logged_in() ? 'javascript:;' : esc_url( $course_link ); ?>" class="stlms-btn stlms-btn-block<?php echo esc_attr( $extra_class ); ?>" id="<?php echo ! $is_enrol && is_user_logged_in() ? 'enrol-now' : ''; ?>" data-course="<?php echo esc_html( (string) get_the_ID() ); ?>"><?php echo esc_html( $button_text ); ?><i class="stlms-loader"></i></a>
+													<a href="<?php echo ! $is_enrol && is_user_logged_in() ? 'javascript:;' : esc_url( $course_link ); ?>"
+														class="stlms-btn stlms-btn-block<?php echo esc_attr( $extra_class ); ?>"
+														id="<?php echo ! $is_enrol && is_user_logged_in() ? 'enrol-now' : ''; ?>"
+														data-course="<?php echo esc_html( (string) get_the_ID() ); ?>"><?php echo esc_html( $button_text ); ?><i class="stlms-loader"></i></a>
 												</div>
 											</div>
 										</div>
@@ -365,9 +380,14 @@ $layout      = stlmstp_addons_template();
 							</ul>
 						</div>
 					<?php elseif ( ! empty( $search_keyword ) ) : ?>
-						<div class="stlms-text-xl stlms-p-16 stlms-bg-gray stlms-text-center stlms-text-primary-dark"><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'skilltriks-theme-pack' ); ?> <a href="<?php echo esc_url( \ST\Lms\get_page_url( 'courses' ) ); ?>"><?php esc_html_e( 'Back to courses', 'skilltriks-theme-pack' ); ?>.</a></div>
+						<div class="stlms-text-xl stlms-p-16 stlms-bg-gray stlms-text-center stlms-text-primary-dark">
+							<?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'skilltriks-theme-pack' ); ?>
+							<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'courses' ) ); ?>">
+								<?php esc_html_e( 'Back to courses', 'skilltriks-theme-pack' ); ?>.</a>
+						</div>
 					<?php else : ?>
-						<div class="stlms-text-xl stlms-p-16 stlms-bg-gray stlms-text-center stlms-text-primary-dark"><?php esc_html_e( 'No courses were found.', 'skilltriks-theme-pack' ); ?></div>
+						<div class="stlms-text-xl stlms-p-16 stlms-bg-gray stlms-text-center stlms-text-primary-dark">
+							<?php esc_html_e( 'No courses were found.', 'skilltriks-theme-pack' ); ?></div>
 					<?php endif; ?>
 				</div>
 				<?php if ( isset( $args['pagination'] ) && 'yes' === $args['pagination'] ) : ?>
@@ -375,8 +395,12 @@ $layout      = stlmstp_addons_template();
 						<div class="stlms-pagination">
 						<?php
 						$big            = 999999999;
-						$next           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-next' ) . '"></use></svg>';
-						$prev           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' . esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-prev' ) . '"></use></svg>';
+						$next           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' .
+							esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-next' ) .
+							'"></use></svg>';
+						$prev           = '<svg width="16" height="16" style="display:block;"><use xlink:href="' .
+							esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout . '/images/sprite-front.svg#page-prev' ) .
+							'"></use></svg>';
 						$paginate_links = paginate_links(
 							array(
 								'base'      => str_replace( (string) $big, '%#%', get_pagenum_link( $big ) ),

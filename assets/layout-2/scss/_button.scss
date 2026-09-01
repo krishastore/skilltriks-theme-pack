@@ -22,11 +22,6 @@ button {
   z-index: 1;
   @include transition(all 0.3s ease-in-out);
 
-  // &:hover,
-  // &:focus {
-  //   opacity: 0.9;
-  // }
-
   &::before {
     content: "";
     position: absolute;

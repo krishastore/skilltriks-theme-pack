@@ -83,11 +83,13 @@ function stlmstp_addons_dependency_notice() {
 	?>
 	<div class="notice stlms-addon-notice">
 		<div class="stlms-addon-notice__banner">
-			<img src="<?php echo esc_url( $plugin_banner_url ); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" alt="Skilltriks Banner" />
+			<img src="<?php echo esc_url( $plugin_banner_url ); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>"
+				alt="Skilltriks Banner" />
 		</div>
 		<div class="stlms-addon-notice__body">
 			<div class="stlms-addon-notice__icon">
-				<img src="<?php echo esc_url( $plugin_icon_url ); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" alt="Skilltriks Icon" />
+				<img src="<?php echo esc_url( $plugin_icon_url ); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>"
+					alt="Skilltriks Icon" />
 			</div>
 			<div class="stlms-addon-notice__content">
 				<p>
@@ -190,10 +192,21 @@ function stlmstp_addons_styles() {
 		wp_register_style( 'stlms-frontend', STLMS_ASSETS . '/css/frontend.css', array(), STLMSTP_ADDONS_VERSION );
 	} else {
 		if ( 'layout-2' === $layout ) {
-			wp_enqueue_style( 'lato-font-family', 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap', array(), STLMSTP_ADDONS_VERSION );
+			wp_enqueue_style(
+				'lato-font-family',
+				'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap',
+				array(),
+				STLMSTP_ADDONS_VERSION
+			);
 		}
 		wp_register_style( 'stlms-frontend', STLMSTP_ADDONS_ASSETS . '/' . $layout . '/css/stlms-style.css', array(), STLMSTP_ADDONS_VERSION );
-		wp_register_script( 'stlms-addons-frontend', STLMSTP_ADDONS_ASSETS . '/' . $layout . '/js/stlms-setting.js', array( 'jquery' ), STLMSTP_ADDONS_VERSION, true );
+		wp_register_script(
+			'stlms-addons-frontend',
+			STLMSTP_ADDONS_ASSETS . '/' . $layout . '/js/stlms-setting.js',
+			array( 'jquery' ),
+			STLMSTP_ADDONS_VERSION,
+			true
+		);
 		wp_enqueue_script( 'stlms-addons-frontend' );
 	}
 }
@@ -230,7 +243,8 @@ function stlmstp_customise_css() {
 				foreach ( $customise_typography as $typography => $value ) {
 					if ( is_array( $value ) ) {
 						foreach ( $value as $key => $v ) {
-							echo '--stlms-' . esc_attr( str_replace( '_', '-', $typography ) ) . '-' . esc_attr( str_replace( '_', '-', $key ) ) . ': ' . esc_attr( $v ) . ';'; //phpcs:ignore.
+							echo '--stlms-' . esc_attr( str_replace( '_', '-', $typography ) ) . '-' . esc_attr( str_replace( '_', '-', $key ) ) .
+								': ' . esc_attr( $v ) . ';'; //phpcs:ignore.
 						}
 					}
 				}

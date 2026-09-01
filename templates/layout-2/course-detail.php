@@ -114,7 +114,9 @@ $layout             = stlmstp_addons_template();
 				the_post_thumbnail();
 			else :
 				?>
-				<img fetchpriority="high" decoding="async" src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png" alt="<?php the_title(); ?>">
+				<img fetchpriority="high" decoding="async"
+					src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png"
+					alt="<?php the_title(); ?>">
 			<?php endif; ?>
 			</div>
 		</div>
@@ -139,7 +141,8 @@ $layout             = stlmstp_addons_template();
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
 							<?php if ( $content || $requirements || $what_you_learn || $skills_gain ) : ?>
 								<li class="nav-item" role="presentation">
-									<button class="nav-link stlms-p-base" id="about-course-tab" onclick="openTab(event, 'about-course')" type="button" role="tab" aria-controls="about-course" aria-selected="true">
+									<button class="nav-link stlms-p-base" id="about-course-tab" onclick="openTab(event, 'about-course')"
+										type="button" role="tab" aria-controls="about-course" aria-selected="true">
 										<svg width="30" height="30">
 											<use xlink:href="<?php echo esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#course-book">
 											</use>
@@ -150,7 +153,8 @@ $layout             = stlmstp_addons_template();
 							<?php endif; ?>
 							<?php if ( $has_curriculum ) : ?>
 								<li class="nav-item" role="presentation">
-									<button class="nav-link stlms-p-base" id="curriculum-tab" onclick="openTab(event, 'curriculum')" type="button" role="tab" aria-controls="curriculum" aria-selected="false">
+									<button class="nav-link stlms-p-base" id="curriculum-tab" onclick="openTab(event, 'curriculum')"
+										type="button" role="tab" aria-controls="curriculum" aria-selected="false">
 										<svg width="30" height="30">
 											<use xlink:href="<?php echo esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#curriculum">
 											</use>
@@ -161,7 +165,8 @@ $layout             = stlmstp_addons_template();
 							<?php endif; ?>
 							<?php if ( $faq_questions && $faq_answers ) : ?>
 								<li class="nav-item" role="presentation">
-									<button class="nav-link stlms-p-base" id="faq-tab" onclick="openTab(event, 'faq')" type="button" role="tab" aria-controls="faq" aria-selected="false">
+									<button class="nav-link stlms-p-base" id="faq-tab" onclick="openTab(event, 'faq')"
+										type="button" role="tab" aria-controls="faq" aria-selected="false">
 										<svg width="30" height="30">
 											<use xlink:href="<?php echo esc_url( STLMSTP_ADDONS_ASSETS . '/' . $layout ); ?>/images/sprite-front.svg#faq">
 											</use>
@@ -173,7 +178,8 @@ $layout             = stlmstp_addons_template();
 						</ul>
 					</div>
 					<div class="tab-content">
-						<div class="tab-pane" id="about-course" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'about-course-tab', 'skilltriks-theme-pack' ); ?>" tabindex="0">
+						<div class="tab-pane" id="about-course" role="tabpanel"
+							aria-labelledby="<?php esc_attr_e( 'about-course-tab', 'skilltriks-theme-pack' ); ?>" tabindex="0">
 							<div class="tab-content-wrap">
 								<?php if ( $content ) : ?>
 									<div class="stlms-course-requirement-box">
@@ -267,7 +273,8 @@ $layout             = stlmstp_addons_template();
 
 						if ( $has_curriculum ) :
 							?>
-							<div class="tab-pane" id="curriculum" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'curriculum-tab', 'skilltriks-theme-pack' ); ?>" tabindex="0">
+							<div class="tab-pane" id="curriculum" role="tabpanel"
+								aria-labelledby="<?php esc_attr_e( 'curriculum-tab', 'skilltriks-theme-pack' ); ?>" tabindex="0">
 								<div class="stlms-accordion-course-content">
 									<div class="stlms-accordion">
 									<?php
@@ -293,7 +300,8 @@ $layout             = stlmstp_addons_template();
 											<div class="stlms-accordion-header">
 												<div class="stlms-lesson-title">
 													<div class="stlms-lesson-name">
-														<div class="name"><?php echo (int) $item_key; ?>. <?php echo isset( $curriculums['section_name'] ) ? esc_html( $curriculums['section_name'] ) : ''; ?></div>
+														<div class="name"><?php echo (int) $item_key; ?>.
+															<?php echo isset( $curriculums['section_name'] ) ? esc_html( $curriculums['section_name'] ) : ''; ?></div>
 														<?php if ( ! empty( $duration_str ) ) : ?>
 															<div class="info">
 																<span><?php echo esc_html( $duration_str ); ?></span>
@@ -352,7 +360,8 @@ $layout             = stlmstp_addons_template();
 																			</use>
 																		</svg>
 																	</span>
-																	<span class="class-name"><span><?php echo esc_html( sprintf( '%d.%d.', $item_key, $key ) ); ?></span> <?php echo esc_html( get_the_title( $item_id ) ); ?></span>
+																	<span class="class-name"><span><?php echo esc_html( sprintf( '%d.%d.', $item_key, $key ) ); ?></span>
+																		<?php echo esc_html( get_the_title( $item_id ) ); ?></span>
 																	<span class="class-time-info">
 																		<span class="class-time">
 																		<?php
@@ -364,8 +373,12 @@ $layout             = stlmstp_addons_template();
 																		}
 																		?>
 																		</span>
-																		<?php if ( ( $in_progress && ! $course_completed ) || ( 0 === $current_section_id && 1 === $item_key && 1 === $key && $is_enrol ) ) : ?>
-																			<a href="<?php echo esc_url( $course_link ); ?>" class="stlms-btn small"><?php esc_html_e( 'Continue', 'skilltriks-theme-pack' ); ?></a>
+																		<?php
+																		if ( ( $in_progress && ! $course_completed ) ||
+																			( 0 === $current_section_id && 1 === $item_key && 1 === $key && $is_enrol ) ) :
+																			?>
+																			<a href="<?php echo esc_url( $course_link ); ?>" class="stlms-btn small">
+																				<?php esc_html_e( 'Continue', 'skilltriks-theme-pack' ); ?></a>
 																		<?php elseif ( $inactive && ! $course_completed ) : ?>
 																			<svg class="lock-icon" width="16" height="16">
 																				<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#lock">
@@ -482,7 +495,8 @@ $layout             = stlmstp_addons_template();
 							?>
 							<li>
 								<?php esc_html_e( 'Certificate Of Completion', 'skilltriks-theme-pack' ); ?>
-								<span class="stlms-tag secondary"><?php $has_certificate ? esc_html_e( 'Yes', 'skilltriks-theme-pack' ) : esc_html_e( 'No', 'skilltriks-theme-pack' ); ?></span>
+								<span class="stlms-tag secondary">
+									<?php $has_certificate ? esc_html_e( 'Yes', 'skilltriks-theme-pack' ) : esc_html_e( 'No', 'skilltriks-theme-pack' ); ?></span>
 							</li>
 							<li>
 							<?php
@@ -509,15 +523,20 @@ $layout             = stlmstp_addons_template();
 									<div class="stlms-progress__bar-inner" style="width: <?php echo esc_attr( $course_progress ); ?>"></div>
 								</div>
 							<?php endif; ?>
-							<a href="<?php echo ! $is_enrol && is_user_logged_in() ? 'javascript:;' : esc_url( $course_link ); ?>" id="<?php echo ! $is_enrol && is_user_logged_in() ? 'enrol-now' : ''; ?>" class="stlms-btn stlms-btn-block<?php echo esc_attr( $extra_class ); ?>" data-course="<?php echo esc_attr( $course_id ); ?>"><?php echo esc_html( $button_text ); ?><i class="stlms-loader"></i></a>
+							<a href="<?php echo ! $is_enrol && is_user_logged_in() ? 'javascript:;' : esc_url( $course_link ); ?>"
+								id="<?php echo ! $is_enrol && is_user_logged_in() ? 'enrol-now' : ''; ?>"
+								class="stlms-btn stlms-btn-block<?php echo esc_attr( $extra_class ); ?>"
+								data-course="<?php echo esc_attr( $course_id ); ?>"><?php echo esc_html( $button_text ); ?><i class="stlms-loader"></i></a>
 						</div>
 						<?php if ( $has_certificate && '100%' === $course_progress ) : ?>
 							<div class="stlms-btn-wrap">
-								<a href="javascript:;" id="download-certificate" class="stlms-btn stlms-btn-block secondary" data-course="<?php echo esc_attr( $course_id ); ?>"><?php esc_html_e( 'Download Certificate', 'skilltriks-theme-pack' ); ?></a>
+								<a href="javascript:;" id="download-certificate" class="stlms-btn stlms-btn-block secondary"
+									data-course="<?php echo esc_attr( $course_id ); ?>"><?php esc_html_e( 'Download Certificate', 'skilltriks-theme-pack' ); ?></a>
 							</div>
 						<?php endif; ?>
 						<?php if ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) : //phpcs:ignore WordPress.WP.Capabilities.Unknown ?>
-							<a href="javascript:void(0);" data-fancybox data-src="#assign-course" class="stlms-btn outline stlms-btn-block"><?php esc_html_e( 'Assign Course', 'skilltriks-theme-pack' ); ?></a>
+							<a href="javascript:void(0);" data-fancybox data-src="#assign-course" class="stlms-btn outline stlms-btn-block">
+								<?php esc_html_e( 'Assign Course', 'skilltriks-theme-pack' ); ?></a>
 						<?php endif; ?>
 					</div>
 					<?php
@@ -569,7 +588,9 @@ $layout             = stlmstp_addons_template();
 												the_post_thumbnail();
 											else :
 												?>
-												<img fetchpriority="high" decoding="async" src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png" alt="<?php the_title(); ?>">
+												<img fetchpriority="high" decoding="async"
+													src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png"
+													alt="<?php the_title(); ?>">
 											<?php endif; ?>
 										</div>
 										<div class="stlms-similar-course-info">
@@ -600,7 +621,15 @@ $stlms_users    = get_users(
 		'exclude'      => get_current_user_id(),
 	)
 );
-$assigned_users = get_post_meta( $course_id, ST\LMS\META_KEY_COURSE_ASSIGNED, true ) ? get_post_meta( $course_id, ST\LMS\META_KEY_COURSE_ASSIGNED, true ) : array();
+$assigned_users = get_post_meta(
+	$course_id,
+	ST\LMS\META_KEY_COURSE_ASSIGNED,
+	true
+) ? get_post_meta(
+	$course_id,
+	ST\LMS\META_KEY_COURSE_ASSIGNED,
+	true
+) : array();
 ?>
 <div id="assign-course" class="stlms-dialog" data-course="<?php echo esc_attr( $course_id ); ?>" style="display: none;">
 	<form class="stlms-assign-course__box">
@@ -630,7 +659,9 @@ $assigned_users = get_post_meta( $course_id, ST\LMS\META_KEY_COURSE_ASSIGNED, tr
 						<?php esc_html_e( 'Choose Employee(s)', 'skilltriks-theme-pack' ); ?>
 						<select multiple data-placeholder="John Doe" class="stlms-select2-multi js-states form-control" id="employee-list">
 							<?php foreach ( $stlms_users as $users ) : ?>
-								<option value="<?php echo esc_attr( base64_encode( $users->ID ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode ?>" <?php echo in_array( (int) $users->ID, $assigned_users, true ) ? 'disabled' : ''; ?>><?php echo esc_html( $users->display_name ); ?></option>
+								<option
+								value="<?php echo esc_attr( base64_encode( $users->ID ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode ?>"
+								<?php echo in_array( (int) $users->ID, $assigned_users, true ) ? 'disabled' : ''; ?>><?php echo esc_html( $users->display_name ); ?></option>
 							<?php endforeach; ?>
 						</select>
 					</label>
