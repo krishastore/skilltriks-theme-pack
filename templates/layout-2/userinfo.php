@@ -32,9 +32,9 @@ if ( is_user_logged_in() ) :
 			<a href="<?php echo esc_url( \ST\Lms\get_page_url( 'my_learning' ) ); ?>"
 				class="stlms-user-dd__link stlms-p-small<?php echo \ST\Lms\get_page_url( 'my_learning' ) === get_permalink() ? ' active' : ''; ?>">
 				<?php esc_html_e( 'My Learnings', 'skilltriks-theme-pack' ); ?></a>
-			<a href="#" class="stlms-user-dd__link stlms-p-small" style="display: none;">
-				<?php esc_html_e( 'Notifications', 'skilltriks-theme-pack' ); ?> <span class="stlms-noti-count">12</span></a>
-			<a href="#" class="stlms-user-dd__link stlms-p-small" style="display: none;">
+			<a href="javascript:;" class="stlms-user-dd__link stlms-p-small" style="display: none;">
+				<?php esc_html_e( 'Notifications', 'skilltriks-theme-pack' ); ?> <span class="stlms-noti-count"><?php echo esc_html( '12' ); ?></span></a>
+			<a href="javascript:;" class="stlms-user-dd__link stlms-p-small" style="display: none;">
 				<?php esc_html_e( 'Account Settings', 'skilltriks-theme-pack' ); ?></a>
 		</div>
 	</div>

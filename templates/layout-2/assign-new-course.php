@@ -106,7 +106,7 @@ $stlms_users = get_users(
 								<p class="stlms-assign-course__box-text"><?php esc_html_e( 'Keep field blank for no completion date', 'skilltriks-theme-pack' ); ?></p>
 								<div class="stlms-switch-wrap">
 									<?php esc_html_e( 'Common completion date for all?', 'skilltriks-theme-pack' ); ?>
-									<label class="switch">
+									<label class="switch" aria-label="<?php esc_attr_e( 'Common completion date for all?', 'skilltriks-theme-pack' ); ?>">
 										<input type="checkbox" class="stlms-check">
 										<span class="slider round"></span>
 									</label>
@@ -118,7 +118,7 @@ $stlms_users = get_users(
 								<div class="stlms-form-row" id="unique-date">
 									<div class="stlms-form-col">
 										<div class="stlms-form-group">
-											<label for="unique-completion-date"></label>
+											<label for="unique-completion-date" aria-label="<?php esc_attr_e( 'Completion Date', 'skilltriks-theme-pack' ); ?>"></label>
 											<input type="date" id="unique-completion-date" min="<?php echo esc_attr( wp_date( 'Y-m-d' ) ); ?>" />
 										</div>
 									</div>

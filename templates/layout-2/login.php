@@ -37,12 +37,12 @@ if ( 1 === $error_code ) {
 						<?php wp_nonce_field( \ST\Lms\STLMS_LOGIN_NONCE, '_stlms_nonce' ); ?>
 						<input type="hidden" name="action" value="stlms_login">
 						<div class="stlms-form-group">
-							<label class="stlms-form-label"><?php esc_html_e( 'Username', 'skilltriks-theme-pack' ); ?></label>
-							<input type="text" name="username" class="stlms-form-control"
+							<label class="stlms-form-label" for="stlms-username"><?php esc_html_e( 'Username', 'skilltriks-theme-pack' ); ?></label>
+							<input type="text" id="stlms-username" name="username" class="stlms-form-control"
 								placeholder="<?php esc_attr_e( 'Username', 'skilltriks-theme-pack' ); ?>" required>
 						</div>
 						<div class="stlms-form-group">
-							<label class="stlms-form-label"><?php esc_html_e( 'Password', 'skilltriks-theme-pack' ); ?></label>
+							<label class="stlms-form-label" for="password-field"><?php esc_html_e( 'Password', 'skilltriks-theme-pack' ); ?></label>
 							<div class="stlms-password-field">
 								<input type="password" name="password" class="stlms-form-control" placeholder="********" id="password-field" required>
 								<div class="stlms-password-toggle" toggle="#password-field">

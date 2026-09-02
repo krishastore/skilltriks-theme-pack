@@ -44,10 +44,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</span>
 					<input
 						type="text"
+						id="stlms-course-search"
 						name="_s"
 						class="stlms-form-control"
 						placeholder="<?php esc_attr_e( 'Search', 'skilltriks-theme-pack' ); ?>"
 						value="<?php echo esc_attr( $search_keyword ); ?>"
+						aria-label="<?php esc_attr_e( 'Search', 'skilltriks-theme-pack' ); ?>"
 					>
 				</div>
 			</form>

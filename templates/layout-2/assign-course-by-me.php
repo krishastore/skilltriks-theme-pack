@@ -87,7 +87,7 @@ $layout      = stlmstp_addons_template();
 					<div class="stlms-filter-title stlms-h4">
 						<?php esc_html_e( 'Course Progress', 'skilltriks-theme-pack' ); ?>
 					</div>
-					<label class="stlms-select-search" for="select-progress">
+					<label class="stlms-select-search" for="select-progress" aria-label="<?php esc_attr_e( 'Course Progress', 'skilltriks-theme-pack' ); ?>">
 						<select data-placeholder="Choose" class="stlms-select2 js-states form-control" data-minimum-results-for-search="Infinity" id="select-progress">
 							<option value=""><?php esc_html_e( 'Choose', 'skilltriks-theme-pack' ); ?></option>
 							<option value="not-started"><?php esc_html_e( 'Not Started', 'skilltriks-theme-pack' ); ?></option>
@@ -309,7 +309,7 @@ $courses     = get_posts( $course_args );
 			</div>
 			<div class="stlms-dialog__content">
 				<div class="stlms-form-group">
-					<label for="completion-date"></label>
+					<label for="completion-date" aria-label="<?php esc_attr_e( 'Completion Date', 'skilltriks-theme-pack' ); ?>"></label>
 					<input type="date" id="completion-date">
 				</div>
 			</div>
