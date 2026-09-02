@@ -78,7 +78,7 @@ $layout             = stlmstp_addons_template();
 						</li>
 						<li>
 							<svg width="20" height="20">
-								<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#quiz"">
+								<use xlink:href="<?php echo esc_url( STLMS_ASSETS ); ?>/images/sprite-front.svg#quiz">
 								</use>
 							</svg>
 							<?php

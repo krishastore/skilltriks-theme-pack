@@ -104,7 +104,7 @@ load_template(
 										<?php if ( $inactive ) : ?>
 											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]"
 												class="stlms-check curriculum-progress-box" value="<?php echo esc_attr( $item_id ); ?>"
-												aria-label="<?php esc_attr_e( 'Course progress', 'skilltriks-theme-pack' ); ?>" checked='checked' disabled>
+												aria-label="<?php esc_attr_e( 'Course progress', 'skilltriks-theme-pack' ); ?>" checked="checked" disabled>
 										<?php else : ?>
 											<input type="checkbox" name="<?php echo esc_attr( $curriculum_type ); ?>[]" value="<?php echo esc_attr( $item_id ); ?>"
 												class="stlms-check curriculum-progress-box"<?php echo $inactive ? ' readonly' : ''; ?>

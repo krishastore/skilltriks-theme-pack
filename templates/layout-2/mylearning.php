@@ -204,7 +204,7 @@ $due_soon              = ! empty( $due_soon['due_soon'] ) ? $due_soon['due_soon'
 						</div>
 						<div class="stlms-filter-list">
 							<div class="stlms-form-group">
-								<select class="stlms-form-control category">
+								<select id="course-category-filter" class="stlms-form-control category" aria-label="<?php esc_attr_e( 'Categories', 'skilltriks-theme-pack' ); ?>">
 									<option value=""><?php esc_html_e( 'Choose', 'skilltriks-theme-pack' ); ?></option>
 									<?php foreach ( $terms_list as $key => $term_level ) : ?>
 										<option value="<?php echo esc_attr( $key ); ?>"

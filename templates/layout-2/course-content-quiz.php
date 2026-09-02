@@ -47,7 +47,7 @@ $layout          = stlmstp_addons_template();
 			<ul class="nav" style="display:none;">
 				<li class="nav-item">
 					<a class="nav-link" href="#step-1">
-						<div class="num">1</div>
+						<div class="num"><?php echo esc_html( '1' ); ?></div>
 						<?php
 							// phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 							echo esc_html( sprintf( __( 'Step %d', 'skilltriks-theme-pack' ), 1 ) );
@@ -150,8 +150,13 @@ $layout          = stlmstp_addons_template();
 							<?php elseif ( 'fill_blank' === $question_type ) : ?>
 								<div class="stlms-quiz-input-ans">
 									<div class="stlms-form-group">
-										<label class="stlms-form-label"><?php esc_html_e( 'Your Answer', 'skilltriks-theme-pack' ); ?></label>
-										<input type="text" name="stlms_written_answer[<?php echo esc_attr( (string) $question ); ?>]"
+										<label class="stlms-form-label"
+											for="stlms_written_answer_<?php echo esc_attr( (string) $question ); ?>">
+											<?php esc_html_e( 'Your Answer', 'skilltriks-theme-pack' ); ?>
+										</label>
+										<input type="text"
+											id="stlms_written_answer_<?php echo esc_attr( (string) $question ); ?>"
+											name="stlms_written_answer[<?php echo esc_attr( (string) $question ); ?>]"
 											class="stlms-form-control" placeholder="<?php esc_attr_e( 'Enter Your thoughts here...', 'skilltriks-theme-pack' ); ?>">
 									</div>
 								</div>
