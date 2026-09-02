@@ -81,7 +81,7 @@ if ( 1 === $error_code ) {
 									<div class="stlms-hr"></div>
 								</div>
 								<div class="stlms-login-with-cta">
-									<a class='stlms-btn google-sign-in-btn' href="<?php echo esc_url( $auth_url ); ?>">
+									<a class="stlms-btn google-sign-in-btn" href="<?php echo esc_url( $auth_url ); ?>">
 									<svg width="26" height="28" viewBox="0 0 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M9.43653 7.51992C8.17054 7.51992 7.00866 7.83225 5.95089 8.45692C4.89312 9.08159 4.0519 9.9228 3.42724 10.9806C2.80257 12.0383
 										2.49023 13.2002 2.49023 14.4662C2.49023 15.7322 2.80257 16.8983 3.42724 17.9644C4.0519 19.0304 4.88063 19.8717 5.91341 20.488C6.99617 21.121

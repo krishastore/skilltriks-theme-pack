@@ -118,8 +118,8 @@ $stlms_users = get_users(
 								<div class="stlms-form-row" id="unique-date">
 									<div class="stlms-form-col">
 										<div class="stlms-form-group">
-											<label for="completion-date"></label>
-											<input type="date" id="completion-date" min="<?php echo esc_attr( wp_date( 'Y-m-d' ) ); ?>" />
+											<label for="unique-completion-date"></label>
+											<input type="date" id="unique-completion-date" min="<?php echo esc_attr( wp_date( 'Y-m-d' ) ); ?>" />
 										</div>
 									</div>
 								</div>
