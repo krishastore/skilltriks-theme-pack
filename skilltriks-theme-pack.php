@@ -26,6 +26,7 @@ define( 'STLMSTP_ADDONS_ABSPATH', dirname( STLMSTP_ADDONS_BASEFILE ) );
 define( 'STLMSTP_ADDONS_TEMPLATEPATH', STLMSTP_ADDONS_ABSPATH . '/templates' );
 define( 'STLMSTP_ADDONS_ASSETS', STLMSTP_ADDONS_ABSURL . 'assets' );
 define( 'STLMS_REQUIRED_PLUGIN_FILE', 'skilltriks/skilltriks.php' );
+define( 'STLMS_REQUIRED_PLUGIN_URI', 'https://wordpress.org/plugins/skilltriks/' );
 
 // Ensure plugin functions are available.
 if ( ! function_exists( 'is_plugin_active' ) ) {
@@ -112,7 +113,7 @@ function stlmstp_addons_dependency_notice() {
 							<?php esc_html_e( 'Activate SkillTriks', 'skilltriks-theme-pack' ); ?>
 						</a>
 					<?php endif; ?>
-					<a href="https://wordpress.org/plugins/skilltriks/" target="_blank" class="button">
+					<a href="<?php echo esc_url( STLMS_REQUIRED_PLUGIN_URI ); ?>" target="_blank" class="button">
 						<?php esc_html_e( 'View Plugin', 'skilltriks-theme-pack' ); ?>
 					</a>
 				</p>
