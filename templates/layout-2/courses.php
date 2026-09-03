@@ -359,11 +359,11 @@ $layout      = stlmstp_addons_template();
 											<?php
 											$author_url    = add_query_arg( array( 'filter_author' => get_the_author_meta( 'ID' ) ) );
 											$author        = get_the_author_meta( 'display_name' );
-											$author_avatar = get_avatar_url( get_the_author_meta( 'ID' ) );
+											$author_avatar = get_avatar_url( get_the_author_meta( 'ID' ), array( 'size' => 30 ) );
 											?>
 											<div class="stlms-course-item__action">
 												<div class="stlms-course-item__by">
-													<img src="<?php echo esc_url( $author_avatar ); ?>" alt="<?php echo esc_html( $author ); ?>">
+													<img src="<?php echo esc_url( $author_avatar ); ?>" width="30" height="30" alt="<?php echo esc_html( $author ); ?>">
 													<a href="<?php echo esc_url( $author_url ); ?>" class="stlms-link-text"><?php echo esc_html( $author ); ?></a>
 												</div>
 												<div class="stlms-btn-wrap">
