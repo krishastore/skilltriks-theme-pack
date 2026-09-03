@@ -138,7 +138,7 @@ $layout             = stlmstp_addons_template();
 					$has_curriculum     = isset( $first_curriculum['items'] ) && count( $first_curriculum['items'] );
 					?>
 					<div class="stlms-course-detail-nav">
-						<ul class="nav nav-tabs" id="myTab" role="tablist">
+						<ul class="nav nav-tabs" id="myTab">
 							<?php if ( $content || $requirements || $what_you_learn || $skills_gain ) : ?>
 								<li class="nav-item" role="presentation">
 									<button class="nav-link stlms-p-base" id="about-course-tab" onclick="openTab(event, 'about-course')"
