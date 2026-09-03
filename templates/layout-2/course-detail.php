@@ -116,7 +116,7 @@ $layout             = stlmstp_addons_template();
 				?>
 				<img fetchpriority="high" decoding="async"
 					src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png"
-					alt="<?php the_title(); ?>">
+					width="1200" height="1200" alt="<?php the_title(); ?>">
 			<?php endif; ?>
 			</div>
 		</div>
@@ -179,7 +179,7 @@ $layout             = stlmstp_addons_template();
 					</div>
 					<div class="tab-content">
 						<div class="tab-pane" id="about-course" role="tabpanel"
-							aria-labelledby="<?php esc_attr_e( 'about-course-tab', 'skilltriks-theme-pack' ); ?>" tabindex="0">
+							aria-labelledby="<?php esc_attr_e( 'about-course-tab', 'skilltriks-theme-pack' ); ?>">
 							<div class="tab-content-wrap">
 								<?php if ( $content ) : ?>
 									<div class="stlms-course-requirement-box">
@@ -274,7 +274,7 @@ $layout             = stlmstp_addons_template();
 						if ( $has_curriculum ) :
 							?>
 							<div class="tab-pane" id="curriculum" role="tabpanel"
-								aria-labelledby="<?php esc_attr_e( 'curriculum-tab', 'skilltriks-theme-pack' ); ?>" tabindex="0">
+								aria-labelledby="<?php esc_attr_e( 'curriculum-tab', 'skilltriks-theme-pack' ); ?>">
 								<div class="stlms-accordion-course-content">
 									<div class="stlms-accordion">
 									<?php
@@ -400,7 +400,7 @@ $layout             = stlmstp_addons_template();
 							</div>
 						<?php endif; ?>
 						<?php if ( $faq_questions && $faq_answers ) : ?>
-							<div class="tab-pane" id="faq" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'faq-tab', 'skilltriks-theme-pack' ); ?>" tabindex="0">
+							<div class="tab-pane" id="faq" role="tabpanel" aria-labelledby="<?php esc_attr_e( 'faq-tab', 'skilltriks-theme-pack' ); ?>">
 								<div class="stlms-accordion-faq">
 									<div class="stlms-accordion">
 									<?php
@@ -590,7 +590,7 @@ $layout             = stlmstp_addons_template();
 												?>
 												<img fetchpriority="high" decoding="async"
 													src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png"
-													alt="<?php the_title(); ?>">
+													width="1200" height="1200" alt="<?php the_title(); ?>">
 											<?php endif; ?>
 										</div>
 										<div class="stlms-similar-course-info">

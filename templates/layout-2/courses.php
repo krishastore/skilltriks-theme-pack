@@ -299,7 +299,7 @@ $layout      = stlmstp_addons_template();
 												<?php else : ?>
 													<img fetchpriority="high" decoding="async"
 														src="<?php echo esc_url( STLMS_ASSETS ); ?>/images/course-item-placeholder.png"
-														alt="<?php the_title(); ?>">
+														width="1200" height="1200" alt="<?php the_title(); ?>">
 												<?php endif; ?>
 											</a>
 										</div>
