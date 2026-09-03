@@ -140,7 +140,7 @@ $layout             = stlmstp_addons_template();
 					<div class="stlms-course-detail-nav">
 						<ul class="nav nav-tabs" id="myTab">
 							<?php if ( $content || $requirements || $what_you_learn || $skills_gain ) : ?>
-								<li class="nav-item" role="presentation">
+								<li class="nav-item">
 									<button class="nav-link stlms-p-base" id="about-course-tab" onclick="openTab(event, 'about-course')"
 										type="button" role="tab" aria-controls="about-course" aria-selected="true">
 										<svg width="30" height="30">
@@ -152,7 +152,7 @@ $layout             = stlmstp_addons_template();
 								</li>
 							<?php endif; ?>
 							<?php if ( $has_curriculum ) : ?>
-								<li class="nav-item" role="presentation">
+								<li class="nav-item">
 									<button class="nav-link stlms-p-base" id="curriculum-tab" onclick="openTab(event, 'curriculum')"
 										type="button" role="tab" aria-controls="curriculum" aria-selected="false">
 										<svg width="30" height="30">
@@ -164,7 +164,7 @@ $layout             = stlmstp_addons_template();
 								</li>
 							<?php endif; ?>
 							<?php if ( $faq_questions && $faq_answers ) : ?>
-								<li class="nav-item" role="presentation">
+								<li class="nav-item">
 									<button class="nav-link stlms-p-base" id="faq-tab" onclick="openTab(event, 'faq')"
 										type="button" role="tab" aria-controls="faq" aria-selected="false">
 										<svg width="30" height="30">
@@ -535,8 +535,10 @@ $layout             = stlmstp_addons_template();
 							</div>
 						<?php endif; ?>
 						<?php if ( current_user_can( 'assign_course' ) || current_user_can( 'manage_options' ) ) : //phpcs:ignore WordPress.WP.Capabilities.Unknown ?>
-							<a href="javascript:void(0);" data-fancybox data-src="#assign-course" class="stlms-btn outline stlms-btn-block">
-								<?php esc_html_e( 'Assign Course', 'skilltriks-theme-pack' ); ?></a>
+							<button type="button" data-fancybox data-src="#assign-course"
+								class="stlms-btn outline stlms-btn-block">
+								<?php esc_html_e( 'Assign Course', 'skilltriks-theme-pack' ); ?>
+							</button>
 						<?php endif; ?>
 					</div>
 					<?php

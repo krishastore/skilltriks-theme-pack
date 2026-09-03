@@ -16,24 +16,26 @@ jQuery(function($) {
   });
 });
 
-function openTab(evt, tabName) {
-  // Hide all tab panes
-  const tabcontent = document.getElementsByClassName("tab-pane");
-  for (const tab of tabcontent) {
-    tab.classList.remove("active");
-  }
-  // Remove active class from all nav links
-  const tablinks = document.getElementsByClassName("nav-link");
-  for (const link of tablinks) {
-    link.classList.remove("active");
-  }
-  // Show current tab pane and mark link as active
-  const currentTab = document.getElementById(tabName);
-  if (currentTab) {
-    currentTab.classList.add("active");
-  }
-  evt.currentTarget.classList.add("active");
-}
+window.openTab = function (evt, tabName) {
+	// Hide all tab panes
+	const tabContent = document.getElementsByClassName('tab-pane');
+	for (const tab of tabContent) {
+		tab.classList.remove('active');
+	}
+
+	// Remove active class from all nav links
+	const tabLinks = document.getElementsByClassName('nav-link');
+	for (const link of tabLinks) {
+		link.classList.remove('active');
+	}
+
+	// Show current tab pane and mark link as active
+	const currentTab = document.getElementById(tabName);
+	if (currentTab) {
+		currentTab.classList.add('active');
+	}
+	evt.currentTarget.classList.add('active');
+};
 
 document.addEventListener("DOMContentLoaded", function () {
   // Get all tabs and their corresponding content
