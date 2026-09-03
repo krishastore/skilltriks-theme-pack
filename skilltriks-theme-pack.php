@@ -85,12 +85,12 @@ function stlmstp_addons_dependency_notice() {
 	<div class="notice stlms-addon-notice">
 		<div class="stlms-addon-notice__banner">
 			<img src="<?php echo esc_url( $plugin_banner_url ); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>"
-				alt="Skilltriks Banner" />
+				width="1544" height="500" alt="Skilltriks Banner" />
 		</div>
 		<div class="stlms-addon-notice__body">
 			<div class="stlms-addon-notice__icon">
 				<img src="<?php echo esc_url( $plugin_icon_url ); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>"
-					alt="Skilltriks Icon" />
+					width="128" height="128" alt="Skilltriks Icon" />
 			</div>
 			<div class="stlms-addon-notice__content">
 				<p>
